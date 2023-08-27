@@ -132,6 +132,16 @@ export async function update_billboard(id,jb){
     return row
 }
 
+//NOTE: cast
+export async function get_cast_for(id){
+    const [row] = await pool.query(
+        `Select person.name, cast.role_person, cast.id_cast from repertoire
+        inner join cast on cast.id_repertoire = repertoire.id_repertoire
+        inner join person on person.id_person = cast.id_person where repertoire.id_repertoire = ?`,
+        [id]
+    )
+    return row
+}
 
 
 let jb = {

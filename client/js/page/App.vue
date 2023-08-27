@@ -12,13 +12,10 @@
     let Footer = require("./components/footer.vue")
 
     let ModelPerson = require("../components/person.vue")
-     
-    let db = require("../db/repertoire.js")
 
     module.exports = {
         data: function(){
             return {
-                dbs: db
             }
         },
         components:{

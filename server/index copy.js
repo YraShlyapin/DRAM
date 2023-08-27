@@ -46,6 +46,11 @@ app.put("/repertoireAPI/:id", jsonParser, async (req,res) => {
     res.send(result)
 })
 
+//NOTE: cast API
+app.get("/castAPI/:id", async (req,res) => {
+    const result = await db.get_cast_for(req.params.id)
+    res.send(result)
+})
 
 
 

@@ -10,6 +10,51 @@
             </div>
             <img src="https://dummyimage.com/1096x1065/777/000" alt="">
         </div>
+        <titles title="Состав"/>
+        <div id="cast">
+            <div class="cast_wrapper">
+                <img src="https://dummyimage.com/150x150/777/000" alt="">
+                <div>
+                    <p class="name">Матвей Семагин</p>
+                    <p>Отец отца</p>
+                </div>
+            </div>
+            <div class="cast_wrapper">
+                <img src="https://dummyimage.com/150x150/777/000" alt="">
+                <div>
+                    <p class="name">Матвей Семагин</p>
+                    <p>Отец отца</p>
+                </div>
+            </div>
+            <div class="cast_wrapper">
+                <img src="https://dummyimage.com/150x150/777/000" alt="">
+                <div>
+                    <p class="name">Матвей Семагин</p>
+                    <p>Отец отца</p>
+                </div>
+            </div>
+            <div class="cast_wrapper">
+                <img src="https://dummyimage.com/150x150/777/000" alt="">
+                <div>
+                    <p class="name">Матвей Семагин</p>
+                    <p>Отец отца</p>
+                </div>
+            </div>
+            <div class="cast_wrapper">
+                <img src="https://dummyimage.com/150x150/777/000" alt="">
+                <div>
+                    <p class="name">Матвей Семагин</p>
+                    <p>Отец отца</p>
+                </div>
+            </div>
+            <div class="cast_wrapper">
+                <img src="https://dummyimage.com/150x150/777/000" alt="">
+                <div>
+                    <p class="name">Матвей Семагин</p>
+                    <p>Отец отца</p>
+                </div>
+            </div>
+        </div>
         <div id="time_place">
             <titles title="29 Февраля 25:99" is_mini="true"/>
             <titles title="ул. Ленина 78, Квартал" is_mini="true"/>

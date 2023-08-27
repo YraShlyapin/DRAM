@@ -11,7 +11,9 @@ Vue.use(VueRouter)
 new Vue({
     el: "#app",
     // router: new VueRouter({hashbang: false, mode: 'history', routes: routes}),
-    router: new VueRouter({routes: routes}),
+    router: new VueRouter({routes: routes, scrollBehavior (to, from, savedPosition) {
+        return { x: 0, y:0 }
+    }}),
     render: function(a){
         return a(App)
     }

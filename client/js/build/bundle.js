@@ -305,7 +305,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-65b6d551", __vue__options__)
   }
 })()}
-},{"vue":22,"vue-hot-reload-api":19}],5:[function(require,module,exports){
+},{"vue":21,"vue-hot-reload-api":18}],5:[function(require,module,exports){
 ;(function(){
 "use strict";
 
@@ -332,7 +332,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-050d30f6", __vue__options__)
   }
 })()}
-},{"./samples/title.vue":11,"vue":22,"vue-hot-reload-api":19}],6:[function(require,module,exports){
+},{"./samples/title.vue":11,"vue":21,"vue-hot-reload-api":18}],6:[function(require,module,exports){
 ;(function(){
 "use strict";
 
@@ -347,8 +347,8 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._m(0),_vm._v(" "),_c('div',{attrs:{"id":"time_place"}},[_c('titles',{attrs:{"title":"29 Февраля 25:99","is_mini":"true"}}),_vm._v(" "),_c('titles',{attrs:{"title":"ул. Ленина 78, Квартал","is_mini":"true"}})],1),_vm._v(" "),_c('iframe',{attrs:{"src":"https://yandex.ru/map-widget/v1/?um=constructor%3Ae9b9fb91d381c327105aefacfae0dd342eeb6ee2336488891e223bea1d2edec3&source=constructor","width":"1000","height":"500","frameborder":"0"}})])}
-__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"repertoire_info"}},[_c('div',{attrs:{"id":"repertoire_info_wrapper"}},[_c('div',{attrs:{"id":"repertoire_info_allotted"}},[_c('p',{attrs:{"id":"repertoire_info_title"}},[_vm._v("КАК Я ПОЗНАКОМИЛСЯ С ОТЦОМ")]),_vm._v(" "),_c('p',[_vm._v("Джанибек Джанибекович")])]),_vm._v(" "),_c('p',[_vm._v("Пытаясь получше узнать долго отсутствующего в его жизни отца, Лука совершает длинный и непростой путь... к себе. Эта дорога без конца полна лёгких разочарований и трудных приобретений. Душевные искания и неожиданные откровения - главные спутники на этой дороге. И всё ради наполненного светлой грусти итога.")])]),_vm._v(" "),_c('img',{attrs:{"src":"https://dummyimage.com/1096x1065/777/000","alt":""}})])}]
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._m(0),_vm._v(" "),_c('titles',{attrs:{"title":"Состав"}}),_vm._v(" "),_vm._m(1),_vm._v(" "),_c('div',{attrs:{"id":"time_place"}},[_c('titles',{attrs:{"title":"29 Февраля 25:99","is_mini":"true"}}),_vm._v(" "),_c('titles',{attrs:{"title":"ул. Ленина 78, Квартал","is_mini":"true"}})],1),_vm._v(" "),_c('iframe',{attrs:{"src":"https://yandex.ru/map-widget/v1/?um=constructor%3Ae9b9fb91d381c327105aefacfae0dd342eeb6ee2336488891e223bea1d2edec3&source=constructor","width":"1000","height":"500","frameborder":"0"}})],1)}
+__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"repertoire_info"}},[_c('div',{attrs:{"id":"repertoire_info_wrapper"}},[_c('div',{attrs:{"id":"repertoire_info_allotted"}},[_c('p',{attrs:{"id":"repertoire_info_title"}},[_vm._v("КАК Я ПОЗНАКОМИЛСЯ С ОТЦОМ")]),_vm._v(" "),_c('p',[_vm._v("Джанибек Джанибекович")])]),_vm._v(" "),_c('p',[_vm._v("Пытаясь получше узнать долго отсутствующего в его жизни отца, Лука совершает длинный и непростой путь... к себе. Эта дорога без конца полна лёгких разочарований и трудных приобретений. Душевные искания и неожиданные откровения - главные спутники на этой дороге. И всё ради наполненного светлой грусти итога.")])]),_vm._v(" "),_c('img',{attrs:{"src":"https://dummyimage.com/1096x1065/777/000","alt":""}})])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"cast"}},[_c('div',{staticClass:"cast_wrapper"},[_c('img',{attrs:{"src":"https://dummyimage.com/150x150/777/000","alt":""}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"name"},[_vm._v("Матвей Семагин")]),_vm._v(" "),_c('p',[_vm._v("Отец отца")])])]),_vm._v(" "),_c('div',{staticClass:"cast_wrapper"},[_c('img',{attrs:{"src":"https://dummyimage.com/150x150/777/000","alt":""}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"name"},[_vm._v("Матвей Семагин")]),_vm._v(" "),_c('p',[_vm._v("Отец отца")])])]),_vm._v(" "),_c('div',{staticClass:"cast_wrapper"},[_c('img',{attrs:{"src":"https://dummyimage.com/150x150/777/000","alt":""}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"name"},[_vm._v("Матвей Семагин")]),_vm._v(" "),_c('p',[_vm._v("Отец отца")])])]),_vm._v(" "),_c('div',{staticClass:"cast_wrapper"},[_c('img',{attrs:{"src":"https://dummyimage.com/150x150/777/000","alt":""}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"name"},[_vm._v("Матвей Семагин")]),_vm._v(" "),_c('p',[_vm._v("Отец отца")])])]),_vm._v(" "),_c('div',{staticClass:"cast_wrapper"},[_c('img',{attrs:{"src":"https://dummyimage.com/150x150/777/000","alt":""}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"name"},[_vm._v("Матвей Семагин")]),_vm._v(" "),_c('p',[_vm._v("Отец отца")])])]),_vm._v(" "),_c('div',{staticClass:"cast_wrapper"},[_c('img',{attrs:{"src":"https://dummyimage.com/150x150/777/000","alt":""}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"name"},[_vm._v("Матвей Семагин")]),_vm._v(" "),_c('p',[_vm._v("Отец отца")])])])])}]
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
@@ -356,10 +356,10 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-46ecce50", __vue__options__)
   } else {
-    hotAPI.reload("data-v-46ecce50", __vue__options__)
+    hotAPI.rerender("data-v-46ecce50", __vue__options__)
   }
 })()}
-},{"./samples/title.vue":11,"vue":22,"vue-hot-reload-api":19}],7:[function(require,module,exports){
+},{"./samples/title.vue":11,"vue":21,"vue-hot-reload-api":18}],7:[function(require,module,exports){
 ;(function(){
 "use strict";
 
@@ -409,10 +409,10 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-6445f9e3", __vue__options__)
   } else {
-    hotAPI.reload("data-v-6445f9e3", __vue__options__)
+    hotAPI.rerender("data-v-6445f9e3", __vue__options__)
   }
 })()}
-},{"./samples/title.vue":11,"vue":22,"vue-hot-reload-api":19}],8:[function(require,module,exports){
+},{"./samples/title.vue":11,"vue":21,"vue-hot-reload-api":18}],8:[function(require,module,exports){
 ;(function(){
 "use strict";
 
@@ -459,7 +459,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-933db602", __vue__options__)
   }
 })()}
-},{"./samples/title.vue":11,"vue":22,"vue-hot-reload-api":19}],9:[function(require,module,exports){
+},{"./samples/title.vue":11,"vue":21,"vue-hot-reload-api":18}],9:[function(require,module,exports){
 ;(function(){
 "use strict";
 
@@ -506,7 +506,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.rerender("data-v-38f987e1", __vue__options__)
   }
 })()}
-},{"./samples/title.vue":11,"vue":22,"vue-hot-reload-api":19}],10:[function(require,module,exports){
+},{"./samples/title.vue":11,"vue":21,"vue-hot-reload-api":18}],10:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -518,7 +518,8 @@ module.exports = {
     },
     data: function data() {
         return {
-            repertoire: ''
+            repertoire: '',
+            cast: ''
         };
     },
     methods: {
@@ -526,23 +527,21 @@ module.exports = {
             this.$http.get('/repertoireAPI/' + this.$route.params['id']).then(function (res) {
                 this.repertoire = res.body;
             });
+            this.$http.get('/castAPI/' + this.$route.params['id']).then(function (res) {
+                this.cast = res.body;
+            });
         }
     },
     mounted: function mounted() {
         this.connect_db();
-    },
-    updated: function updated() {
-        this.$nextTick(function () {
-            this.connect_db();
-        });
     }
 };
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{attrs:{"id":"repertoire_info"}},[_c('div',{attrs:{"id":"repertoire_info_wrapper"}},[_c('div',{attrs:{"id":"repertoire_info_allotted"}},[_c('p',{attrs:{"id":"repertoire_info_title"}},[_vm._v(_vm._s(_vm.repertoire.title))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.repertoire.author))])]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.repertoire.description))])]),_vm._v(" "),_c('img',{attrs:{"src":"https://dummyimage.com/1096x1065/777/000","alt":""}})]),_vm._v(" "),_c('titles',{attrs:{"title":"Состав"}}),_vm._v(" "),_vm._m(0)],1)}
-__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"cast"}},[_c('div',{staticClass:"cast_wrapper"},[_c('img',{attrs:{"src":"https://dummyimage.com/150x150/777/000","alt":""}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"name"},[_vm._v("Матвей Семагин")]),_vm._v(" "),_c('p',[_vm._v("Отец отца")])])]),_vm._v(" "),_c('div',{staticClass:"cast_wrapper"},[_c('img',{attrs:{"src":"https://dummyimage.com/150x150/777/000","alt":""}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"name"},[_vm._v("Матвей Семагин")]),_vm._v(" "),_c('p',[_vm._v("Отец отца")])])]),_vm._v(" "),_c('div',{staticClass:"cast_wrapper"},[_c('img',{attrs:{"src":"https://dummyimage.com/150x150/777/000","alt":""}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"name"},[_vm._v("Матвей Семагин")]),_vm._v(" "),_c('p',[_vm._v("Отец отца")])])]),_vm._v(" "),_c('div',{staticClass:"cast_wrapper"},[_c('img',{attrs:{"src":"https://dummyimage.com/150x150/777/000","alt":""}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"name"},[_vm._v("Матвей Семагин")]),_vm._v(" "),_c('p',[_vm._v("Отец отца")])])]),_vm._v(" "),_c('div',{staticClass:"cast_wrapper"},[_c('img',{attrs:{"src":"https://dummyimage.com/150x150/777/000","alt":""}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"name"},[_vm._v("Матвей Семагин")]),_vm._v(" "),_c('p',[_vm._v("Отец отца")])])]),_vm._v(" "),_c('div',{staticClass:"cast_wrapper"},[_c('img',{attrs:{"src":"https://dummyimage.com/150x150/777/000","alt":""}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"name"},[_vm._v("Матвей Семагин")]),_vm._v(" "),_c('p',[_vm._v("Отец отца")])])])])}]
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{attrs:{"id":"repertoire_info"}},[_c('div',{attrs:{"id":"repertoire_info_wrapper"}},[_c('div',{attrs:{"id":"repertoire_info_allotted"}},[_c('p',{attrs:{"id":"repertoire_info_title"}},[_vm._v(_vm._s(_vm.repertoire.title))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.repertoire.author))])]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.repertoire.description))])]),_vm._v(" "),_c('img',{attrs:{"src":"https://dummyimage.com/1096x1065/777/000","alt":""}})]),_vm._v(" "),_c('titles',{attrs:{"title":"Состав"}}),_vm._v(" "),_c('div',{attrs:{"id":"cast"}},_vm._l((_vm.cast),function(person){return _c('div',{key:person.id_cast,staticClass:"cast_wrapper"},[_c('img',{attrs:{"src":"https://dummyimage.com/150x150/777/000","alt":""}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"name"},[_vm._v(_vm._s(person.name))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(person.role_person))])])])}))],1)}
+__vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
@@ -550,10 +549,10 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-091b51fc", __vue__options__)
   } else {
-    hotAPI.reload("data-v-091b51fc", __vue__options__)
+    hotAPI.rerender("data-v-091b51fc", __vue__options__)
   }
 })()}
-},{"./samples/title.vue":11,"vue":22,"vue-hot-reload-api":19}],11:[function(require,module,exports){
+},{"./samples/title.vue":11,"vue":21,"vue-hot-reload-api":18}],11:[function(require,module,exports){
 ;(function(){
 "use strict";
 
@@ -583,34 +582,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-944df1ea", __vue__options__)
   }
 })()}
-},{"vue":22,"vue-hot-reload-api":19}],12:[function(require,module,exports){
-module.exports = [
-    {
-        id: 1,
-        title: "Как я познакомился с отцом",
-        author: "Джанибек Джанибекович",
-        description: "Пытаясь получше узнать долго отсутствующего в его жизни отца, Лука совершает длинный и непростой путь... к себе. Эта дорога без конца полна лёгких разочарований и трудных приобретений. Душевные искания и неожиданные откровения - главные спутники на этой дороге. И всё ради наполненного светлой грусти итога.",
-        image: "../js/db/2uCTrRyV2HA.jpg",
-        time: "65 минут"
-    },
-    {
-        id: 2,
-        title: "ДАВАЙТЕ НЕ БУДЕМ БОЯТЬСЯ, или ПараФраз о величии",
-        author: "(по философско-политической пьесе Яны Богдановой)",
-        description: "Дети играют, ссорятся, мирятся - всё как у \"нормальных\" людей... Действие разворачивается на детской площадке в то время, пока нет взрослых. У главных героев есть \"кликухи\", \"погоняла\", но нет имён. А на дворе предчувствие, каждый сам решит чего. Да и такие ли уж они дети?",
-        image: "../js/db/175OXtk37sA.jpg",
-        time: "35 минут"
-    },
-    {
-        id: 3,
-        title: "ИВАН КРЕСТЬЯНСКИЙ СЫН И ПРИНЦЕССА ВАСИЛИСА",
-        author: "Дмитрий Татаринов",
-        description: "Дети играют, ссорятся, мирятся - всё как у \"нормальных\" людей... Действие разворачивается на детской площадке в то время, пока нет взрослых. У главных героев есть \"кликухи\", \"погоняла\", но нет имён. А на дворе предчувствие, каждый сам решит чего. Да и такие ли уж они дети?",
-        image: "../js/db/FFk-w7s6Zfc.jpg",
-        time: "25 минут"
-    }
-]
-},{}],13:[function(require,module,exports){
+},{"vue":21,"vue-hot-reload-api":18}],12:[function(require,module,exports){
 let Vue = require("vue")
 let VueRouter = require("vue-router")
 let VueResource = require("vue-resource")
@@ -624,12 +596,14 @@ Vue.use(VueRouter)
 new Vue({
     el: "#app",
     // router: new VueRouter({hashbang: false, mode: 'history', routes: routes}),
-    router: new VueRouter({routes: routes}),
+    router: new VueRouter({routes: routes, scrollBehavior (to, from, savedPosition) {
+        return { x: 0, y:0 }
+    }}),
     render: function(a){
         return a(App)
     }
 })
-},{"./page/App.vue":14,"./routes.js":18,"vue":22,"vue-resource":20,"vue-router":21}],14:[function(require,module,exports){
+},{"./page/App.vue":13,"./routes.js":17,"vue":21,"vue-resource":19,"vue-router":20}],13:[function(require,module,exports){
 ;(function(){
 "use strict";
 
@@ -639,13 +613,9 @@ var Footer = require("./components/footer.vue");
 
 var ModelPerson = require("../components/person.vue");
 
-var db = require("../db/repertoire.js");
-
 module.exports = {
     data: function data() {
-        return {
-            dbs: db
-        };
+        return {};
     },
     components: {
         logo: Logo,
@@ -671,7 +641,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-0bec3940", __vue__options__)
   }
 })()}
-},{"../components/person.vue":8,"../db/repertoire.js":12,"./components/footer.vue":15,"./components/logo.vue":16,"./components/menu.vue":17,"vue":22,"vue-hot-reload-api":19}],15:[function(require,module,exports){
+},{"../components/person.vue":8,"./components/footer.vue":14,"./components/logo.vue":15,"./components/menu.vue":16,"vue":21,"vue-hot-reload-api":18}],14:[function(require,module,exports){
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
@@ -686,7 +656,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-265d1020", __vue__options__)
   }
 })()}
-},{"vue":22,"vue-hot-reload-api":19}],16:[function(require,module,exports){
+},{"vue":21,"vue-hot-reload-api":18}],15:[function(require,module,exports){
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
@@ -701,7 +671,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-89dde120", __vue__options__)
   }
 })()}
-},{"vue":22,"vue-hot-reload-api":19}],17:[function(require,module,exports){
+},{"vue":21,"vue-hot-reload-api":18}],16:[function(require,module,exports){
 ;(function(){
 "use strict";
 
@@ -731,7 +701,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
     hotAPI.reload("data-v-1e3a6524", __vue__options__)
   }
 })()}
-},{"vue":22,"vue-hot-reload-api":19}],18:[function(require,module,exports){
+},{"vue":21,"vue-hot-reload-api":18}],17:[function(require,module,exports){
 let repertoire = require("./components/repertoire.vue")
 let person = require("./components/person.vue")
 let billboard = require("./components/billboard.vue")
@@ -771,7 +741,7 @@ let App = require("./page/App.vue")
         ]
     },
 */
-},{"./components/admin_repertoire.vue":4,"./components/billboard.vue":5,"./components/billboard_info.vue":6,"./components/main.vue":7,"./components/person.vue":8,"./components/repertoire.vue":9,"./components/repertoire_info.vue":10}],19:[function(require,module,exports){
+},{"./components/admin_repertoire.vue":4,"./components/billboard.vue":5,"./components/billboard_info.vue":6,"./components/main.vue":7,"./components/person.vue":8,"./components/repertoire.vue":9,"./components/repertoire_info.vue":10}],18:[function(require,module,exports){
 var Vue // late bind
 var version
 var map = Object.create(null)
@@ -1046,7 +1016,7 @@ function patchScopedSlots (instance) {
   }
 }
 
-},{}],20:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 /*!
  * vue-resource v1.5.3
  * https://github.com/pagekit/vue-resource
@@ -2516,7 +2486,7 @@ if (typeof window !== 'undefined' && window.Vue && !window.Vue.resource) {
 
 module.exports = plugin;
 
-},{"got":1}],21:[function(require,module,exports){
+},{"got":1}],20:[function(require,module,exports){
 (function (process){(function (){
 /**
   * vue-router v3.0.1
@@ -5145,7 +5115,7 @@ if (inBrowser && window.Vue) {
 module.exports = VueRouter;
 
 }).call(this)}).call(this,require('_process'))
-},{"_process":2}],22:[function(require,module,exports){
+},{"_process":2}],21:[function(require,module,exports){
 (function (process,global,setImmediate){(function (){
 /*!
  * Vue.js v2.5.16
@@ -13183,4 +13153,4 @@ if (inBrowser) {
 module.exports = Vue;
 
 }).call(this)}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("timers").setImmediate)
-},{"_process":2,"timers":3}]},{},[13]);
+},{"_process":2,"timers":3}]},{},[12]);

@@ -1,5 +1,0 @@
-watchify js/main.js -o js/build/bundle.js --transform vueify
-
-sass css/mixin.scss:css/mixin.css
-
-node index.js
