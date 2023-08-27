@@ -1,0 +1,11 @@
+#logo{
+    width: 100%;
+    height: $height-logo;
+
+    @include display(flex,center,center);
+
+    background-color: $primary-color;
+    color: $light-color;
+
+    font-family: $Inter;
+}

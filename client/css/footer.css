@@ -1,0 +1,33 @@
+#footer{
+    width: 100%;
+    height: var(--height-footer);
+
+    display: flex;
+    
+    background-color: var(--primary-color);
+    
+    font-family: 'Inter', sans-serif;
+    color: var(--light-color);
+}
+
+.footer_segments{
+    margin-top: 43px;
+}
+
+#footer_first_segment{
+    flex: 1;
+}
+
+#footer_first_segment > div{
+    margin-left: 122px;
+}
+
+#footer_second_segment{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+#footer_third_segment{
+    flex: 1;
+}

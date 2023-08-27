@@ -1,0 +1,127 @@
+@media screen {
+    #repertoire{
+        margin-top: $margin-mini*1.5;
+
+        font-family: $Merriweather;
+
+        #repertoire_wrapper{
+
+            .block_repertoire{
+                @include display(flex,$fd:row);
+
+                color: black;
+
+                img{
+                    width: 40vw;
+                    border-radius: 0 25px 25px 0;
+                }
+
+                @media (max-width: 730px) {
+                    flex-direction: column;
+                    
+                    img{
+                        width: 100%;
+                        border-radius: 0 0 25px 25px;
+                    }
+                }
+
+                .about_repertoire{
+
+                    .about_repertoire_title{
+                        font-size: $font-size-giant;
+                    }
+
+                    .description{
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 6;
+                        -webkit-box-orient: vertical;
+
+                        margin-top: $margin-mini*2;
+                    }
+
+                    .time{
+                        margin-top: $margin-mini;
+                    }
+                    
+                    .date{
+                        margin-top: $margin-mini*2;
+                    }
+
+                    @media (max-width: 1800px) {
+                        padding-top: 50px;
+                        padding-left: 105px;
+                        margin-right: 100px;
+                    }
+    
+                    @media (max-width: 1600px) {
+                        padding-top: 30px;
+                        padding-left: 50px;
+                        margin-right: 50px;    
+                        font-size: $font-size-averange;
+
+                        .about_repertoire_title{
+                            font-size: $font-size-big;
+                        }
+                    }
+
+                    @media (max-width: 1100px) {
+                        font-size: $font-size-normal;
+
+                        .about_repertoire_title{
+                            font-size: $font-size-averange;
+                        }
+
+                        .description{
+                            margin-top: $margin-mini;
+                            -webkit-line-clamp: 4;
+                        }
+
+                        .date{
+                            margin-top: $margin-mini;
+                        }
+                    }
+
+                    @media (max-width: 730px) {
+                        padding: 16px;
+                        margin: 0;
+
+                        font-size: $font-size-averange;
+
+                        .about_repertoire_title{
+                            font-size: $font-size-big;
+                        }
+                    }
+
+                    padding-top: 100px;
+                    padding-left: 195px;
+                    margin-right: 250px;
+
+                    font-size: $font-size-big;                    
+                }
+            }
+            
+            .revers{
+                
+
+                flex-direction: row-reverse;
+                background-color: $gray;
+
+                img{
+                    border-radius: 25px 0 0 25px;
+                }
+            }
+
+            @media (max-width: 730px) {
+                .revers{
+                    flex-direction: column;
+
+                    img{
+                        border-radius: 0 0 25px 25px;
+                    }
+                }
+            }
+        }
+    }
+}

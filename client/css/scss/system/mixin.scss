@@ -1,0 +1,7 @@
+@mixin display($d:block,$jc:start,$al:start,$fd:row,$fw:nowrap) {
+    display: $d;
+    justify-content: $jc;
+    align-items: $al;
+    flex-direction: $fd;
+    flex-wrap: $fw;
+}

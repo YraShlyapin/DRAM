@@ -1,0 +1,49 @@
+.lbr50{
+    border-radius: 0px 0px 0px 50px;
+}
+
+.colaic{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mt100{
+    margin-top: var(--margin-colossal);
+}
+
+.mb100{
+    margin-bottom: var(--margin-colossal);
+}
+
+.ml100{
+    margin-left: var(--font-size-colossal);
+}
+
+.mt50{
+    margin-top: var(--margin-averange);
+}
+
+.mt16{
+    margin-top: var(--margin-mini);
+}
+
+.ml16{
+    margin-left: var(--margin-mini);
+}
+
+.fs20{
+    font-size: var(--font-size-averange);
+}
+
+.fs30{
+    font-size: var(--font-size-big);
+}
+
+.fs40{
+    font-size: var(--font-size-giant);
+}
+
+.fs60{
+    font-size: var( --font-size-colossal);
+}

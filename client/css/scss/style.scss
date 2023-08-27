@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Merriweather:ital,wght@0,400;1,900&display=swap');
+
+@import "./system/variables.scss";
+@import "./system/mixin.scss";
+
+@import "./samples/logo.scss";
+@import "./samples/menu.scss";
+@import "./samples/footer.scss";
+
+@import "./components/title.scss";
+@import "./components/main.scss";
+@import "./components/repertoire.scss";
+@import "./components/repertoire_info.scss";
+@import "./components/person.scss";
+
+*{
+    margin: 0;
+    font-weight: 400;
+}
+
+@media screen and (max-width: 900px) {
+    .lock{
+        overflow-y: hidden;
+    }
+}
+
+
+html{
+    font-size: 16px;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+body{
+    width: 100%;
+    background-color: $light-color;
+    overflow-x: hidden;
+    font-size: 16px;
+}
+
+a{
+    color: $light-color;
+    text-decoration: none;
+}

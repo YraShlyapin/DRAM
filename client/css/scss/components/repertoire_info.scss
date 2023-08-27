@@ -1,0 +1,170 @@
+@media screen {
+    #repertoire_info{
+        display: flex;
+        justify-content: space-between;
+
+        margin-bottom: $margin-colossal;
+
+        font-family: $Merriweather;
+
+        #repertoire_info_wrapper{
+            #repertoire_info_allotted{
+                padding: 50px 140px 50px $margin-colossal;
+                margin-top: $margin-averange;
+
+                background-color: $gray;
+                
+                color: $secondary-color;
+                font-size: $font-size-giant;
+
+                border-radius: 0 50px 50px 0;
+
+                #repertoire_info_title{
+                    margin-bottom: 25px;
+                }
+            }
+
+            & > p{
+                padding-right: 50px;
+                margin-top: $margin-averange;
+                margin-left: $margin-colossal;
+
+                font-size: $font-size-big;
+            }
+        }
+
+        img{
+            max-height: 100vh;
+            width: 50%;
+            height: fit-content;
+            border-bottom-left-radius: 50px;
+            margin-left: $margin-averange;
+        }
+
+        @media (max-width: 1299px) {
+            #repertoire_info_wrapper{
+                #repertoire_info_allotted{
+                    padding: 25px 70px 25px $margin-colossal / 2;
+                    margin-top: $margin-averange / 2;
+    
+                    font-size: $font-size-averange_plus;
+                    border-radius: 0 25px 25px 0;
+    
+                    #repertoire_info_title{
+                        margin-bottom: 25px;
+                    }
+                }
+
+                & > p{
+                    padding-right: 25px;
+                    margin-top: $margin-averange / 2;
+                    margin-left: $margin-colossal / 2;
+    
+                    font-size: $font-size-normal;
+                }
+            }
+
+            img{
+                width: 40%;
+                border-bottom-left-radius: 25px;
+                margin-left: $margin-averange / 2;
+            }
+        }
+
+        @media (max-width: 800px) {
+            flex-direction: column-reverse;
+
+            #repertoire_info_wrapper{
+                #repertoire_info_allotted{
+                    font-size: $font-size-giant;
+                    padding-top: 50px;
+                    margin-top: 0;
+                    position: relative;
+                    top: -25px;
+                    border-radius: 0 0 25px 25px;
+                    z-index: -1;
+                }
+
+                & > p{
+                    font-size: $font-size-averange_plus;
+                    margin-top: 0;
+                    margin-left: 25px;
+                }
+            }
+
+            img{
+                max-height: none;
+                width: 100%;
+                margin: 0;
+                border-radius: 0 0 25px 25px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            #repertoire_info_wrapper{
+                #repertoire_info_allotted{
+                    font-size: $font-size-averange_plus;
+                    padding: 50px 25px 25px 25px;
+                }
+
+                & > p{
+                    font-size: $font-size-averange;
+                }
+            }
+        }
+
+        @media (max-width: 312px) {
+            #repertoire_info_wrapper{
+                #repertoire_info_allotted{
+                    font-size: $font-size-averange;
+                }
+
+                & > p{
+                    font-size: $font-size-normal;
+                }
+            }
+        }
+    }
+
+    #cast{
+        @include display(flex, space-evenly);
+
+        .cast_wrapper{
+            width: 225px;
+            height: 350px;
+
+            margin-bottom: $margin-colossal;
+
+            border-radius: 25px;
+            overflow: hidden;
+
+            @include display(flex,$fd:column,$al:center);
+
+            font-family: $Merriweather;
+
+            background-color: $gray;
+            & > img{
+                border-radius: 0 0 25px 25px;
+            }
+            & > div{
+                margin-top: $margin-mini;
+                text-align: center;
+
+                .name{
+                    font-size: $font-size-big;
+
+                    margin-bottom: $margin-mini;
+                }
+            }
+        }
+    }
+
+    #time_place{    
+        @include display(flex, space-evenly);
+
+        @media (max-width: 800px) {
+            flex-direction: column;
+            align-items: normal;
+        }
+    }
+}

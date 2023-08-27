@@ -1,0 +1,123 @@
+@media screen {
+    #person{
+        margin-top: $margin-mini*1.5;
+        @include display(flex,$fd:column,$al:center);
+        transition: height 2s ease;
+
+        #person_wrapper{
+            @include display(flex,space-between,$fw:wrap);
+            
+            position: relative;
+            width: 95%;
+            column-gap: 20px;
+            row-gap: $margin-averange;
+            margin-bottom: $margin-averange;
+
+            .block_person{
+                width: 47%;
+                height: fit-content;
+
+                transition: 1s ease;
+                transition-property: width, height, max-width, min-width;
+                
+                display: flex;
+
+                border-radius: 25px;
+
+                background-color: $gray;
+
+                overflow: hidden;
+
+                cursor: pointer;
+
+                img{
+                    width: 150px;
+                    height: fit-content;
+
+                    float:left;
+
+                    transition: 1s ease;
+                    transition-property: width, border-radius;
+
+                    margin-right: $margin-mini;
+                }
+
+                .about_person{
+                    margin-top: $margin-mini;
+                    margin-right: $margin-mini*2;
+
+                    .name{
+                        font-size: $font-size-averange_plus;
+                        margin-bottom: $margin-mini/2;
+                    }
+
+                    .text{
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 4;
+                        -webkit-box-orient: vertical;
+                    }
+                }
+
+                @media (min-width: 1500px) {
+                    width: 700px;
+                }
+                
+                @media (max-width: 949px) {
+                    width: 100%;
+                }
+            }
+
+            .active_block_person {
+                width: 100%;
+
+                img{
+                    width: 300px;
+                    border-bottom-right-radius: 25px;
+                }
+
+                .about_person{
+                    .text{
+                        display: block;
+                    }
+                }
+
+                @media (max-width: 600px) {    
+                    height: fit-content;                
+                    img{
+                        width: 150px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// #person{
+//     @include display(flex,$fd:column,$al:center);
+
+//     #person_wrapper{
+//         @include display(grid,space-evenly,$fw:wrap);
+//         width: 80%;
+//         grid-template-columns: repeat(2,1fr);
+//         gap: 50px;
+
+//         .block_person{
+//             height: 150px;
+//             // width: 700px;
+
+//             transition: 2s ease;
+//             transition-property: width, height;
+            
+
+//             border-radius: 25px;
+
+//             background-color: $gray;
+
+//             overflow: hidden;
+            
+//             // margin-bottom: 50px;
+//         }
+//     }
+// }

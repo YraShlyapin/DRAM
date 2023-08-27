@@ -1,0 +1,122 @@
+@media screen {
+    #menu{
+        width: 100%;
+        height: $height-menu;
+
+        @include display(flex,center,center);
+
+        background-color: $secondary-color;
+        
+        #menu_wrapper{
+            position: relative;
+        
+            max-width: 540px;
+            width: 40vw;
+        
+            @include display(flex,space-between,center);
+
+            .menu_link{
+                font-family: $Inter;
+                font-size: $font-size-normal;
+            }
+        }
+
+        #menu_social_wrapper{
+            position: absolute;
+            right: -150px;
+        
+            min-width: 100px;
+        
+            @include display(flex,space-between,center);
+        }
+
+        @media (max-width: 900px) {
+
+            #menu_wrapper{
+                position: fixed;
+
+                background-color: $light-color;
+                max-width: none;
+                width: 100vw;
+                height: 100vh;
+                z-index: -1;
+
+                top: 0;
+                left: 0;
+
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                opacity: 0;
+                // transform: translateY(-100dvh);
+
+                transition: all .5s ease-in-out;
+                
+                .menu_link{
+                    color: $secondary-color;
+                    font-weight: 700;
+                    font-size: $font-size-averange;
+
+                    margin-bottom: 24px;
+                }
+
+                #menu_social_wrapper{
+                    position: static;
+                }
+            }
+
+            #menu_wrapper.activate{
+                z-index: 999;
+                opacity: 1;
+
+                // transform: translateY(0);
+            }
+
+            #menu_wrapper.activate > a{
+                opacity: 1;
+            }
+    
+            .hamburger{
+                display: block;
+                position: relative;
+                width: 30px;
+                height: 20px;
+            }
+    
+            .hamburger span{
+                position: absolute;
+                background-color: #fff;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                top: 9px;
+            }
+    
+            .hamburger::before,
+            .hamburger::after {
+                content: '';
+                background-color: #fff;
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                left: 0;
+            }
+    
+            .hamburger::before{
+                top: 0;
+            }
+    
+            .hamburger::after{
+                bottom: 0;
+            }
+        }
+    }
+
+
+    @media (max-width: 900px) {
+        .change_color{
+            fill: $secondary-color;
+        }
+    }
+}
