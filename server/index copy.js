@@ -37,8 +37,12 @@ app.get("/repertoireAPI/:id", async (req,res) => {
     res.send(result)
 })
 
-app.post("/repertoireAPI", jsonParser, async (req,res) => {
-    const result = await db.post_repertoire(req.body)
+app.post("/repertoireAPI", multer.single('file'), async (req,res) => {
+    let obj = req.body
+    if (req.file){
+        obj.image = req.file.filename
+    }
+    const result = await db.post_repertoire(obj)
     res.send(result)
 })
 

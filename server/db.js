@@ -38,15 +38,17 @@ export async function get_one_repertoire(id){
 }
 
 export async function post_repertoire(jb){
+    let time_create = new Date().toISOString().replace('T',' ').split('.')[0]
     await pool.query(
-        `INSERT INTO repertoire (title, author, description, image, duration)
-        VALUES (?, ?, ?, ?, ?)`,
+        `INSERT INTO repertoire (title, author, description, image, duration, creation_time_repertoire)
+        VALUES (?, ?, ?, ?, ?, ?)`,
         [
             isundefind(jb.title),
             isundefind(jb.author),
             isundefind(jb.description),
             isundefind(jb.image),
-            isundefind(jb.duration)
+            isundefind(jb.duration),
+            time_create
         ]
     )
     const [last_id] = await pool.query(`SELECT LAST_INSERT_ID()`)

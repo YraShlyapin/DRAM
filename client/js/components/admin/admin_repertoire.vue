@@ -1,22 +1,46 @@
 <template>
     <div id="main">
-        <form v-on:submit="upload">
-            <input type="file" name="file" id="" accept="image/*">
+        <img :src="src" alt="">
+        <form v-on:submit="post_method" id="df">
+            <input type="file" name="file" id="file" accept="image/*" @change="loadPreview">
             <input type="text" name="title">
             <input type="text" name="author">
             <input type="text" name="description">
-            <button type="submit">asd</button>
+            <input type="number" name="duration" min="0" max="255" step="1">
+            <button type="submit">отправить</button>
         </form>
     </div>
 </template>
+<style scoped>
+#df{
+    display: flex;
+    flex-direction: column;
+    width: 35vw;
+}
+</style>
 <script>
     module.exports = {
+        data: function() {
+            return {
+                src: "https://dummyimage.com/1096x1065/777/000"
+            }
+        },
         methods: {
-            upload: function(e) {
+            loadPreview: function(e){
+                let sf = e.target.files[0]
+                let self = this
+                let reader = new FileReader()
+                reader.onload = function(re){
+                    self.src = re.target.result
+                }
+                reader.readAsDataURL(sf)
+            },
+            post_method: function(e) {
                 e.preventDefault()
                 let form = e.target
+                console.log(form)
                 let formData = new FormData(form)
-                this.$http.post("/saveImage", formData)
+                this.$http.post("/repertoireAPI", formData)
             }
         }
     }
