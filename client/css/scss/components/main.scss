@@ -108,6 +108,10 @@
                 border-radius: 16px;
                 overflow: hidden;
 
+                img {
+                    width: 100%;
+                }
+
                 div{
                     margin-left: $margin-mini;
                     padding-right: 40px;

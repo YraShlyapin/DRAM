@@ -50,7 +50,7 @@
                     class="block_mini_repertoire"
                     :to="'/repertoire/' + repertoire.id_repertoire"
                 >
-                    <img src="https://dummyimage.com/400x390/777/000" alt="">
+                    <img :src="'../upload/' + repertoire.image">
                     <div>
                         <p class="mini_repertoire_title">{{ repertoire.title }}</p>
                         <p class="mini_repertoire_title mini_repertoire_author">{{ repertoire.author }}</p>

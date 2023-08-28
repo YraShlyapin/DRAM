@@ -8,9 +8,9 @@
                 </div>
                 <p>{{ repertoire.description }}</p>
             </div>
-            <img src="https://dummyimage.com/1096x1065/777/000" alt="">
+            <img :src="'../upload/' + repertoire.image">
         </div>
-        <titles title="Состав"/>
+        <titles title="Состав" v-if="cast!=''"/>
         <div id="cast">
             <div v-for="person in cast"
                 :key="person.id_cast"

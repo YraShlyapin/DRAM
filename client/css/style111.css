@@ -290,6 +290,9 @@
   border-radius: 16px;
   overflow: hidden;
 }
+#main #mini_repertoire #mini_repertoire_wrapper .block_mini_repertoire img {
+  width: 100%;
+}
 #main #mini_repertoire #mini_repertoire_wrapper .block_mini_repertoire div {
   margin-left: 16px;
   padding-right: 40px;

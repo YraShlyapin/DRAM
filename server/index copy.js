@@ -3,6 +3,7 @@ import cors from "cors"
 import bodyParser from "body-parser"
 
 import * as db from "./db.js"
+import multer from "./multer.js"
 
 
 const port = 8080 || 25565
@@ -68,7 +69,20 @@ app.get("/billboardAPI/:id", async (req,res) => {
     res.send(result)
 })
 
+/*app.post("/upload", multer.single('file'), async (req,res) => {
+    let obj = req.body
+    if (req.file){
+        obj.image = req.file.filename
+    }
+    const result = await db.post_repertoire(obj)
+    res.send(result)
+})*/
 
+app.post("/saveImage", multer.single('file'), async (req,res) => {
+    if (req.file){
+        console.log(req.file.filename)
+    }
+})
 
 app.listen(port, host, function(){
     console.log(`сервер запущен на http://${host}:${port}`)

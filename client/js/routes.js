@@ -6,7 +6,7 @@ let main = require("./components/main.vue")
 let repertoire_info = require("./components/repertoire_info.vue")
 let billboard_info = require("./components/billboard_info.vue")
 
-let repertoire_a = require("./components/admin_repertoire.vue")
+let repertoire_a = require("./components/admin/admin_repertoire.vue")
 
 module.exports = [
     {path: "/", component: main},

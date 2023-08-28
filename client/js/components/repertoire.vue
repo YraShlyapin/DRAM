@@ -8,8 +8,8 @@
                 :class="{revers: (index % 2 === 0)}"
                 :to="'/repertoire/' + repertoire.id_repertoire"
             >
-                <!-- <img :src="repertoire.image"> -->
-                <img src="https://dummyimage.com/800x777/777/000" alt="" >
+                <img :src="'../upload/' + repertoire.image">
+                <!-- <img src="https://dummyimage.com/800x777/777/000" alt="" > -->
                 <div class="about_repertoire">
                     <p class="about_repertoire_title">{{ repertoire.title }}</p>
                     <p class="about_repertoire_author">{{ repertoire.author }}</p>
@@ -43,10 +43,10 @@
         mounted: function() {
             this.connect_db()
         },
-        updated() {
-            this.$nextTick(function () {
-                this.connect_db()
-            })
-        }
+        //updated() {
+        //    this.$nextTick(function () {
+        //        this.connect_db()
+        //    })
+        //}
     }
 </script>
