@@ -96,7 +96,7 @@
                 this.render_view()
             },
             connect_db: function() {
-                this.$http.get(`/repertoireAPI`)
+                this.$http.get(`/repertoire_filtered_API`)
                     .then(function(res) {
                         this.repertoires = res.body.slice(0,4)
                     })

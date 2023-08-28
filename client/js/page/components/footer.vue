@@ -2,7 +2,8 @@
     <div id="footer">
         <div id="footer_first_segment" class="footer_segments">
             <div>
-                <img src="../image/mini_normal.png" alt="" width="250px">
+                <!-- <img src="../image/mini_normal.png" alt="" width="250px"> -->
+                <img src="../image/text_full.png" alt="" width="250px">
                 <p>&#169;ДРАМ 2023</p>
             </div>
         </div>

@@ -356,7 +356,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-050d30f6", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-050d30f6", __vue__options__)
+    hotAPI.reload("data-v-050d30f6", __vue__options__)
   }
 })()}
 },{"./samples/title.vue":11,"vue":21,"vue-hot-reload-api":18}],6:[function(require,module,exports){
@@ -456,7 +456,7 @@ module.exports = {
             this.render_view();
         },
         connect_db: function connect_db() {
-            this.$http.get('/repertoireAPI').then(function (res) {
+            this.$http.get('/repertoire_filtered_API').then(function (res) {
                 this.repertoires = res.body.slice(0, 4);
             });
             this.$http.get('/billboardAPI').then(function (res) {
@@ -481,7 +481,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-6445f9e3", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-6445f9e3", __vue__options__)
+    hotAPI.reload("data-v-6445f9e3", __vue__options__)
   }
 })()}
 },{"./samples/title.vue":11,"vue":21,"vue-hot-reload-api":18}],8:[function(require,module,exports){
@@ -575,7 +575,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-38f987e1", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-38f987e1", __vue__options__)
+    hotAPI.reload("data-v-38f987e1", __vue__options__)
   }
 })()}
 },{"./samples/title.vue":11,"vue":21,"vue-hot-reload-api":18}],10:[function(require,module,exports){
@@ -718,7 +718,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
-__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"footer"}},[_c('div',{staticClass:"footer_segments",attrs:{"id":"footer_first_segment"}},[_c('div',[_c('img',{attrs:{"src":"../image/mini_normal.png","alt":"","width":"250px"}}),_vm._v(" "),_c('p',[_vm._v("©ДРАМ 2023")])])]),_vm._v(" "),_c('div',{staticClass:"footer_segments",attrs:{"id":"footer_second_segment"}},[_vm._v("\n        тел:89020039991\n    ")]),_vm._v(" "),_c('div',{staticClass:"footer_segments",attrs:{"id":"footer_third_segment"}},[_c('h2',[_vm._v("Информация о разработчиках")]),_vm._v(" "),_c('p',[_vm._v("\n            разработчик сайта: Юрий Шляпин\n            "),_c('br'),_vm._v("\n            дизайнер сайта: Егор Юдин \n        ")])])])}]
+__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"footer"}},[_c('div',{staticClass:"footer_segments",attrs:{"id":"footer_first_segment"}},[_c('div',[_c('img',{attrs:{"src":"../image/text_full.png","alt":"","width":"250px"}}),_vm._v(" "),_c('p',[_vm._v("©ДРАМ 2023")])])]),_vm._v(" "),_c('div',{staticClass:"footer_segments",attrs:{"id":"footer_second_segment"}},[_vm._v("\n        тел:89020039991\n    ")]),_vm._v(" "),_c('div',{staticClass:"footer_segments",attrs:{"id":"footer_third_segment"}},[_c('h2',[_vm._v("Информация о разработчиках")]),_vm._v(" "),_c('p',[_vm._v("\n            разработчик сайта: Юрий Шляпин\n            "),_c('br'),_vm._v("\n            дизайнер сайта: Егор Юдин \n        ")])])])}]
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
@@ -733,7 +733,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
-__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"logo"}},[_c('img',{attrs:{"src":"../image/normal.png","alt":"","width":"250px"}})])}]
+__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"logo"}},[_c('img',{attrs:{"src":"../image/text_full.png","alt":"","width":"250px"}})])}]
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return

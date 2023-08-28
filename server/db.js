@@ -23,6 +23,11 @@ export async function get_all_repertoire(){
     return row
 }
 
+export async function get_all_repertoire_new(){
+    const [row] = await pool.query("SELECT * FROM repertoire ORDER BY creation_time_repertoire DESC")
+    return row
+}
+
 export async function get_one_repertoire(id){
     const [row] = await pool.query(
         "SELECT * FROM repertoire WHERE id_repertoire = ? LIMIT 1",

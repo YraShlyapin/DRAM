@@ -6,7 +6,7 @@ import * as db from "./db.js"
 
 
 const port = 8080 || 25565
-const host = 'localhost' || '192.168.33.63'
+const host = '192.168.33.63' || 'localhost'
 
 let app = express()
 
@@ -23,6 +23,11 @@ app.get("/", function(req,res) {
 //NOTE: repertoire API
 app.get("/repertoireAPI", async (req,res) => {
     const result = await db.get_all_repertoire()
+    res.send(result)
+})
+
+app.get("/repertoire_filtered_API", async (req,res) => {
+    const result = await db.get_all_repertoire_new()
     res.send(result)
 })
 
