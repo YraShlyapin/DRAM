@@ -11,7 +11,7 @@
                 <img src="https://dummyimage.com/800x777/777/000" alt="" >
                 <div class="about_repertoire">
                     <p class="about_repertoire_title">{{ billboard.title }}</p>
-                    <p class="about_repertoire_title">{{ billboard.author }}</p>
+                    <p class="about_repertoire_author">{{ billboard.author }}</p>
                     <p class="description">{{ billboard.description }}</p>
                     <p class="time">длительность {{ billboard.duration }} минут</p>
                     <p class="date">{{ date_format(billboard.date_time) }}</p>

@@ -35,6 +35,7 @@
                         font-size: $font-size-giant;
                         font-style: italic;
                         color: rgba(134, 0, 8, 0.6);
+                        font-weight: 900;
                     }
                 }
 
@@ -96,21 +97,21 @@
             gap: 20px;
             width: 100%;
             @include display(flex,space-evenly,$fw:wrap);
+            align-items: stretch;
             font-family: $Merriweather;
             margin-bottom: 50px;
             
             .block_mini_repertoire{
-                // margin-bottom: $margin-colossal;
                 background-color: $gray;
                 width: 400px;
-                height: fit-content;
-                padding-bottom: 25px;
+                padding-bottom: 30px;
                 border-radius: 16px;
                 overflow: hidden;
 
                 div{
                     margin-left: $margin-mini;
                     padding-right: 40px;
+                    color: black;
 
                     .mini_repertoire_title{
                         font-size: $font-size-averange;
@@ -126,6 +127,12 @@
 
                     p{
                         margin-top: $margin-mini;
+                    }
+
+                    .mini_repertoire_author{
+                        font-style: italic;
+                        font-weight: 100;
+                        margin-top: 8px;
                     }
                 }
             }

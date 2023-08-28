@@ -43,10 +43,11 @@
                 this.$http.get(`/repertoireAPI/${this.$route.params['id']}`)
                     .then(function(res) {
                         this.repertoire = res.body
-                    })
-                this.$http.get(`/castAPI/${this.$route.params['id']}`)
-                    .then(function(res) {
-                        this.cast = res.body
+
+                        this.$http.get(`/castAPI/${this.$route.params['id']}`)
+                            .then(function(res) {
+                                this.cast = res.body
+                            })
                     })
             }
         },

@@ -12,7 +12,7 @@
                 <img src="https://dummyimage.com/800x777/777/000" alt="" >
                 <div class="about_repertoire">
                     <p class="about_repertoire_title">{{ repertoire.title }}</p>
-                    <p class="about_repertoire_title">{{ repertoire.author }}</p>
+                    <p class="about_repertoire_author">{{ repertoire.author }}</p>
                     <p class="description">{{ repertoire.description }}</p>
                     <p class="time">длительность {{ repertoire.duration }} минут</p>
                 </div>

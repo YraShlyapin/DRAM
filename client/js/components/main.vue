@@ -42,39 +42,21 @@
             </div>
         </div>
         
-        
-
         <div id="mini_repertoire">
             <titles title="Репертуар"/>
             <div id="mini_repertoire_wrapper">
-                <div class="block_mini_repertoire">
+                <router-link v-for="repertoire in repertoires"
+                    :key="repertoire.id_repertoire"
+                    class="block_mini_repertoire"
+                    :to="'/repertoire/' + repertoire.id_repertoire"
+                >
                     <img src="https://dummyimage.com/400x390/777/000" alt="">
                     <div>
-                        <p class="mini_repertoire_title">Как я познакомился с отцом Джанибек Джанибекович</p>
-                        <p class="mini_repertoire_text">Пытаясь получше узнать долго отсутствующего в его жизни отца, Лука совершает длинный и непростой путь... к себе. Эта дорога без конца полна лёгких разочарований и трудных приобретений. Душевные искания и неожиданные откровения - главные спутники на этой дороге. И всё ради наполненного светлой грусти итога.</p>
+                        <p class="mini_repertoire_title">{{ repertoire.title }}</p>
+                        <p class="mini_repertoire_title mini_repertoire_author">{{ repertoire.author }}</p>
+                        <p class="mini_repertoire_text">{{ repertoire.description }}</p>
                     </div>
-                </div>
-                <div class="block_mini_repertoire">
-                    <img src="https://dummyimage.com/400x390/777/000" alt="">
-                    <div>
-                        <p class="mini_repertoire_title">Как я познакомился с отцом Джанибек Джанибекович</p>
-                        <p class="mini_repertoire_text">Пытаясь получше узнать долго отсутствующего в его жизни отца, Лука совершает длинный и непростой путь... к себе. Эта дорога без конца полна лёгких разочарований и трудных приобретений. Душевные искания и неожиданные откровения - главные спутники на этой дороге. И всё ради наполненного светлой грусти итога.</p>
-                    </div>
-                </div>
-                <div class="block_mini_repertoire">
-                    <img src="https://dummyimage.com/400x390/777/000" alt="">
-                    <div>
-                        <p class="mini_repertoire_title">Как я познакомился с отцом Джанибек Джанибекович</p>
-                        <p class="mini_repertoire_text">Пытаясь получше узнать долго отсутствующего в его жизни отца, Лука совершает длинный и непростой путь... к себе. Эта дорога без конца полна лёгких разочарований и трудных приобретений. Душевные искания и неожиданные откровения - главные спутники на этой дороге. И всё ради наполненного светлой грусти итога.</p>
-                    </div>
-                </div>
-                <div class="block_mini_repertoire">
-                    <img src="https://dummyimage.com/400x390/777/000" alt="">
-                    <div>
-                        <p class="mini_repertoire_title">Как я познакомился с отцом Джанибек Джанибекович</p>
-                        <p class="mini_repertoire_text">Пытаясь получше узнать долго отсутствующего в его жизни отца, Лука совершает длинный и непростой путь... к себе. Эта дорога без конца полна лёгких разочарований и трудных приобретений. Душевные искания и неожиданные откровения - главные спутники на этой дороге. И всё ради наполненного светлой грусти итога.</p>
-                    </div>
-                </div>
+                </router-link>
             </div>
         </div>
     </div>
@@ -85,7 +67,9 @@
     module.exports = {
         data: function() {
             return {
-                offset: 0
+                offset: 0,
+                repertoires: '',
+                billboards: ''
             }
         },
         components: {
@@ -108,9 +92,22 @@
                 this.render_view()
             },
             prev: function(){
-                this.offset -=1
+                this.offset -= 1
                 this.render_view()
+            },
+            connect_db: function() {
+                this.$http.get(`/repertoireAPI`)
+                    .then(function(res) {
+                        this.repertoires = res.body.slice(0,4)
+                    })
+                this.$http.get(`/billboardAPI`)
+                    .then(function(res) {
+                        this.billboards = res.body
+                    })
             }
+        },
+        mounted: function() {
+            this.connect_db()
         }
     }
 </script>
