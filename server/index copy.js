@@ -52,6 +52,17 @@ app.get("/castAPI/:id", async (req,res) => {
     res.send(result)
 })
 
+//NOTE: billboard API
+app.get("/billboardAPI", async (req,res) => {
+    const result = await db.get_all_billboard()
+    res.send(result)
+})
+
+app.get("/billboardAPI/:id", async (req,res) => {
+    const result = await db.get_one_billboard(req.params.id)
+    res.send(result)
+})
+
 
 
 app.listen(port, host, function(){

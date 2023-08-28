@@ -314,13 +314,40 @@ var titles = require("./samples/title.vue");
 module.exports = {
     components: {
         titles: titles
+    },
+    data: function data() {
+        return {
+            billboards: []
+        };
+    },
+    methods: {
+        connect_db: function connect_db() {
+            this.$http.get("/billboardAPI").then(function (res) {
+                this.billboards = res.body;
+            });
+        },
+        date_format: function date_format(date) {
+            var formatter_Date = new Date(date);
+
+            var day = formatter_Date.getDate();
+            var month = formatter_Date.toLocaleString('ru', { month: 'long' });
+            var year = formatter_Date.getFullYear();
+            var weekday = formatter_Date.toLocaleString('ru', { weekday: 'long' });
+            var Hours = formatter_Date.getHours();
+            var minutes = formatter_Date.getMinutes();
+
+            return day + " " + month + " " + year + ", \u0432 " + Hours + ":" + minutes;
+        }
+    },
+    mounted: function mounted() {
+        this.connect_db();
     }
 };
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"repertoire"}},[_c('titles',{attrs:{"title":"Афиша"}}),_vm._v(" "),_c('div',{attrs:{"id":"repertoire_wrapper"}},[_c('router-link',{attrs:{"to":"/billboard/1"}},[_c('div',{staticClass:"block_repertoire revers"},[_c('img',{attrs:{"src":"https://dummyimage.com/800x777/777/000","alt":""}}),_vm._v(" "),_c('div',{staticClass:"about_repertoire"},[_c('p',{staticClass:"about_repertoire_title"},[_vm._v("Как я познакомился с отцом")]),_vm._v(" "),_c('p',{staticClass:"about_repertoire_title"},[_vm._v("Джанибек Джанибекович")]),_vm._v(" "),_c('p',{staticClass:"description"},[_vm._v("Пытаясь получше узнать долго отсутствующего в его жизни отца, Лука совершает длинный и непростой путь... к себе. Эта дорога без конца полна лёгких разочарований и трудных приобретений. Душевные искания и неожиданные откровения - главные спутники на этой дороге. И всё ради наполненного светлой грусти итога.")]),_vm._v(" "),_c('p',{staticClass:"time"},[_vm._v("длительность 65 минут")]),_vm._v(" "),_c('p',{staticClass:"date"},[_vm._v("29 Февраля 25:99")]),_vm._v(" "),_c('p',{staticClass:"place"},[_vm._v("ул. Ленина 78, Квартал")])])])]),_vm._v(" "),_c('router-link',{attrs:{"to":"/billboard/1"}},[_c('div',{staticClass:"block_repertoire"},[_c('img',{attrs:{"src":"https://dummyimage.com/800x777/777/000","alt":""}}),_vm._v(" "),_c('div',{staticClass:"about_repertoire"},[_c('p',{staticClass:"about_repertoire_title"},[_vm._v("Как я познакомился с отцом")]),_vm._v(" "),_c('p',{staticClass:"about_repertoire_title"},[_vm._v("Джанибек Джанибекович")]),_vm._v(" "),_c('p',{staticClass:"description"},[_vm._v("Пытаясь получше узнать долго отсутствующего в его жизни отца, Лука совершает длинный и непростой путь... к себе. Эта дорога без конца полна лёгких разочарований и трудных приобретений. Душевные искания и неожиданные откровения - главные спутники на этой дороге. И всё ради наполненного светлой грусти итога.")]),_vm._v(" "),_c('p',{staticClass:"time"},[_vm._v("длительность 65 минут")]),_vm._v(" "),_c('p',{staticClass:"date"},[_vm._v("29 Февраля 25:99")]),_vm._v(" "),_c('p',{staticClass:"place"},[_vm._v("ул. Ленина 78, Квартал")])])])]),_vm._v(" "),_c('router-link',{attrs:{"to":"/billboard/1"}},[_c('div',{staticClass:"block_repertoire revers"},[_c('img',{attrs:{"src":"https://dummyimage.com/800x777/777/000","alt":""}}),_vm._v(" "),_c('div',{staticClass:"about_repertoire"},[_c('p',{staticClass:"about_repertoire_title"},[_vm._v("Как я познакомился с отцом")]),_vm._v(" "),_c('p',{staticClass:"about_repertoire_title"},[_vm._v("Джанибек Джанибекович")]),_vm._v(" "),_c('p',{staticClass:"description"},[_vm._v("Пытаясь получше узнать долго отсутствующего в его жизни отца, Лука совершает длинный и непростой путь... к себе. Эта дорога без конца полна лёгких разочарований и трудных приобретений. Душевные искания и неожиданные откровения - главные спутники на этой дороге. И всё ради наполненного светлой грусти итога.")]),_vm._v(" "),_c('p',{staticClass:"time"},[_vm._v("длительность 65 минут")]),_vm._v(" "),_c('p',{staticClass:"date"},[_vm._v("29 Февраля 25:99")]),_vm._v(" "),_c('p',{staticClass:"place"},[_vm._v("ул. Ленина 78, Квартал")])])])]),_vm._v(" "),_c('router-link',{attrs:{"to":"/billboard/1"}},[_c('div',{staticClass:"block_repertoire"},[_c('img',{attrs:{"src":"https://dummyimage.com/800x777/777/000","alt":""}}),_vm._v(" "),_c('div',{staticClass:"about_repertoire"},[_c('p',{staticClass:"about_repertoire_title"},[_vm._v("Как я познакомился с отцом")]),_vm._v(" "),_c('p',{staticClass:"about_repertoire_title"},[_vm._v("Джанибек Джанибекович")]),_vm._v(" "),_c('p',{staticClass:"description"},[_vm._v("Пытаясь получше узнать долго отсутствующего в его жизни отца, Лука совершает длинный и непростой путь... к себе. Эта дорога без конца полна лёгких разочарований и трудных приобретений. Душевные искания и неожиданные откровения - главные спутники на этой дороге. И всё ради наполненного светлой грусти итога.")]),_vm._v(" "),_c('p',{staticClass:"time"},[_vm._v("длительность 65 минут")]),_vm._v(" "),_c('p',{staticClass:"date"},[_vm._v("29 Февраля 25:99")]),_vm._v(" "),_c('p',{staticClass:"place"},[_vm._v("ул. Ленина 78, Квартал")])])])])],1)],1)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"repertoire"}},[_c('titles',{attrs:{"title":"Афиша"}}),_vm._v(" "),_c('div',{attrs:{"id":"repertoire_wrapper"}},_vm._l((_vm.billboards),function(billboard,index){return _c('router-link',{key:billboard.id_billboard,staticClass:"block_repertoire",class:{revers: (index % 2 === 0)},attrs:{"to":'/billboard/' + billboard.id_billboard}},[_c('img',{attrs:{"src":"https://dummyimage.com/800x777/777/000","alt":""}}),_vm._v(" "),_c('div',{staticClass:"about_repertoire"},[_c('p',{staticClass:"about_repertoire_title"},[_vm._v(_vm._s(billboard.title))]),_vm._v(" "),_c('p',{staticClass:"about_repertoire_title"},[_vm._v(_vm._s(billboard.author))]),_vm._v(" "),_c('p',{staticClass:"description"},[_vm._v(_vm._s(billboard.description))]),_vm._v(" "),_c('p',{staticClass:"time"},[_vm._v("длительность "+_vm._s(billboard.duration)+" минут")]),_vm._v(" "),_c('p',{staticClass:"date"},[_vm._v(_vm._s(_vm.date_format(billboard.date_time)))]),_vm._v(" "),_c('p',{staticClass:"place"},[_vm._v(_vm._s(billboard.place))])])])}))],1)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -334,21 +361,53 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
 })()}
 },{"./samples/title.vue":11,"vue":21,"vue-hot-reload-api":18}],6:[function(require,module,exports){
 ;(function(){
-"use strict";
+'use strict';
 
 var titles = require("./samples/title.vue");
 
 module.exports = {
     components: {
         titles: titles
+    },
+    data: function data() {
+        return {
+            billboard: '',
+            cast: ''
+        };
+    },
+    methods: {
+        connect_db: function connect_db() {
+            this.$http.get('/billboardAPI/' + this.$route.params['id']).then(function (res) {
+                this.billboard = res.body;
+
+                this.$http.get('/castAPI/' + this.billboard.id_repertoire).then(function (res) {
+                    this.cast = res.body;
+                });
+            });
+        },
+        date_format: function date_format(date) {
+            var formatter_Date = new Date(date);
+
+            var day = formatter_Date.getDate();
+            var month = formatter_Date.toLocaleString('ru', { month: 'long' });
+            var year = formatter_Date.getFullYear();
+            var weekday = formatter_Date.toLocaleString('ru', { weekday: 'long' });
+            var Hours = formatter_Date.getHours();
+            var minutes = formatter_Date.getMinutes();
+
+            return day + ' ' + month + ' ' + year + ', \u0432 ' + Hours + ':' + minutes;
+        }
+    },
+    mounted: function mounted() {
+        this.connect_db();
     }
 };
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._m(0),_vm._v(" "),_c('titles',{attrs:{"title":"Состав"}}),_vm._v(" "),_vm._m(1),_vm._v(" "),_c('div',{attrs:{"id":"time_place"}},[_c('titles',{attrs:{"title":"29 Февраля 25:99","is_mini":"true"}}),_vm._v(" "),_c('titles',{attrs:{"title":"ул. Ленина 78, Квартал","is_mini":"true"}})],1),_vm._v(" "),_c('iframe',{attrs:{"src":"https://yandex.ru/map-widget/v1/?um=constructor%3Ae9b9fb91d381c327105aefacfae0dd342eeb6ee2336488891e223bea1d2edec3&source=constructor","width":"1000","height":"500","frameborder":"0"}})],1)}
-__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"repertoire_info"}},[_c('div',{attrs:{"id":"repertoire_info_wrapper"}},[_c('div',{attrs:{"id":"repertoire_info_allotted"}},[_c('p',{attrs:{"id":"repertoire_info_title"}},[_vm._v("КАК Я ПОЗНАКОМИЛСЯ С ОТЦОМ")]),_vm._v(" "),_c('p',[_vm._v("Джанибек Джанибекович")])]),_vm._v(" "),_c('p',[_vm._v("Пытаясь получше узнать долго отсутствующего в его жизни отца, Лука совершает длинный и непростой путь... к себе. Эта дорога без конца полна лёгких разочарований и трудных приобретений. Душевные искания и неожиданные откровения - главные спутники на этой дороге. И всё ради наполненного светлой грусти итога.")])]),_vm._v(" "),_c('img',{attrs:{"src":"https://dummyimage.com/1096x1065/777/000","alt":""}})])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"cast"}},[_c('div',{staticClass:"cast_wrapper"},[_c('img',{attrs:{"src":"https://dummyimage.com/150x150/777/000","alt":""}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"name"},[_vm._v("Матвей Семагин")]),_vm._v(" "),_c('p',[_vm._v("Отец отца")])])]),_vm._v(" "),_c('div',{staticClass:"cast_wrapper"},[_c('img',{attrs:{"src":"https://dummyimage.com/150x150/777/000","alt":""}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"name"},[_vm._v("Матвей Семагин")]),_vm._v(" "),_c('p',[_vm._v("Отец отца")])])]),_vm._v(" "),_c('div',{staticClass:"cast_wrapper"},[_c('img',{attrs:{"src":"https://dummyimage.com/150x150/777/000","alt":""}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"name"},[_vm._v("Матвей Семагин")]),_vm._v(" "),_c('p',[_vm._v("Отец отца")])])]),_vm._v(" "),_c('div',{staticClass:"cast_wrapper"},[_c('img',{attrs:{"src":"https://dummyimage.com/150x150/777/000","alt":""}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"name"},[_vm._v("Матвей Семагин")]),_vm._v(" "),_c('p',[_vm._v("Отец отца")])])]),_vm._v(" "),_c('div',{staticClass:"cast_wrapper"},[_c('img',{attrs:{"src":"https://dummyimage.com/150x150/777/000","alt":""}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"name"},[_vm._v("Матвей Семагин")]),_vm._v(" "),_c('p',[_vm._v("Отец отца")])])]),_vm._v(" "),_c('div',{staticClass:"cast_wrapper"},[_c('img',{attrs:{"src":"https://dummyimage.com/150x150/777/000","alt":""}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"name"},[_vm._v("Матвей Семагин")]),_vm._v(" "),_c('p',[_vm._v("Отец отца")])])])])}]
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{attrs:{"id":"repertoire_info"}},[_c('div',{attrs:{"id":"repertoire_info_wrapper"}},[_c('div',{attrs:{"id":"repertoire_info_allotted"}},[_c('p',{attrs:{"id":"repertoire_info_title"}},[_vm._v(_vm._s(_vm.billboard.title))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.billboard.author))])]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.billboard.description))])]),_vm._v(" "),_c('img',{attrs:{"src":"https://dummyimage.com/1096x1065/777/000","alt":""}})]),_vm._v(" "),_c('titles',{attrs:{"title":"Состав"}}),_vm._v(" "),_c('div',{attrs:{"id":"cast"}},_vm._l((_vm.cast),function(person){return _c('div',{key:person.id_cast,staticClass:"cast_wrapper"},[_c('img',{attrs:{"src":"https://dummyimage.com/150x150/777/000","alt":""}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"name"},[_vm._v(_vm._s(person.name))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(person.role_person))])])])})),_vm._v(" "),_c('div',{attrs:{"id":"time_place"}},[_c('titles',{attrs:{"title":_vm.date_format(_vm.billboard.date_time),"is_mini":"true"}}),_vm._v(" "),_c('titles',{attrs:{"title":_vm.billboard.place,"is_mini":"true"}})],1),_vm._v(" "),_c('iframe',{attrs:{"src":_vm.billboard.src_on_map,"width":"1000","height":"500","frameborder":"0"}})],1)}
+__vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
@@ -409,7 +468,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-6445f9e3", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-6445f9e3", __vue__options__)
+    hotAPI.reload("data-v-6445f9e3", __vue__options__)
   }
 })()}
 },{"./samples/title.vue":11,"vue":21,"vue-hot-reload-api":18}],8:[function(require,module,exports){
@@ -549,7 +608,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-091b51fc", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-091b51fc", __vue__options__)
+    hotAPI.reload("data-v-091b51fc", __vue__options__)
   }
 })()}
 },{"./samples/title.vue":11,"vue":21,"vue-hot-reload-api":18}],11:[function(require,module,exports){

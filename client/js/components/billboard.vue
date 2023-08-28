@@ -2,56 +2,20 @@
     <div id="repertoire">
         <titles title="Афиша"/>
         <div id="repertoire_wrapper">
-            <router-link to="/billboard/1">
-                <div class="block_repertoire revers">
-                    <img src="https://dummyimage.com/800x777/777/000" alt="" >
-                    <div class="about_repertoire">
-                        <p class="about_repertoire_title">Как я познакомился с отцом</p>
-                        <p class="about_repertoire_title">Джанибек Джанибекович</p>
-                        <p class="description">Пытаясь получше узнать долго отсутствующего в его жизни отца, Лука совершает длинный и непростой путь... к себе. Эта дорога без конца полна лёгких разочарований и трудных приобретений. Душевные искания и неожиданные откровения - главные спутники на этой дороге. И всё ради наполненного светлой грусти итога.</p>
-                        <p class="time">длительность 65 минут</p>
-                        <p class="date">29 Февраля 25:99</p>
-                        <p class="place">ул. Ленина 78, Квартал</p>
-                    </div>
-                </div>
-            </router-link>
-            <router-link to="/billboard/1">
-                <div class="block_repertoire">
-                    <img src="https://dummyimage.com/800x777/777/000" alt="" >
-                    <div class="about_repertoire">
-                        <p class="about_repertoire_title">Как я познакомился с отцом</p>
-                        <p class="about_repertoire_title">Джанибек Джанибекович</p>
-                        <p class="description">Пытаясь получше узнать долго отсутствующего в его жизни отца, Лука совершает длинный и непростой путь... к себе. Эта дорога без конца полна лёгких разочарований и трудных приобретений. Душевные искания и неожиданные откровения - главные спутники на этой дороге. И всё ради наполненного светлой грусти итога.</p>
-                        <p class="time">длительность 65 минут</p>
-                        <p class="date">29 Февраля 25:99</p>
-                        <p class="place">ул. Ленина 78, Квартал</p>
-                    </div>
-                </div>
-            </router-link>
-            <router-link to="/billboard/1">
-                <div class="block_repertoire revers">
-                    <img src="https://dummyimage.com/800x777/777/000" alt="" >
-                    <div class="about_repertoire">
-                        <p class="about_repertoire_title">Как я познакомился с отцом</p>
-                        <p class="about_repertoire_title">Джанибек Джанибекович</p>
-                        <p class="description">Пытаясь получше узнать долго отсутствующего в его жизни отца, Лука совершает длинный и непростой путь... к себе. Эта дорога без конца полна лёгких разочарований и трудных приобретений. Душевные искания и неожиданные откровения - главные спутники на этой дороге. И всё ради наполненного светлой грусти итога.</p>
-                        <p class="time">длительность 65 минут</p>
-                        <p class="date">29 Февраля 25:99</p>
-                        <p class="place">ул. Ленина 78, Квартал</p>
-                    </div>
-                </div>
-            </router-link>
-            <router-link to="/billboard/1">
-                <div class="block_repertoire">
-                    <img src="https://dummyimage.com/800x777/777/000" alt="" >
-                    <div class="about_repertoire">
-                        <p class="about_repertoire_title">Как я познакомился с отцом</p>
-                        <p class="about_repertoire_title">Джанибек Джанибекович</p>
-                        <p class="description">Пытаясь получше узнать долго отсутствующего в его жизни отца, Лука совершает длинный и непростой путь... к себе. Эта дорога без конца полна лёгких разочарований и трудных приобретений. Душевные искания и неожиданные откровения - главные спутники на этой дороге. И всё ради наполненного светлой грусти итога.</p>
-                        <p class="time">длительность 65 минут</p>
-                        <p class="date">29 Февраля 25:99</p>
-                        <p class="place">ул. Ленина 78, Квартал</p>
-                    </div>
+            <router-link v-for="(billboard, index) in billboards"
+                :key="billboard.id_billboard"
+                class="block_repertoire"
+                :class="{revers: (index % 2 === 0)}"
+                :to="'/billboard/' + billboard.id_billboard"
+            >
+                <img src="https://dummyimage.com/800x777/777/000" alt="" >
+                <div class="about_repertoire">
+                    <p class="about_repertoire_title">{{ billboard.title }}</p>
+                    <p class="about_repertoire_title">{{ billboard.author }}</p>
+                    <p class="description">{{ billboard.description }}</p>
+                    <p class="time">длительность {{ billboard.duration }} минут</p>
+                    <p class="date">{{ date_format(billboard.date_time) }}</p>
+                    <p class="place">{{ billboard.place }}</p>
                 </div>
             </router-link>
         </div>
@@ -63,6 +27,34 @@
     module.exports = {
         components: {
             titles
+        },
+        data: function() {
+            return {
+                billboards: []
+            }
+        },
+        methods: {
+            connect_db: function() {
+                this.$http.get("/billboardAPI")
+                    .then(function(res) {
+                        this.billboards = res.body
+                    })
+            },
+            date_format: function(date) {
+                let formatter_Date = new Date(date)
+
+                let day = formatter_Date.getDate()
+                let month = formatter_Date.toLocaleString('ru',{month: 'long'})
+                let year = formatter_Date.getFullYear()
+                let weekday = formatter_Date.toLocaleString('ru',{weekday: 'long'})
+                let Hours = formatter_Date.getHours()
+                let minutes = formatter_Date.getMinutes()
+
+                return `${day} ${month} ${year}, в ${Hours}:${minutes}`
+            }
+        },
+        mounted: function() {
+            this.connect_db()
         }
     }
 </script>
