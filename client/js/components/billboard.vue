@@ -8,7 +8,7 @@
                 :class="{revers: (index % 2 === 0)}"
                 :to="'/billboard/' + billboard.id_billboard"
             >
-                <img :src="'../upload/' + billboard.image" onerror="this.src = 'https://dummyimage.com/1096x1065/777/000'">
+                <img :src="'../upload/' + billboard.image" onerror="this.src = '../upload/not_found.png'">
                 <div class="about_repertoire">
                     <p class="about_repertoire_title">{{ billboard.title }}</p>
                     <p class="about_repertoire_title about_repertoire_author">{{ billboard.author }}</p>

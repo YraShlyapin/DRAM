@@ -14,6 +14,7 @@
             margin-bottom: $margin-averange;
 
             .block_person{
+                min-width: 500px;
                 width: 47%;
                 height: fit-content;
 
@@ -64,7 +65,7 @@
                     width: 700px;
                 }
                 
-                @media (max-width: 949px) {
+                @media (max-width: 1074px) {
                     width: 100%;
                 }
             }
@@ -90,6 +91,37 @@
                     }
                 }
             }
+        }
+
+        .block_person_view {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100dvh;
+            background-color: rgba($color: #000000, $alpha: .8);
+            opacity: 0;
+            z-index: -10;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .block_person_view_wrapper{
+                display: flex;
+                justify-content: stretch;
+                background-color: $secondary-color;
+                width: 80vw;
+                height: 40vh;
+
+                img{
+                    width: 150px;
+                }
+            }
+        }
+        .block_person_view.active_block_person {
+            z-index: 999;
+            opacity: 1;
         }
     }
 }

@@ -139,6 +139,13 @@ export async function update_billboard(id,jb){
     return row
 }
 
+//NOTE: person
+export async function get_all_person(){
+    const [row] = await pool.query(`SELECT * FROM person where person.real = true`)
+    return row
+}
+
+
 //NOTE: cast
 export async function get_cast_for(id){
     const [row] = await pool.query(

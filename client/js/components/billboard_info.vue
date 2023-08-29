@@ -8,7 +8,7 @@
                 </div>
                 <p>{{ billboard.description }}</p>
             </div>
-            <img :src="'../upload/' + billboard.image" onerror="this.src = 'https://dummyimage.com/1096x1065/777/000'">
+            <img :src="'../upload/' + billboard.image" onerror="this.src = '../upload/not_found.png'">
         </div>
         <titles title="Состав" v-if="cast!=''"/>
         <div id="cast">

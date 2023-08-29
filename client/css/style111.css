@@ -191,7 +191,8 @@
   }
 }
 #main .viewer {
-  width: 50vw;
+  overflow-x: clip;
+  width: 100vw;
   position: relative;
 }
 #main .viewer .slider_wrapper {
@@ -211,7 +212,7 @@
   font-family: "Merriweather", serif;
 }
 #main .viewer .slider_wrapper .slider .about_slider {
-  width: 650px;
+  width: 35vw;
   margin-top: 100px;
   margin-left: 120px;
 }
@@ -260,16 +261,16 @@
   align-items: center;
 }
 #main .viewer .nav_slider #points .point {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   transition: all 0.5s ease;
   background-color: #5F0006;
   border-radius: 100%;
 }
 #main .viewer .nav_slider #points .active_point {
   background-color: #890001;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
 }
 #main #mini_repertoire #mini_repertoire_wrapper {
   gap: 20px;
@@ -611,6 +612,7 @@
     margin-bottom: 50px;
   }
   #person #person_wrapper .block_person {
+    min-width: 500px;
     width: 47%;
     height: fit-content;
     transition: 1s ease;
@@ -650,7 +652,7 @@
     width: 700px;
   }
 }
-@media screen and (max-width: 949px) {
+@media screen and (max-width: 1074px) {
   #person #person_wrapper .block_person {
     width: 100%;
   }
@@ -673,6 +675,37 @@
   }
   #person #person_wrapper .active_block_person img {
     width: 150px;
+  }
+}
+@media screen {
+  #person .block_person_view {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100dvh;
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    z-index: -10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #person .block_person_view .block_person_view_wrapper {
+    display: flex;
+    justify-content: stretch;
+    background-color: #890001;
+    width: 80vw;
+    height: 40vh;
+  }
+  #person .block_person_view .block_person_view_wrapper img {
+    width: 150px;
+  }
+}
+@media screen {
+  #person .block_person_view.active_block_person {
+    z-index: 999;
+    opacity: 1;
   }
 }
 * {

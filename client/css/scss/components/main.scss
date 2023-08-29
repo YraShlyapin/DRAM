@@ -1,7 +1,7 @@
 #main{
     .viewer{
-        // overflow: hidden;
-        width: 50vw;
+        overflow-x: clip;
+        width: 100vw;
         position: relative;
 
         .slider_wrapper{
@@ -17,7 +17,7 @@
                 font-family: $Merriweather;
         
                 .about_slider{
-                    width: 650px;
+                    width: 35vw;
                     margin-top: $margin-colossal;
                     margin-left: 120px;
         
@@ -76,8 +76,8 @@
                 align-items: center;
     
                 .point{
-                    width: 30px;
-                    height: 30px;
+                    width: 20px;
+                    height: 20px;
                     transition: all .5s ease;
                     background-color: $primary-color;
                     border-radius: 100%;
@@ -85,8 +85,8 @@
     
                 .active_point{
                     background-color: $secondary-color;
-                    width: 40px;
-                    height: 40px;
+                    width: 30px;
+                    height: 30px;
                 }
             }
         }
@@ -145,6 +145,10 @@
 }
 
 @media screen {
+    @media (max-width:1742px) {
+
+    }
+
     @media (max-width:400px) {
         .block_mini_repertoire{
             img{

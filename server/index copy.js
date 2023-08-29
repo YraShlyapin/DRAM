@@ -7,7 +7,7 @@ import multer from "./multer.js"
 
 
 const port = 8080 || 25565
-const host = '192.168.33.63' || 'localhost'
+const host = 'localhost' || '192.168.33.63'
 
 let app = express()
 
@@ -23,11 +23,6 @@ app.get("/", function(req,res) {
 
 //NOTE: repertoire API
 app.get("/repertoireAPI", async (req,res) => {
-    const result = await db.get_all_repertoire()
-    res.send(result)
-})
-
-app.get("/repertoire_filtered_API", async (req,res) => {
     const result = await db.get_all_repertoire_new()
     res.send(result)
 })
@@ -53,6 +48,12 @@ app.delete("/repertoireAPI/:id", async (req,res) => {
 
 app.put("/repertoireAPI/:id", jsonParser, async (req,res) => {
     const result = await db.update_repertoire(req.params.id,req.body)
+    res.send(result)
+})
+
+//NOTE: person API
+app.get("/personAPI", async (req,res) => {
+    const result = await db.get_all_person()
     res.send(result)
 })
 
