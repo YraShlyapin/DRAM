@@ -50,7 +50,7 @@
                     class="block_mini_repertoire"
                     :to="'/repertoire/' + repertoire.id_repertoire"
                 >
-                    <img :src="'../upload/' + repertoire.image">
+                    <img :src="'../upload/' + repertoire.image" onerror="this.src = 'https://dummyimage.com/1096x1065/777/000'">
                     <div>
                         <p class="mini_repertoire_title">{{ repertoire.title }}</p>
                         <p class="mini_repertoire_title mini_repertoire_author">{{ repertoire.author }}</p>

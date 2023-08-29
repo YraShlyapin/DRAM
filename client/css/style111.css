@@ -351,6 +351,7 @@
 }
 @media screen {
   #repertoire #repertoire_wrapper .block_repertoire .about_repertoire {
+    width: 100%;
     padding-top: 100px;
     padding-left: 195px;
     margin-right: 250px;
@@ -415,10 +416,14 @@
   #repertoire #repertoire_wrapper .block_repertoire .about_repertoire {
     padding: 16px;
     margin: 0;
-    font-size: 1.25rem;
+    width: auto;
+    font-size: 1rem;
   }
   #repertoire #repertoire_wrapper .block_repertoire .about_repertoire .about_repertoire_title {
-    font-size: 1.875rem;
+    font-size: 1.25rem;
+  }
+  #repertoire #repertoire_wrapper .block_repertoire .about_repertoire .about_repertoire_author {
+    margin-top: 25px;
   }
 }
 @media screen {

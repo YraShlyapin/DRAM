@@ -26,6 +26,7 @@
                 }
 
                 .about_repertoire{
+                    width: 100%;
 
                     .about_repertoire_title{
                         font-size: $font-size-giant;
@@ -91,11 +92,15 @@
                     @media (max-width: 730px) {
                         padding: 16px;
                         margin: 0;
+                        width: auto;
 
-                        font-size: $font-size-averange;
+                        font-size: $font-size-normal;
 
                         .about_repertoire_title{
-                            font-size: $font-size-big;
+                            font-size: $font-size-averange;
+                        }
+                        .about_repertoire_author{
+                            margin-top: 25px;
                         }
                     }
 

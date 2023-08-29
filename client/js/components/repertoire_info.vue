@@ -8,7 +8,7 @@
                 </div>
                 <p>{{ repertoire.description }}</p>
             </div>
-            <img :src="'../upload/' + repertoire.image">
+            <img :src="'../upload/' + repertoire.image" onerror="this.src = 'https://dummyimage.com/1096x1065/777/000'">
         </div>
         <titles title="Состав" v-if="cast!=''"/>
         <div id="cast">
