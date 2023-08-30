@@ -17,6 +17,7 @@
                 min-width: 500px;
                 width: 47%;
                 height: fit-content;
+                font-family: $Merriweather;
 
                 transition: 1s ease;
                 transition-property: width, height, max-width, min-width;
@@ -69,28 +70,6 @@
                     width: 100%;
                 }
             }
-
-            .active_block_person {
-                width: 100%;
-
-                img{
-                    width: 300px;
-                    border-bottom-right-radius: 25px;
-                }
-
-                .about_person{
-                    .text{
-                        display: block;
-                    }
-                }
-
-                @media (max-width: 600px) {    
-                    height: fit-content;                
-                    img{
-                        width: 150px;
-                    }
-                }
-            }
         }
 
         .block_person_view {
@@ -99,7 +78,7 @@
             top: 0;
             width: 100vw;
             height: 100dvh;
-            background-color: rgba($color: #000000, $alpha: .8);
+            background-color: rgba($color: $gray, $alpha: .6);
             opacity: 0;
             z-index: -10;
 
@@ -109,13 +88,32 @@
 
             .block_person_view_wrapper{
                 display: flex;
-                justify-content: stretch;
+                flex-direction: column;
+                align-items: center;
                 background-color: $secondary-color;
-                width: 80vw;
-                height: 40vh;
+                width: 60vw;
+                border-radius: 25px;
+                color: $light-color;
 
                 img{
-                    width: 150px;
+                    width: 200px;
+                    border-radius: 0 0 25px 25px;
+                }
+
+                .about_person{
+                    display: flex;
+                    flex-direction: column;
+                    text-align: center;
+                    margin: 30px 15% 8%;
+                    font-family: $Merriweather;
+                    
+                    .name{
+                        font-size: 50px;
+                    }
+
+                    p{
+                        margin-top: 20px;
+                    }
                 }
             }
         }

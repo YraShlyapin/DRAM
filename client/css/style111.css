@@ -563,6 +563,7 @@
     background-color: #d6d6d6;
   }
   #cast .cast_wrapper > img {
+    width: 150px;
     border-radius: 0 0 25px 25px;
   }
   #cast .cast_wrapper > div {
@@ -615,6 +616,7 @@
     min-width: 500px;
     width: 47%;
     height: fit-content;
+    font-family: "Merriweather", serif;
     transition: 1s ease;
     transition-property: width, height, max-width, min-width;
     display: flex;
@@ -658,33 +660,13 @@
   }
 }
 @media screen {
-  #person #person_wrapper .active_block_person {
-    width: 100%;
-  }
-  #person #person_wrapper .active_block_person img {
-    width: 300px;
-    border-bottom-right-radius: 25px;
-  }
-  #person #person_wrapper .active_block_person .about_person .text {
-    display: block;
-  }
-}
-@media screen and (max-width: 600px) {
-  #person #person_wrapper .active_block_person {
-    height: fit-content;
-  }
-  #person #person_wrapper .active_block_person img {
-    width: 150px;
-  }
-}
-@media screen {
   #person .block_person_view {
     position: fixed;
     left: 0;
     top: 0;
     width: 100vw;
     height: 100dvh;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(214, 214, 214, 0.6);
     opacity: 0;
     z-index: -10;
     display: flex;
@@ -693,13 +675,29 @@
   }
   #person .block_person_view .block_person_view_wrapper {
     display: flex;
-    justify-content: stretch;
+    flex-direction: column;
+    align-items: center;
     background-color: #890001;
-    width: 80vw;
-    height: 40vh;
+    width: 60vw;
+    border-radius: 25px;
+    color: #EFEBE9;
   }
   #person .block_person_view .block_person_view_wrapper img {
-    width: 150px;
+    width: 200px;
+    border-radius: 0 0 25px 25px;
+  }
+  #person .block_person_view .block_person_view_wrapper .about_person {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 30px 15% 8%;
+    font-family: "Merriweather", serif;
+  }
+  #person .block_person_view .block_person_view_wrapper .about_person .name {
+    font-size: 50px;
+  }
+  #person .block_person_view .block_person_view_wrapper .about_person p {
+    margin-top: 20px;
   }
 }
 @media screen {
@@ -718,6 +716,10 @@
     overflow-y: hidden;
   }
 }
+.lock_person {
+  overflow-y: hidden;
+}
+
 html {
   font-size: 16px;
   overflow-x: hidden;

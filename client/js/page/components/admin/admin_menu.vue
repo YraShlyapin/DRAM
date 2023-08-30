@@ -1,0 +1,23 @@
+<template>
+    <div id="menu">
+        <div class="hamburger" @click="activate"><span></span></div>
+        <div id="menu_wrapper" @click="activate">
+            <router-link to="/ADMIN" class="menu_link">Репертуар</router-link>
+            <router-link to="/ADMIN/person" class="menu_link">Труппа</router-link>
+            <router-link to="/ADMIN/cast" class="menu_link">Состав</router-link>
+            <router-link to="/ADMIN/billboard" class="menu_link">Афиша</router-link>
+        </div>
+    </div>
+</template>
+<script>
+    module.exports = {
+        methods: {
+            activate: function(){
+                if (window.innerWidth <= 900){
+                    document.querySelector("html").classList.toggle("lock")
+                    document.querySelector("#menu_wrapper").classList.toggle("activate")
+                }
+            }
+        }
+    }
+</script>

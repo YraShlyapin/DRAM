@@ -13,7 +13,7 @@
                     <p class="about_repertoire_title">{{ billboard.title }}</p>
                     <p class="about_repertoire_title about_repertoire_author">{{ billboard.author }}</p>
                     <p class="description">{{ billboard.description }}</p>
-                    <p class="time">длительность {{ billboard.duration }} минут</p>
+                    <p class="time">{{ time_format(billboard.duration) }}</p>
                     <p class="date">{{ date_format(billboard.date_time) }}</p>
                     <p class="place">{{ billboard.place }}</p>
                 </div>
@@ -51,6 +51,15 @@
                 let minutes = formatter_Date.getMinutes()
 
                 return `${day} ${month} ${year}, в ${Hours}:${minutes}`
+            },
+            time_format: function(time) {
+                let str = `длительность `
+                if (time > 70){
+                    str += `${~~(time/60)} часов ${time%60} минут`
+                } else {
+                    str += `${time} минут`
+                }
+                return str
             }
         },
         mounted: function() {

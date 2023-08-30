@@ -14,7 +14,7 @@
                     <p class="about_repertoire_title">{{ repertoire.title }}</p>
                     <p class="about_repertoire_author about_repertoire_title">{{ repertoire.author }}</p>
                     <p class="description">{{ repertoire.description }}</p>
-                    <p class="time">длительность {{ repertoire.duration }} минут</p>
+                    <p class="time">{{ time_format(repertoire.duration) }}</p>
                 </div>
             </router-link>
         </div>
@@ -38,6 +38,15 @@
                     .then(function(res) {
                         this.repertoires = res.body
                     })
+            },
+            time_format: function(time) {
+                let str = `длительность `
+                if (time > 70){
+                    str += `${~~(time/60)} часов ${time%60} минут`
+                } else {
+                    str += `${time} минут`
+                }
+                return str
             }
         },
         mounted: function() {

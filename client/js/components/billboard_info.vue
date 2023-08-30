@@ -6,7 +6,10 @@
                     <p id="repertoire_info_title">{{ billboard.title }}</p>
                     <p>{{ billboard.author }}</p>
                 </div>
+                <p v-for="head in cast_head">{{head.role_person}} - {{head.name}}</p>
                 <p>{{ billboard.description }}</p>
+
+                <p>{{ time_format(billboard.duration) }}</p>
             </div>
             <img :src="'../upload/' + billboard.image" onerror="this.src = '../upload/not_found.png'">
         </div>
@@ -16,7 +19,7 @@
                 :key="person.id_cast"
                 class="cast_wrapper"
             >
-                <img src="https://dummyimage.com/150x150/777/000" alt="">
+            <img :src="'../upload/' + person.image" onerror="this.src = '../upload/not_found.png'">
                 <div>
                     <p class="name">{{person.name}}</p>
                     <p>{{person.role_person}}</p>
@@ -40,7 +43,8 @@
         data: function() {
             return {
                 billboard: '',
-                cast: ''
+                cast: '',
+                cast_head: ''
             }
         },
         methods: {
@@ -48,6 +52,11 @@
                 this.$http.get(`/billboardAPI/${ this.$route.params['id'] }`)
                     .then(function(res) {
                         this.billboard = res.body
+
+                        this.$http.get(`/castHeadAPI/${this.billboard.id_repertoire}`)
+                            .then(function(res) {
+                                this.cast_head = res.body
+                            })
 
                         this.$http.get(`/castAPI/${ this.billboard.id_repertoire }`)
                             .then(function(res) {
@@ -66,6 +75,15 @@
                 let minutes = formatter_Date.getMinutes()
 
                 return `${day} ${month} ${year}, в ${Hours}:${minutes}`
+            },
+            time_format: function(time) {
+                let str = `длительность `
+                if (time > 70){
+                    str += `${~~(time/60)} часов ${time%60} минут`
+                } else {
+                    str += `${time} минут`
+                }
+                return str
             }
         },
         mounted: function() {

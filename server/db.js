@@ -151,7 +151,17 @@ export async function get_cast_for(id){
     const [row] = await pool.query(
         `Select person.name, cast.role_person, cast.id_cast from repertoire
         inner join cast on cast.id_repertoire = repertoire.id_repertoire
-        inner join person on person.id_person = cast.id_person where repertoire.id_repertoire = ?`,
+        inner join person on person.id_person = cast.id_person where repertoire.id_repertoire = ? and is_head = false`,
+        [id]
+    )
+    return row
+}
+
+export async function get_cast_head_for(id){
+    const [row] = await pool.query(
+        `Select person.name, cast.role_person, cast.id_cast from repertoire
+        inner join cast on cast.id_repertoire = repertoire.id_repertoire
+        inner join person on person.id_person = cast.id_person where repertoire.id_repertoire = ? and is_head = true`,
         [id]
     )
     return row

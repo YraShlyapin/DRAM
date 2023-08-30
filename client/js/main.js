@@ -1,7 +1,7 @@
 let Vue = require("vue")
 let VueRouter = require("vue-router")
 let VueResource = require("vue-resource")
-// let sss = require("./page/sss.vue")  TODO: пустышка
+let empty = require("./page/empty.vue")
 let App = require("./page/App.vue")
 let routes = require("./routes.js")
 
@@ -15,6 +15,6 @@ new Vue({
         return { x: 0, y:0 }
     }}),
     render: function(a){
-        return a(App)
+        return a(empty)
     }
 })

@@ -29,7 +29,11 @@ app.get("/repertoireAPI", async (req,res) => {
 
 app.get("/repertoireAPI/:id", async (req,res) => {
     const result = await db.get_one_repertoire(req.params.id)
-    res.send(result)
+    if (result) {
+        res.send(result)
+    }else{
+        res.sendStatus(404)
+    }
 })
 
 app.post("/repertoireAPI", multer.single('file'), async (req,res) => {
@@ -60,6 +64,11 @@ app.get("/personAPI", async (req,res) => {
 //NOTE: cast API
 app.get("/castAPI/:id", async (req,res) => {
     const result = await db.get_cast_for(req.params.id)
+    res.send(result)
+})
+
+app.get("/castHeadAPI/:id", async (req,res) => {
+    const result = await db.get_cast_head_for(req.params.id)
     res.send(result)
 })
 
