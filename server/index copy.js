@@ -1,13 +1,14 @@
 import express from "express"
 import cors from "cors"
 import bodyParser from "body-parser"
+import multer from "multer"
 
 import * as db from "./db.js"
-import multer from "./multer.js"
+import my_multer from "./multer.js"
 
 
 const port = 8080 || 25565
-const host = 'localhost' || '192.168.33.63'
+const host = '192.168.33.63' || 'localhost'
 
 let app = express()
 
@@ -36,8 +37,9 @@ app.get("/repertoireAPI/:id", async (req,res) => {
     }
 })
 
-app.post("/repertoireAPI", multer.single('file'), async (req,res) => {
+app.post("/repertoireAPI", my_multer.single('file'), async (req,res) => {
     let obj = req.body
+    obj.image = 'not_found.png'
     if (req.file){
         obj.image = req.file.filename
     }
@@ -57,7 +59,27 @@ app.put("/repertoireAPI/:id", jsonParser, async (req,res) => {
 
 //NOTE: person API
 app.get("/personAPI", async (req,res) => {
+    const result = await db.get_real_person()
+    res.send(result)
+})
+
+app.get("/personAllAPI", async (req,res) => {
     const result = await db.get_all_person()
+    res.send(result)
+})
+
+app.post("/personAPI", my_multer.single('file'), async (req,res) => {
+    let obj = req.body
+    obj.image = 'not_found.png'
+    if (req.file){
+        obj.image = req.file.filename
+    }
+    const result = await db.post_person(obj)
+    res.send(result)
+})
+
+app.delete("/personAPI/:id", async (req,res) => {
+    const result = await db.delete_person(req.params.id)
     res.send(result)
 })
 
@@ -83,6 +105,16 @@ app.get("/billboardAPI/:id", async (req,res) => {
     res.send(result)
 })
 
+app.post("/billboardAPI", multer().array(), async (req,res) => {
+    const result = await db.post_billboard(req.body)
+    res.send(result)
+})
+
+app.delete("/billboardAPI/:id", async (req,res) => {
+    const result = await db.delete_billboard(req.params.id)
+    res.send(result)
+})
+
 /*app.post("/upload", multer.single('file'), async (req,res) => {
     let obj = req.body
     if (req.file){
@@ -92,7 +124,7 @@ app.get("/billboardAPI/:id", async (req,res) => {
     res.send(result)
 })*/
 
-app.post("/saveImage", multer.single('file'), async (req,res) => {
+app.post("/saveImage", my_multer.single('file'), async (req,res) => {
     if (req.file){
         console.log(req.file.filename)
     }

@@ -9,7 +9,6 @@
                 :to="'/repertoire/' + repertoire.id_repertoire"
             >
                 <img :src="'../upload/' + repertoire.image" onerror="this.src = '../upload/not_found.png'">
-                <!-- <img src="https://dummyimage.com/800x777/777/000" alt="" > -->
                 <div class="about_repertoire">
                     <p class="about_repertoire_title">{{ repertoire.title }}</p>
                     <p class="about_repertoire_author about_repertoire_title">{{ repertoire.author }}</p>

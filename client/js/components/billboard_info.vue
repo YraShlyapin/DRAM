@@ -9,7 +9,7 @@
                 <p v-for="head in cast_head">{{head.role_person}} - {{head.name}}</p>
                 <p>{{ billboard.description }}</p>
 
-                <p>{{ time_format(billboard.duration) }}</p>
+                <p  v-if="repertoire.duration">{{ time_format(billboard.duration) }}</p>
             </div>
             <img :src="'../upload/' + billboard.image" onerror="this.src = '../upload/not_found.png'">
         </div>

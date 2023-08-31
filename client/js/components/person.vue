@@ -31,7 +31,7 @@
     </div>
 </template>
 <script>
-    let titles = require("./samples/title.vue")
+    import titles from "./samples/title.vue"
 
     module.exports = {
         components: {

@@ -1,29 +1,31 @@
 <template>
     <div id="main">
         <form v-on:submit="post_method" id="form">
-            <div id="draggble" draggable="true" @@dragover.prevent @drop.stop.prevent="onDrop">
-                <img :src="srcc" alt="" @dragover.prevent @drop.stop.prevent="onDrop">
-                <input type="file" name="file" id="file" accept="image/*" @change="loadPreview">
-            </div>
-            <input type="text" name="title" placeholder="Название">
-            <input type="text" name="author" placeholder="Автор">
-            <textarea name="description" id="" cols="30" rows="10" placeholder="Описание"></textarea>
-            <input type="number" name="duration" min="0" max="255" step="1" placeholder="Длительность до 255 мин">
-            <input type="datetime-local" name="creation_time_repertoire" :value="date_get()">
+            <select name="id_repertoire" id="">
+                <option v-for="repertoire in repertoires"
+                    :value="repertoire.id_repertoire"
+                >
+                    {{ repertoire.title }}
+                </option>
+            </select>
+            <input type="datetime-local" name="date_time" :value="date_get()">
+            <input type="text" name="place" placeholder="Место">
+            <input type="text" name="src_on_map" placeholder="ссылка на карту">
             <button type="submit">отправить</button>
         </form>
         <div>
             <div id="mini_repertoire1">
-                <div v-for="repertoire in repertoires"
+                <div v-for="billboard in billboards"
                     class="block_mini_repertoire"
                 >
-                    <img :src="'../upload/' + repertoire.image" onerror="this.src = '../upload/not_found.png'">
+                    <img :src="'../upload/' + billboard.image" onerror="this.src = '../upload/not_found.png'">
                     <div>
-                        <p class="mini_repertoire_title">{{ repertoire.title }}</p>
-                        <p class="mini_repertoire_title mini_repertoire_author">{{ repertoire.author }}</p>
-                        <p class="mini_repertoire_text">{{ repertoire.description }}</p>
+                        <p class="mini_repertoire_title">{{ billboard.title }}</p>
+                        <p class="mini_repertoire_title mini_repertoire_author">{{ date_formate(billboard.date_time) }}</p>
+                        <p class="mini_repertoire_text">{{ billboard.place }}</p>
+                        <p class="mini_repertoire_text">{{ billboard.src_on_map }}</p>
                     </div>
-                    <button @click="delete_method(repertoire.id_repertoire)">удалить</button>
+                    <button @click="delete_method(billboard.id_billboard)">удалить</button>
                 </div>
             </div>
         </div>
@@ -34,7 +36,8 @@
         data: function() {
             return {
                 srcc: "../upload/not_found.png",
-                repertoires: []
+                repertoires: [],
+                billboards: []
             }
         },
         methods: {
@@ -58,14 +61,14 @@
                 let form = e.target
                 console.log(form)
                 let formData = new FormData(form)
-                this.$http.post("/repertoireAPI", formData)
+                this.$http.post("/billboardAPI", formData)
                     .then(function(res) {
                         this.connect_db()
                         form.reset()
                     })
             },
             delete_method: function(id) {
-                this.$http.delete(`/repertoireAPI/${id}`)
+                this.$http.delete(`/billboardAPI/${id}`)
                     .then(function(res) {
                         this.connect_db()
                     })
@@ -74,7 +77,15 @@
                 let date = new Date().toISOString().replace('T', ' ').split('.')[0].slice(0,-3)
                 return date
             },
+            date_formate(date) {
+                return `${new Date(date).toLocaleDateString()} ${new Date(date).toLocaleTimeString()}`
+            },
             connect_db: function() {
+                this.$http.get("/billboardAPI")
+                    .then(function(res) {
+                        this.billboards = res.body
+                    })
+
                 this.$http.get("/repertoireAPI")
                     .then(function(res) {
                         this.repertoires = res.body

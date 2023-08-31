@@ -5,25 +5,28 @@
                 <img :src="srcc" alt="" @dragover.prevent @drop.stop.prevent="onDrop">
                 <input type="file" name="file" id="file" accept="image/*" @change="loadPreview">
             </div>
-            <input type="text" name="title" placeholder="Название">
-            <input type="text" name="author" placeholder="Автор">
-            <textarea name="description" id="" cols="30" rows="10" placeholder="Описание"></textarea>
-            <input type="number" name="duration" min="0" max="255" step="1" placeholder="Длительность до 255 мин">
-            <input type="datetime-local" name="creation_time_repertoire" :value="date_get()">
+            <input type="text" name="name" placeholder="Имя и Фамилия">
+            <textarea name="description" cols="30" rows="10" placeholder="Описание"></textarea>
+            <input type="datetime-local" name="birthday" :value="date_get()">
+            <div>
+                <label for="real">Состоит ли в антрепризе </label>
+                <input type="checkbox" name="real" checked>
+            </div>
             <button type="submit">отправить</button>
         </form>
         <div>
             <div id="mini_repertoire1">
-                <div v-for="repertoire in repertoires"
+                <div v-for="person in persons"
                     class="block_mini_repertoire"
                 >
-                    <img :src="'../upload/' + repertoire.image" onerror="this.src = '../upload/not_found.png'">
+                    <img :src="'../upload/' + person.image" onerror="this.src = '../upload/not_found.png'">
                     <div>
-                        <p class="mini_repertoire_title">{{ repertoire.title }}</p>
-                        <p class="mini_repertoire_title mini_repertoire_author">{{ repertoire.author }}</p>
-                        <p class="mini_repertoire_text">{{ repertoire.description }}</p>
+                        <p class="mini_repertoire_title">{{ person.name }}</p>
+                        <p class="mini_repertoire_title mini_repertoire_author">{{ new Date(person.birthday).toLocaleDateString() }}, ({{ Math.trunc((new Date() - new Date(person.birthday))/(24 * 3600 * 365.25 * 1000)) }})</p>
+                        <p class="mini_repertoire_text">{{ person.description }}</p>
+                        <p>{{ person.real === 1 ? "участник антрепризы" : "не участник антрепризы" }}</p>
                     </div>
-                    <button @click="delete_method(repertoire.id_repertoire)">удалить</button>
+                    <button @click="delete_method(person.id_person)">удалить</button>
                 </div>
             </div>
         </div>
@@ -34,7 +37,7 @@
         data: function() {
             return {
                 srcc: "../upload/not_found.png",
-                repertoires: []
+                persons: []
             }
         },
         methods: {
@@ -58,14 +61,14 @@
                 let form = e.target
                 console.log(form)
                 let formData = new FormData(form)
-                this.$http.post("/repertoireAPI", formData)
+                this.$http.post("/personAPI", formData)
                     .then(function(res) {
                         this.connect_db()
                         form.reset()
                     })
             },
             delete_method: function(id) {
-                this.$http.delete(`/repertoireAPI/${id}`)
+                this.$http.delete(`/personAPI/${id}`)
                     .then(function(res) {
                         this.connect_db()
                     })
@@ -75,9 +78,9 @@
                 return date
             },
             connect_db: function() {
-                this.$http.get("/repertoireAPI")
+                this.$http.get("/personAllAPI")
                     .then(function(res) {
-                        this.repertoires = res.body
+                        this.persons = res.body
                     })
             }
         },

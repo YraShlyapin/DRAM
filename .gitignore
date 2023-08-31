@@ -1,5 +1,3 @@
 client/node_modules
-client/package*
 client/upload/not_found.psd
 server/node_modules
-server/package*

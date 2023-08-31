@@ -1,33 +1,70 @@
 #footer{
-    width: 100%;
-    height: $height-footer;
-    
-    @include display(flex);
+    width: 100vw;
     
     background-color: $primary-color;
+    display: flex;
+    gap: 40px;
     
     font-family: $Inter;
+    font-size: 16px;
     color: $light-color;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 .footer_segments{
-    margin-top: 43px;
+    height: 100%;
 }
 
-#footer_first_segment{
-    flex: 1;
-}
-
-#footer_first_segment > div{
-    margin-left: 122px;
+#footer_first_segment {
+    min-width: 280px;
+    width: 20%;
+    margin-left: 5%;
 }
 
 #footer_second_segment{
+    width: 100%;
     display: flex;
-    flex: 1;
-    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+
+    #dev {
+        margin-top: 20px;
+    }
+}
+
+.titl{
+    font-size: 24px;
+    margin-bottom: 8px;
 }
 
 #footer_third_segment{
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 5%;
+    a {
+        font-size: 20px;
+        margin-top: 5px;
+    }
+}
+
+@media screen and (max-width:900px) {
+    #footer{
+        flex-direction: column;
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+
+    #footer_first_segment {
+        min-width: none;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+
+        img{
+            max-width: 280px;
+        }
+    }
 }

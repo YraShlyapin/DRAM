@@ -16,6 +16,13 @@ function isundefind(obj) {
     return obj
 }
 
+function ison(obj) {
+    if (obj === 'on') {
+        return true
+    }
+    return false
+}
+
 
 //NOTE: repertoire 
 export async function get_all_repertoire(){
@@ -38,7 +45,7 @@ export async function get_one_repertoire(id){
 }
 
 export async function post_repertoire(jb){
-    let time_create = new Date().toISOString().replace('T',' ').split('.')[0]
+    // let time_create = new Date().toISOString().replace('T',' ').split('.')[0]
     await pool.query(
         `INSERT INTO repertoire (title, author, description, image, duration, creation_time_repertoire)
         VALUES (?, ?, ?, ?, ?, ?)`,
@@ -48,7 +55,7 @@ export async function post_repertoire(jb){
             isundefind(jb.description),
             isundefind(jb.image),
             isundefind(jb.duration),
-            time_create
+            isundefind(jb.creation_time_repertoire)
         ]
     )
     const [last_id] = await pool.query(`SELECT LAST_INSERT_ID()`)
@@ -141,10 +148,48 @@ export async function update_billboard(id,jb){
 
 //NOTE: person
 export async function get_all_person(){
+    const [row] = await pool.query(`SELECT * FROM person`)
+    return row
+}
+
+export async function get_real_person(){
     const [row] = await pool.query(`SELECT * FROM person where person.real = true`)
     return row
 }
 
+export async function get_one_person(id){
+    const [row] = await pool.query(
+        `SELECT * FROM person where person.id_person = ?`,
+        [id]
+    )
+    return row
+}
+
+export async function post_person(jb){
+    await pool.query(
+        `INSERT INTO person (name, description, birthday, person.real, image)
+        VALUES (?, ?, ?, ?, ?)`,
+        [
+            isundefind(jb.name),
+            isundefind(jb.description),
+            isundefind(jb.birthday),
+            ison(jb.real),
+            isundefind(jb.image),
+        ]
+    )
+    const [last_id] = await pool.query(`SELECT LAST_INSERT_ID()`)
+    const row = await get_one_person(last_id[0]['LAST_INSERT_ID()'])
+    return row
+}
+
+export async function delete_person(id){
+    const row = await get_one_person(id)
+    await pool.query(
+        `DELETE FROM person WHERE person.id_person = ?`,
+        [id]
+    )
+    return row
+}
 
 //NOTE: cast
 export async function get_cast_for(id){
