@@ -1,5 +1,6 @@
 @media screen {
     #repertoire{
+        min-height: calc(100vh - 214px);
         margin-top: $margin-mini*1.5;
 
         font-family: $Merriweather;

@@ -1,4 +1,5 @@
 #main{
+    min-height: calc(100vh - 214px);
     .viewer{
         overflow-x: clip;
         width: 100vw;
@@ -11,13 +12,14 @@
             margin-bottom: 100px;
 
             .slider{
-                @include display(flex,space-between);
+                display: flex;
                 width: 100vw;
                 background-color: $gray;
                 font-family: $Merriweather;
         
                 .about_slider{
-                    width: 35vw;
+                    width: 100%;
+                    margin-right: 50px;
                     margin-top: $margin-colossal;
                     margin-left: 120px;
         
@@ -29,6 +31,12 @@
                     .about_slider_text{
                         font-size: $font-size-big;
                         margin-bottom: 50px;
+
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 9;
+                        -webkit-box-orient: vertical;
                     }
         
                     .about_slider_more{
@@ -51,13 +59,12 @@
         }
 
         .nav_slider{
-            width: 400px;
+            width: 275px;
             position: absolute;
             display: flex;
             justify-content: space-between;
             bottom: 15%;
-            transform-origin: center;
-            transform: translateX(50%);
+            left: 15%;
 
             .next{
                 transform-origin: center;
@@ -84,9 +91,7 @@
                 }
     
                 .active_point{
-                    background-color: $secondary-color;
-                    width: 30px;
-                    height: 30px;
+                    background-color: #a50000;
                 }
             }
         }
@@ -145,8 +150,107 @@
 }
 
 @media screen {
-    @media (max-width:1742px) {
+    @media (max-width:1800px) {
+        #main{
+            .viewer{
+                .slider_wrapper{
+                    .slider{
+                
+                        .about_slider{
+                            margin-top: 50px;
+                            margin-left: 50px;
+                
+                            .about_slider_title{
+                                font-size: $font-size-giant - 0.5rem;
+                                margin-bottom: 40px;
+                            }
+                
+                            .about_slider_text{
+                                font-size: $font-size-big - 0.5rem;
+                                margin-bottom: 25px;
+                            }
+                
+                            .about_slider_more{
+                                font-size: $font-size-giant - 0.5rem;
+                            }
+                        }
+                    }
+                }
 
+                .nav_slider{
+                    left: 8%;
+                    bottom: 17%;
+                }
+            }
+        }  
+    }
+
+    @media (max-width:1200px) {
+        #main{
+            .viewer{
+                .slider_wrapper{
+                    .slider{
+                
+                        .about_slider{
+                            margin-top: 25px;
+                            margin-left: 25px;
+                            margin-right: 25px;
+                
+                            .about_slider_title{
+                                margin-bottom: 20px;
+                            }
+                
+                            .about_slider_text{
+                                margin-bottom: 12px;
+                                -webkit-line-clamp: 5;
+                            }
+                        }
+                    }
+                }
+
+                .nav_slider{
+                    left: 8%;
+                    bottom: 17%;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 930px) {
+        #main{
+            .viewer{
+                .slider_wrapper{
+                    margin-bottom: 10px;
+                    .slider{
+                        flex-direction: column-reverse;
+                        .about_slider{
+                            width: auto;
+                            margin-top: 25px;
+                            margin-left: 25px;
+                            margin-right: 25px;
+                
+                            .about_slider_title{
+                                margin-bottom: 20px;
+                            }
+                
+                            .about_slider_text{
+                                margin-bottom: 12px;
+                                -webkit-line-clamp: 5;
+                            }
+                        }
+                        img {
+                            width: 100%;
+                        }
+                    }
+                }
+
+                .nav_slider{
+                    width: 100%;
+                    position: static;
+                    margin-bottom: 25px;
+                }
+            }
+        }
     }
 
     @media (max-width:400px) {

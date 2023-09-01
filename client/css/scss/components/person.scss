@@ -1,5 +1,6 @@
 @media screen {
     #person{
+        min-height: calc(100vh - 214px);
         margin-top: $margin-mini*1.5;
         @include display(flex,$fd:column,$al:center);
         transition: height 2s ease;

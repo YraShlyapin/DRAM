@@ -179,7 +179,7 @@
     width: 100vw;
   }
   #footer_first_segment img {
-    max-width: 280px;
+    max-width: 250px;
   }
 }
 .section_name_wrapper {
@@ -221,6 +221,9 @@
     min-width: 0;
   }
 }
+#main {
+  min-height: calc(100vh - 214px);
+}
 #main .viewer {
   overflow-x: clip;
   width: 100vw;
@@ -234,16 +237,13 @@
 }
 #main .viewer .slider_wrapper .slider {
   display: flex;
-  justify-content: space-between;
-  align-items: start;
-  flex-direction: row;
-  flex-wrap: nowrap;
   width: 100vw;
   background-color: #d6d6d6;
   font-family: "Merriweather", serif;
 }
 #main .viewer .slider_wrapper .slider .about_slider {
-  width: 35vw;
+  width: 100%;
+  margin-right: 50px;
   margin-top: 100px;
   margin-left: 120px;
 }
@@ -254,6 +254,11 @@
 #main .viewer .slider_wrapper .slider .about_slider .about_slider_text {
   font-size: 1.875rem;
   margin-bottom: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 9;
+  -webkit-box-orient: vertical;
 }
 #main .viewer .slider_wrapper .slider .about_slider .about_slider_more {
   font-size: 2.5rem;
@@ -269,13 +274,12 @@
   cursor: pointer;
 }
 #main .viewer .nav_slider {
-  width: 400px;
+  width: 275px;
   position: absolute;
   display: flex;
   justify-content: space-between;
   bottom: 15%;
-  transform-origin: center;
-  transform: translateX(50%);
+  left: 15%;
 }
 #main .viewer .nav_slider .next {
   transform-origin: center;
@@ -299,9 +303,7 @@
   border-radius: 100%;
 }
 #main .viewer .nav_slider #points .active_point {
-  background-color: #890001;
-  width: 30px;
-  height: 30px;
+  background-color: #a50000;
 }
 #main #mini_repertoire #mini_repertoire_wrapper {
   gap: 20px;
@@ -349,6 +351,74 @@
   margin-top: 8px;
 }
 
+@media screen and (max-width: 1800px) {
+  #main .viewer .slider_wrapper .slider .about_slider {
+    margin-top: 50px;
+    margin-left: 50px;
+  }
+  #main .viewer .slider_wrapper .slider .about_slider .about_slider_title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+  #main .viewer .slider_wrapper .slider .about_slider .about_slider_text {
+    font-size: 1.375rem;
+    margin-bottom: 25px;
+  }
+  #main .viewer .slider_wrapper .slider .about_slider .about_slider_more {
+    font-size: 2rem;
+  }
+  #main .viewer .nav_slider {
+    left: 8%;
+    bottom: 17%;
+  }
+}
+@media screen and (max-width: 1200px) {
+  #main .viewer .slider_wrapper .slider .about_slider {
+    margin-top: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+  #main .viewer .slider_wrapper .slider .about_slider .about_slider_title {
+    margin-bottom: 20px;
+  }
+  #main .viewer .slider_wrapper .slider .about_slider .about_slider_text {
+    margin-bottom: 12px;
+    -webkit-line-clamp: 5;
+  }
+  #main .viewer .nav_slider {
+    left: 8%;
+    bottom: 17%;
+  }
+}
+@media screen and (max-width: 930px) {
+  #main .viewer .slider_wrapper {
+    margin-bottom: 10px;
+  }
+  #main .viewer .slider_wrapper .slider {
+    flex-direction: column-reverse;
+  }
+  #main .viewer .slider_wrapper .slider .about_slider {
+    width: auto;
+    margin-top: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+  #main .viewer .slider_wrapper .slider .about_slider .about_slider_title {
+    margin-bottom: 20px;
+  }
+  #main .viewer .slider_wrapper .slider .about_slider .about_slider_text {
+    margin-bottom: 12px;
+    -webkit-line-clamp: 5;
+  }
+  #main .viewer .slider_wrapper .slider img {
+    width: 100%;
+  }
+  #main .viewer .nav_slider {
+    width: 100%;
+    position: static;
+    margin-bottom: 25px;
+  }
+}
 @media screen and (max-width: 400px) {
   .block_mini_repertoire img {
     width: 100%;
@@ -356,6 +426,7 @@
 }
 @media screen {
   #repertoire {
+    min-height: calc(100vh - 214px);
     margin-top: 24px;
     font-family: "Merriweather", serif;
   }
@@ -630,6 +701,7 @@
 
 @media screen {
   #person {
+    min-height: calc(100vh - 214px);
     margin-top: 24px;
     display: flex;
     justify-content: start;

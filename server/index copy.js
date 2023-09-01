@@ -8,7 +8,7 @@ import my_multer from "./multer.js"
 
 
 const port = 8080 || 25565
-const host = '192.168.33.63' || 'localhost'
+const host = 'localhost' || '192.168.33.63'
 
 let app = express()
 
