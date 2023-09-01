@@ -9,7 +9,7 @@
             >
                 <img :src="'../upload/' + person.image" onerror="this.src = '../upload/not_found.png'">
                 <div class="about_person">
-                    <p class="name">{{ person.name }}, {{ Math.trunc((new Date() - new Date(person.birthday))/(24 * 3600 * 365.25 * 1000)) }}</p>
+                    <p class="name">{{ person.name }}, {{ years(person.birthday) }}</p>
                     <p class="text">{{ person.description }}</p>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                     <img :src="'../upload/' + person.image" onerror="this.src = '../upload/not_found.png'">
                     <div class="about_person">
                         <p class="name">{{ person.name }}</p>
-                        <p>{{ new Date(person.birthday).toLocaleDateString() }}, ({{ Math.trunc((new Date() - new Date(person.birthday))/(24 * 3600 * 365.25 * 1000)) }})</p>
+                        <p>{{ birthday(person.birthday) }}</p>
                         <p class="text">{{ person.description }}</p>
                     </div>
                 </div>

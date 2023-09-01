@@ -62,15 +62,6 @@
                                 this.cast = res.body
                             })
                     })
-            },
-            time_format: function(time) {
-                let str = `длительность `
-                if (time > 70){
-                    str += `${~~(time/60)} часов ${time%60} минут`
-                } else {
-                    str += `${time} минут`
-                }
-                return str
             }
         },
         mounted: function() {

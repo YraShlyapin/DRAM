@@ -16,6 +16,7 @@
                 width: 100vw;
                 background-color: $gray;
                 font-family: $Merriweather;
+                color: black;
         
                 .about_slider{
                     width: 100%;
@@ -223,6 +224,7 @@
                     margin-bottom: 10px;
                     .slider{
                         flex-direction: column-reverse;
+                        
                         .about_slider{
                             width: auto;
                             margin-top: 25px;

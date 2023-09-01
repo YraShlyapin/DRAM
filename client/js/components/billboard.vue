@@ -39,27 +39,6 @@
                     .then(function(res) {
                         this.billboards = res.body
                     })
-            },
-            date_format: function(date) {
-                let formatter_Date = new Date(date)
-
-                let day = formatter_Date.getDate()
-                let month = formatter_Date.toLocaleString('ru',{month: 'long'})
-                let year = formatter_Date.getFullYear()
-                let weekday = formatter_Date.toLocaleString('ru',{weekday: 'long'})
-                let Hours = formatter_Date.getHours()
-                let minutes = formatter_Date.getMinutes()
-
-                return `${day} ${month} ${year}, в ${Hours}:${minutes}`
-            },
-            time_format: function(time) {
-                let str = `длительность `
-                if (time > 70){
-                    str += `${~~(time/60)} часов ${time%60} минут`
-                } else {
-                    str += `${time} минут`
-                }
-                return str
             }
         },
         mounted: function() {

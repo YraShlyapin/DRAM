@@ -106,7 +106,10 @@ app.get("/billboardAPI/:id", async (req,res) => {
 })
 
 app.post("/billboardAPI", multer().array(), async (req,res) => {
-    const result = await db.post_billboard(req.body)
+    let obj = req.body
+    let url = obj.src_on_map.split('?um=constructor%')[1].split('&source=')[0]
+    obj.src_on_map = url
+    const result = await db.post_billboard(obj)
     res.send(result)
 })
 

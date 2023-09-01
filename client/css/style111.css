@@ -240,6 +240,7 @@
   width: 100vw;
   background-color: #d6d6d6;
   font-family: "Merriweather", serif;
+  color: black;
 }
 #main .viewer .slider_wrapper .slider .about_slider {
   width: 100%;
@@ -903,7 +904,7 @@
   font-size: 20px;
 }
 
-#form > input[type=text], input[type=number], input[type=datetime-local], textarea {
+#form > input[type=text], input[type=number], input[type=datetime-local], input[type=date], textarea {
   outline: none;
   background: none;
   border: 0;

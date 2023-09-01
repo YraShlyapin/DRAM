@@ -5,6 +5,9 @@ let empty = require("./page/empty.vue")
 let App = require("./page/App.vue")
 let routes = require("./routes.js")
 
+let MyPlugin = require("./global_func.js")
+
+Vue.use(MyPlugin)
 Vue.use(VueResource)
 Vue.use(VueRouter)
 

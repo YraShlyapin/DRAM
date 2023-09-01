@@ -21,7 +21,7 @@
                     <img :src="'../upload/' + billboard.image" onerror="this.src = '../upload/not_found.png'">
                     <div>
                         <p class="mini_repertoire_title">{{ billboard.title }}</p>
-                        <p class="mini_repertoire_title mini_repertoire_author">{{ date_formate(billboard.date_time) }}</p>
+                        <p class="mini_repertoire_title mini_repertoire_author">{{ date_format(billboard.date_time) }}</p>
                         <p class="mini_repertoire_text">{{ billboard.place }}</p>
                         <p class="mini_repertoire_text">{{ billboard.src_on_map }}</p>
                     </div>
@@ -41,21 +41,6 @@
             }
         },
         methods: {
-            loadPreview: function(){
-                let sf = document.querySelector("input[type='file']").files[0]
-                let self = this
-                let reader = new FileReader()
-                reader.onload = function(re){
-                    self.srcc = re.target.result
-                }
-                reader.readAsDataURL(sf)
-            },
-            onDrop: function(event){
-                event.preventDefault()
-                const file = event.dataTransfer.files
-                document.querySelector("input[type='file']").files = file
-                this.loadPreview()          
-            },
             post_method: function(e) {
                 e.preventDefault()
                 let form = e.target
@@ -72,13 +57,6 @@
                     .then(function(res) {
                         this.connect_db()
                     })
-            },
-            date_get: function() {
-                let date = new Date().toISOString().replace('T', ' ').split('.')[0].slice(0,-3)
-                return date
-            },
-            date_formate(date) {
-                return `${new Date(date).toLocaleDateString()} ${new Date(date).toLocaleTimeString()}`
             },
             connect_db: function() {
                 this.$http.get("/billboardAPI")
