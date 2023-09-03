@@ -1,4 +1,6 @@
 client/node_modules
 client/upload
 client/upload/!not_found.png
+client/image
+client/image/!text_full.png
 server/node_modules

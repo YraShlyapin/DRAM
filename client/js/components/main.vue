@@ -17,7 +17,7 @@
                         <p class="about_slider_more">Подробнее...</p>
                     </div>
                     <img :src="'../upload/' + billboard.image" onerror="this.src = '../upload/not_found.png'">
-                </router-link> 
+                </router-link>
             </div>
             <div class="nav_slider" v-if="billboards.length > 1">
                 <svg @click="prev" class="prev" xmlns="http://www.w3.org/2000/svg" width="32" height="56" viewBox="0 0 42 74" fill="none">
@@ -34,8 +34,11 @@
                 </svg>
             </div>
         </div>
-        <div v-else>
-            нет новых спектаклей
+        <div v-else class="slider">
+            <div class="center_of_center">
+                <p>В ближайшее время спектаклей нет</p>
+            </div>
+            <img src="../image/text_full.png"">
         </div>
         
         <div id="mini_repertoire">

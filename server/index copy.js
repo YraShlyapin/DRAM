@@ -87,6 +87,15 @@ app.delete("/personAPI/:id", async (req,res) => {
     res.send(result)
 })
 
+app.put("/personAPI/:id", my_multer.single('file'), async (req,res) => {
+    let obj = req.body
+    if (req.file){
+        obj.image = req.file.filename
+    }
+    const result = await db.edite_person(req.params.id,obj)
+    res.send(result)
+})
+
 //NOTE: cast API
 app.get("/castAPI", async (req,res) => {
     const result = await db.get_all_cast()

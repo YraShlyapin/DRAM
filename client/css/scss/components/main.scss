@@ -10,36 +10,36 @@
             overflow-x: hidden;
             transition: transform 1s ease-in-out;
             margin-bottom: 100px;
-
+            
             .slider{
                 display: flex;
                 width: 100vw;
                 background-color: $gray;
                 font-family: $Merriweather;
                 color: black;
-        
+            
                 .about_slider{
                     width: 100%;
                     margin-right: 50px;
                     margin-top: $margin-colossal;
                     margin-left: 120px;
-        
+            
                     .about_slider_title{
                         font-size: $font-size-giant;
                         margin-bottom: 80px;
                     }
-        
+            
                     .about_slider_text{
                         font-size: $font-size-big;
                         margin-bottom: 50px;
-
+            
                         overflow: hidden;
                         text-overflow: ellipsis;
                         display: -webkit-box;
                         -webkit-line-clamp: 9;
                         -webkit-box-orient: vertical;
                     }
-        
+            
                     .about_slider_more{
                         font-size: $font-size-giant;
                         font-style: italic;
@@ -47,12 +47,12 @@
                         font-weight: 900;
                     }
                 }
-
+            
                 img{
                     width: 50%;
                     height: fit-content;
                 }
-            }            
+            }   
         }
 
         .prev, .next{
@@ -98,6 +98,34 @@
         }
     }
 
+    .slider{
+        display: flex;
+        width: 100vw;
+        background-color: $gray;
+        font-family: $Merriweather;
+        color: black;
+        margin-bottom: 50px;
+    
+        .center_of_center {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            p {
+                font-size: 70px;
+                width: 80%;
+            }
+        }
+    
+        img{
+            width: 50%;
+            height: fit-content;
+            background-color: $primary-color;
+            padding: 0 50px;
+        }
+    }  
+
     #mini_repertoire{
         #mini_repertoire_wrapper{
             gap: 20px;
@@ -116,6 +144,7 @@
 
                 img {
                     width: 100%;
+                    border-radius: 15px;
                 }
 
                 div{
@@ -149,6 +178,8 @@
         }
     }
 }
+
+
 
 @media screen {
     @media (max-width:1800px) {

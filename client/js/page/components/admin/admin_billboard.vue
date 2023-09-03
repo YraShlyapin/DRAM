@@ -2,6 +2,7 @@
     <div id="main">
         <form v-on:submit="post_method" id="form" v-if="!edite_mode">
             <select name="id_repertoire" >
+                <option value="" disabled selected hidden>выберить спектакль из репертуара</option>
                 <option v-for="repertoire in repertoires"
                     :value="repertoire.id_repertoire"
                 >

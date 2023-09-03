@@ -202,6 +202,34 @@ export async function delete_person(id){
     return row
 }
 
+export async function edite_person(id,jb){
+    if (jb.image){
+        await pool.query(
+            `UPDATE dram.person
+            SET image = ?
+            WHERE id_person = ?`,
+            [
+                isundefind(jb.image),
+                id
+            ]
+        )
+    }
+    await pool.query(
+        `UPDATE dram.person
+        SET name = ?, description = ?, birthday = ?, person.real = ?
+        WHERE id_person = ?`,
+        [
+            isundefind(jb.name),
+            isundefind(jb.description),
+            isundefind(jb.birthday),
+            ison(jb.real),
+            id
+        ]
+    )
+    const row = await get_one_person(id)
+    return row
+}
+
 //NOTE: cast
 export async function get_all_cast(){
     const [row] = await pool.query(

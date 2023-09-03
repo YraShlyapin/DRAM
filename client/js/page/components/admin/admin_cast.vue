@@ -2,6 +2,7 @@
     <div id="main">
         <form v-on:submit="post_method" id="form">
             <select name="id_repertoire">
+                <option value="" disabled selected hidden>выберить спектакль из репертуара</option>
                 <option v-for="repertoire in repertoires"
                     :value="repertoire.id_repertoire"
                 >
@@ -9,6 +10,7 @@
                 </option>
             </select>
             <select name="id_person">
+                <option value="" disabled selected hidden>выберить человека</option>
                 <option v-for="person in persons"
                     :value="person.id_person"
                 >
@@ -72,6 +74,9 @@
                 e.preventDefault()
                 let form = e.target
                 console.log(form)
+                if (form.id_repertoire.value == '' || form.id_person.value == ''){
+                    return
+                }
                 let formData = new FormData(form)
                 this.$http.post("/castAPI", formData)
                     .then(function(res) {
