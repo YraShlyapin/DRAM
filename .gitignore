@@ -1,3 +1,4 @@
 client/node_modules
-client/upload/not_found.psd
+client/upload
+client/upload/!not_found.png
 server/node_modules
