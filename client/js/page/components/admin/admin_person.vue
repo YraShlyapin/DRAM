@@ -22,7 +22,7 @@
                     <img :src="'../upload/' + person.image" onerror="this.src = '../upload/not_found.png'">
                     <div>
                         <p class="mini_repertoire_title">{{ person.name }}</p>
-                        <p class="mini_repertoire_title mini_repertoire_author">{{ birthday(person.birthday) }})</p>
+                        <p class="mini_repertoire_title mini_repertoire_author">{{ birthday(person.birthday) }}</p>
                         <p class="mini_repertoire_text">{{ person.description }}</p>
                         <p>{{ person.real === 1 ? "участник антрепризы" : "не участник антрепризы" }}</p>
                     </div>
@@ -51,6 +51,15 @@
                         this.connect_db()
                         form.reset()
                     })
+            },
+            loadPreview(){
+                let sf = document.querySelector("input[type='file']").files[0]
+                let self = this
+                let reader = new FileReader()
+                reader.onload = function(re){
+                    self.srcc = re.target.result
+                }
+                reader.readAsDataURL(sf)
             },
             delete_method: function(id) {
                 this.$http.delete(`/personAPI/${id}`)

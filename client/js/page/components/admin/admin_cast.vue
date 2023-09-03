@@ -89,7 +89,6 @@
                     let idi = this.id_filter_repertoire
                     return arr.filter(
                         (el) => {
-                            console.log(el.id_repertoire +''+ el.id_person)
                             return el.id_repertoire === idi
                         }
                     )

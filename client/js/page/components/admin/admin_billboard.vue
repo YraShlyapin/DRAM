@@ -1,6 +1,6 @@
 <template>
     <div id="main">
-        <form v-on:submit="post_method" id="form">
+        <form v-on:submit="post_method" id="form" v-if="!edite_mode">
             <select name="id_repertoire" >
                 <option v-for="repertoire in repertoires"
                     :value="repertoire.id_repertoire"
@@ -12,6 +12,21 @@
             <input type="text" name="place" placeholder="Место">
             <input type="text" name="src_on_map" placeholder="ссылка на карту">
             <button type="submit">отправить</button>
+        </form>
+        <form v-else v-on:submit="edite_method" id="form">
+            <select name="id_repertoire" >
+                <option v-for="repertoire in repertoires"
+                    :value="repertoire.id_repertoire"
+                    :selected="repertoire.id_repertoire == comp_edite.id_repertoire"
+                >
+                    {{ repertoire.title }}
+                </option>
+            </select>
+            <input type="datetime-local" name="date_time" :value="date_get_edite(comp_edite.date_time)">
+            <input type="text" name="place" placeholder="Место" :value="comp_edite.place">
+            <input type="text" name="src_on_map" placeholder="ссылка на карту" :value="comp_edite.src_on_map">
+            <button type="submit">отправить</button>
+            <button @click="nullebl" type="button">отмена</button>
         </form>
         <div>
             <div id="mini_repertoire1">
@@ -26,6 +41,7 @@
                         <p class="mini_repertoire_text">{{ billboard.src_on_map }}</p>
                     </div>
                     <button @click="delete_method(billboard.id_billboard)">удалить</button>
+                    <button @click="edite_scroll(billboard.id_billboard)">редактировать</button>
                 </div>
             </div>
         </div>
@@ -37,7 +53,10 @@
             return {
                 srcc: "../upload/not_found.png",
                 repertoires: [],
-                billboards: []
+                billboards: [],
+                edite_mode: false,
+                comp_edite: {},
+                id_edite: 0
             }
         },
         methods: {
@@ -57,6 +76,37 @@
                     .then(function(res) {
                         this.connect_db()
                     })
+            },
+            edite_method(e) {
+                e.preventDefault()
+                let form = e.target
+                console.log(form)
+                let formData = new FormData(form)
+                this.$http.put(`/billboardAPI/${this.id_edite}`, formData)
+                    .then(function(res) {
+                        this.connect_db()
+                        form.reset()
+                        this.edite_mode = false
+                    })
+            },
+            edite_scroll(id) {
+                this.edite_mode = true
+                this.comp_edite = this.billboards.find(
+                    (el) => {
+                        return el.id_billboard == id
+                    }
+                )
+                this.id_edite = id
+
+                window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: 'smooth'
+                })
+            },
+            nullebl(){
+                this.edite_mode = false
+                this.comp_edite = {}
             },
             connect_db: function() {
                 this.$http.get("/billboardAPI")

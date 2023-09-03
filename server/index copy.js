@@ -52,8 +52,12 @@ app.delete("/repertoireAPI/:id", async (req,res) => {
     res.send(result)
 })
 
-app.put("/repertoireAPI/:id", jsonParser, async (req,res) => {
-    const result = await db.update_repertoire(req.params.id,req.body)
+app.put("/repertoireAPI/:id", my_multer.single('file'), async (req,res) => {
+    let obj = req.body
+    if (req.file){
+        obj.image = req.file.filename
+    }
+    const result = await db.update_repertoire(req.params.id, obj)
     res.send(result)
 })
 
@@ -122,9 +126,21 @@ app.get("/billboardAPI/:id", async (req,res) => {
 
 app.post("/billboardAPI", multer().array(), async (req,res) => {
     let obj = req.body
-    let url = obj.src_on_map.split('?um=constructor%')[1].split('&source=')[0]
-    obj.src_on_map = url
+    if (obj.src_on_map.includes('https')) {
+        let url = obj.src_on_map.split('?um=constructor%')[1].split('&source=')[0]
+        obj.src_on_map = url
+    }
     const result = await db.post_billboard(obj)
+    res.send(result)
+})
+
+app.put("/billboardAPI/:id", multer().array(), async (req,res) => {
+    let obj = req.body
+    if (obj.src_on_map.includes('https')) {
+        let url = obj.src_on_map.split('?um=constructor%')[1].split('&source=')[0]
+        obj.src_on_map = url
+    }
+    const result = await db.edite_billboard(req.params.id, obj)
     res.send(result)
 })
 

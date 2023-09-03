@@ -26,15 +26,12 @@ function date_get(){
     return date
 }
 
-function loadPreview(){
-    let sf = document.querySelector("input[type='file']").files[0]
-    let self = this
-    let reader = new FileReader()
-    reader.onload = function(re){
-        self.srcc = re.target.result
-    }
-    reader.readAsDataURL(sf)
+function date_get_edite(d){
+    console.log(new Date(new Date(d) - (-4*60*60*1000)).toISOString().replace('T', ' ').split('.')[0].slice(0,-3))
+    let date = new Date(new Date(d) - (-4*60*60*1000)).toISOString().replace('T', ' ').split('.')[0].slice(0,-3)
+    return date
 }
+
 function onDrop(event){
     event.preventDefault()
     const file = event.dataTransfer.files
@@ -58,9 +55,9 @@ module.exports = {
         Vue.prototype.date_format = date_format
         Vue.prototype.time_format = time_format
         Vue.prototype.date_get = date_get
-        Vue.prototype.loadPreview = loadPreview
         Vue.prototype.onDrop = onDrop
         Vue.prototype.years = years
         Vue.prototype.birthday = birthday
+        Vue.prototype.date_get_edite = date_get_edite
     }
 }

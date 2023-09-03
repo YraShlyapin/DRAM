@@ -73,16 +73,27 @@ export async function delete_repertoire(id){
 }
 
 export async function update_repertoire(id,jb){
+    if (jb.image){
+        await pool.query(
+            `UPDATE repertoire
+            SET image = ?
+            WHERE id_repertoire = ?`,
+            [
+                isundefind(jb.image),
+                id
+            ]
+        )
+    }
     await pool.query(
         `UPDATE repertoire
-        SET title = ?, author = ?, description = ?, image = ?, duration = ?
+        SET title = ?, author = ?, description = ?, duration = ?, creation_time_repertoire = ?
         WHERE id_repertoire = ?`,
         [
             isundefind(jb.title),
             isundefind(jb.author),
             isundefind(jb.description),
-            isundefind(jb.image),
             isundefind(jb.duration),
+            isundefind(jb.creation_time_repertoire),
             id
         ]
     )
@@ -129,9 +140,9 @@ export async function delete_billboard(id){
     return row
 }
 
-export async function update_billboard(id,jb){
+export async function edite_billboard(id,jb){
     await pool.query(
-        `UPDATE billboard
+        `UPDATE dram.billboard
         SET id_repertoire = ?, date_time = ?, place = ?, src_on_map = ?
         WHERE id_billboard = ?`,
         [

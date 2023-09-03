@@ -356,7 +356,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-46ecce50", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-46ecce50", __vue__options__)
+    hotAPI.reload("data-v-46ecce50", __vue__options__)
   }
 })()}
 },{"./samples/title.vue":10,"vue":29,"vue-hot-reload-api":26}],6:[function(require,module,exports){
@@ -608,7 +608,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-944df1ea", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-944df1ea", __vue__options__)
+    hotAPI.reload("data-v-944df1ea", __vue__options__)
   }
 })()}
 },{"vue":29,"vue-hot-reload-api":26}],11:[function(require,module,exports){
@@ -640,15 +640,12 @@ function date_get(){
     return date
 }
 
-function loadPreview(){
-    let sf = document.querySelector("input[type='file']").files[0]
-    let self = this
-    let reader = new FileReader()
-    reader.onload = function(re){
-        self.srcc = re.target.result
-    }
-    reader.readAsDataURL(sf)
+function date_get_edite(d){
+    console.log(new Date(new Date(d) - (-4*60*60*1000)).toISOString().replace('T', ' ').split('.')[0].slice(0,-3))
+    let date = new Date(new Date(d) - (-4*60*60*1000)).toISOString().replace('T', ' ').split('.')[0].slice(0,-3)
+    return date
 }
+
 function onDrop(event){
     event.preventDefault()
     const file = event.dataTransfer.files
@@ -672,10 +669,10 @@ module.exports = {
         Vue.prototype.date_format = date_format
         Vue.prototype.time_format = time_format
         Vue.prototype.date_get = date_get
-        Vue.prototype.loadPreview = loadPreview
         Vue.prototype.onDrop = onDrop
         Vue.prototype.years = years
         Vue.prototype.birthday = birthday
+        Vue.prototype.date_get_edite = date_get_edite
     }
 }
 },{}],12:[function(require,module,exports){
@@ -790,7 +787,10 @@ module.exports = {
         return {
             srcc: "../upload/not_found.png",
             repertoires: [],
-            billboards: []
+            billboards: [],
+            edite_mode: false,
+            comp_edite: {},
+            id_edite: 0
         };
     },
     methods: {
@@ -809,6 +809,35 @@ module.exports = {
                 this.connect_db();
             });
         },
+        edite_method: function edite_method(e) {
+            e.preventDefault();
+            var form = e.target;
+            console.log(form);
+            var formData = new FormData(form);
+            this.$http.put("/billboardAPI/" + this.id_edite, formData).then(function (res) {
+                this.connect_db();
+                form.reset();
+                this.edite_mode = false;
+            });
+        },
+        edite_scroll: function edite_scroll(id) {
+            this.edite_mode = true;
+            this.comp_edite = this.billboards.find(function (el) {
+                return el.id_billboard == id;
+            });
+            this.id_edite = id;
+
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
+        },
+        nullebl: function nullebl() {
+            this.edite_mode = false;
+            this.comp_edite = {};
+        },
+
         connect_db: function connect_db() {
             this.$http.get("/billboardAPI").then(function (res) {
                 this.billboards = res.body;
@@ -827,7 +856,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"main"}},[_c('form',{attrs:{"id":"form"},on:{"submit":_vm.post_method}},[_c('select',{attrs:{"name":"id_repertoire"}},_vm._l((_vm.repertoires),function(repertoire){return _c('option',{domProps:{"value":repertoire.id_repertoire}},[_vm._v("\n                "+_vm._s(repertoire.title)+"\n            ")])})),_vm._v(" "),_c('input',{attrs:{"type":"datetime-local","name":"date_time"},domProps:{"value":_vm.date_get()}}),_vm._v(" "),_c('input',{attrs:{"type":"text","name":"place","placeholder":"Место"}}),_vm._v(" "),_c('input',{attrs:{"type":"text","name":"src_on_map","placeholder":"ссылка на карту"}}),_vm._v(" "),_c('button',{attrs:{"type":"submit"}},[_vm._v("отправить")])]),_vm._v(" "),_c('div',[_c('div',{attrs:{"id":"mini_repertoire1"}},_vm._l((_vm.billboards),function(billboard){return _c('div',{staticClass:"block_mini_repertoire"},[_c('img',{attrs:{"src":'../upload/' + billboard.image,"onerror":"this.src = '../upload/not_found.png'"}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"mini_repertoire_title"},[_vm._v(_vm._s(billboard.title))]),_vm._v(" "),_c('p',{staticClass:"mini_repertoire_title mini_repertoire_author"},[_vm._v(_vm._s(_vm.date_format(billboard.date_time)))]),_vm._v(" "),_c('p',{staticClass:"mini_repertoire_text"},[_vm._v(_vm._s(billboard.place))]),_vm._v(" "),_c('p',{staticClass:"mini_repertoire_text"},[_vm._v(_vm._s(billboard.src_on_map))])]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.delete_method(billboard.id_billboard)}}},[_vm._v("удалить")])])}))])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"main"}},[(!_vm.edite_mode)?_c('form',{attrs:{"id":"form"},on:{"submit":_vm.post_method}},[_c('select',{attrs:{"name":"id_repertoire"}},_vm._l((_vm.repertoires),function(repertoire){return _c('option',{domProps:{"value":repertoire.id_repertoire}},[_vm._v("\n                "+_vm._s(repertoire.title)+"\n            ")])})),_vm._v(" "),_c('input',{attrs:{"type":"datetime-local","name":"date_time"},domProps:{"value":_vm.date_get()}}),_vm._v(" "),_c('input',{attrs:{"type":"text","name":"place","placeholder":"Место"}}),_vm._v(" "),_c('input',{attrs:{"type":"text","name":"src_on_map","placeholder":"ссылка на карту"}}),_vm._v(" "),_c('button',{attrs:{"type":"submit"}},[_vm._v("отправить")])]):_c('form',{attrs:{"id":"form"},on:{"submit":_vm.edite_method}},[_c('select',{attrs:{"name":"id_repertoire"}},_vm._l((_vm.repertoires),function(repertoire){return _c('option',{domProps:{"value":repertoire.id_repertoire,"selected":repertoire.id_repertoire == _vm.comp_edite.id_repertoire}},[_vm._v("\n                "+_vm._s(repertoire.title)+"\n            ")])})),_vm._v(" "),_c('input',{attrs:{"type":"datetime-local","name":"date_time"},domProps:{"value":_vm.date_get_edite(_vm.comp_edite.date_time)}}),_vm._v(" "),_c('input',{attrs:{"type":"text","name":"place","placeholder":"Место"},domProps:{"value":_vm.comp_edite.place}}),_vm._v(" "),_c('input',{attrs:{"type":"text","name":"src_on_map","placeholder":"ссылка на карту"},domProps:{"value":_vm.comp_edite.src_on_map}}),_vm._v(" "),_c('button',{attrs:{"type":"submit"}},[_vm._v("отправить")]),_vm._v(" "),_c('button',{attrs:{"type":"button"},on:{"click":_vm.nullebl}},[_vm._v("отмена")])]),_vm._v(" "),_c('div',[_c('div',{attrs:{"id":"mini_repertoire1"}},_vm._l((_vm.billboards),function(billboard){return _c('div',{staticClass:"block_mini_repertoire"},[_c('img',{attrs:{"src":'../upload/' + billboard.image,"onerror":"this.src = '../upload/not_found.png'"}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"mini_repertoire_title"},[_vm._v(_vm._s(billboard.title))]),_vm._v(" "),_c('p',{staticClass:"mini_repertoire_title mini_repertoire_author"},[_vm._v(_vm._s(_vm.date_format(billboard.date_time)))]),_vm._v(" "),_c('p',{staticClass:"mini_repertoire_text"},[_vm._v(_vm._s(billboard.place))]),_vm._v(" "),_c('p',{staticClass:"mini_repertoire_text"},[_vm._v(_vm._s(billboard.src_on_map))])]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.delete_method(billboard.id_billboard)}}},[_vm._v("удалить")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.edite_scroll(billboard.id_billboard)}}},[_vm._v("редактировать")])])}))])])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -872,7 +901,6 @@ module.exports = {
             if (this.id_filter_repertoire) {
                 var idi = this.id_filter_repertoire;
                 return arr.filter(function (el) {
-                    console.log(el.id_repertoire + '' + el.id_person);
                     return el.id_repertoire === idi;
                 });
             }
@@ -972,6 +1000,16 @@ module.exports = {
                 form.reset();
             });
         },
+        loadPreview: function loadPreview() {
+            var sf = document.querySelector("input[type='file']").files[0];
+            var self = this;
+            var reader = new FileReader();
+            reader.onload = function (re) {
+                self.srcc = re.target.result;
+            };
+            reader.readAsDataURL(sf);
+        },
+
         delete_method: function delete_method(id) {
             this.$http.delete("/personAPI/" + id).then(function (res) {
                 this.connect_db();
@@ -991,7 +1029,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"main"}},[_c('form',{attrs:{"id":"form"},on:{"submit":_vm.post_method}},[_c('div',{attrs:{"id":"draggble","draggable":"true"},on:{"@dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}},[_c('img',{attrs:{"src":_vm.srcc},on:{"dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}}),_vm._v(" "),_c('input',{attrs:{"type":"file","name":"file","id":"file","accept":"image/*"},on:{"change":_vm.loadPreview}})]),_vm._v(" "),_c('input',{attrs:{"type":"text","name":"name","placeholder":"Имя и Фамилия"}}),_vm._v(" "),_c('textarea',{attrs:{"name":"description","cols":"30","rows":"10","placeholder":"Описание"}}),_vm._v(" "),_c('input',{attrs:{"type":"date","name":"birthday"},domProps:{"value":_vm.date_get()}}),_vm._v(" "),_vm._m(0),_vm._v(" "),_c('button',{attrs:{"type":"submit"}},[_vm._v("отправить")])]),_vm._v(" "),_c('div',[_c('div',{attrs:{"id":"mini_repertoire1"}},_vm._l((_vm.persons),function(person){return _c('div',{staticClass:"block_mini_repertoire"},[_c('img',{attrs:{"src":'../upload/' + person.image,"onerror":"this.src = '../upload/not_found.png'"}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"mini_repertoire_title"},[_vm._v(_vm._s(person.name))]),_vm._v(" "),_c('p',{staticClass:"mini_repertoire_title mini_repertoire_author"},[_vm._v(_vm._s(_vm.birthday(person.birthday))+")")]),_vm._v(" "),_c('p',{staticClass:"mini_repertoire_text"},[_vm._v(_vm._s(person.description))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(person.real === 1 ? "участник антрепризы" : "не участник антрепризы"))])]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.delete_method(person.id_person)}}},[_vm._v("удалить")])])}))])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"main"}},[_c('form',{attrs:{"id":"form"},on:{"submit":_vm.post_method}},[_c('div',{attrs:{"id":"draggble","draggable":"true"},on:{"@dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}},[_c('img',{attrs:{"src":_vm.srcc},on:{"dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}}),_vm._v(" "),_c('input',{attrs:{"type":"file","name":"file","id":"file","accept":"image/*"},on:{"change":_vm.loadPreview}})]),_vm._v(" "),_c('input',{attrs:{"type":"text","name":"name","placeholder":"Имя и Фамилия"}}),_vm._v(" "),_c('textarea',{attrs:{"name":"description","cols":"30","rows":"10","placeholder":"Описание"}}),_vm._v(" "),_c('input',{attrs:{"type":"date","name":"birthday"},domProps:{"value":_vm.date_get()}}),_vm._v(" "),_vm._m(0),_vm._v(" "),_c('button',{attrs:{"type":"submit"}},[_vm._v("отправить")])]),_vm._v(" "),_c('div',[_c('div',{attrs:{"id":"mini_repertoire1"}},_vm._l((_vm.persons),function(person){return _c('div',{staticClass:"block_mini_repertoire"},[_c('img',{attrs:{"src":'../upload/' + person.image,"onerror":"this.src = '../upload/not_found.png'"}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"mini_repertoire_title"},[_vm._v(_vm._s(person.name))]),_vm._v(" "),_c('p',{staticClass:"mini_repertoire_title mini_repertoire_author"},[_vm._v(_vm._s(_vm.birthday(person.birthday)))]),_vm._v(" "),_c('p',{staticClass:"mini_repertoire_text"},[_vm._v(_vm._s(person.description))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(person.real === 1 ? "участник антрепризы" : "не участник антрепризы"))])]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.delete_method(person.id_person)}}},[_vm._v("удалить")])])}))])])}
 __vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('label',{attrs:{"for":"real"}},[_vm._v("Состоит ли в антрепризе ")]),_vm._v(" "),_c('input',{attrs:{"type":"checkbox","name":"real","checked":""}})])}]
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -1011,7 +1049,10 @@ module.exports = {
     data: function data() {
         return {
             srcc: "../upload/not_found.png",
-            repertoires: []
+            repertoires: [],
+            edite_mode: false,
+            comp_edite: {},
+            id_edite: 0
         };
     },
     methods: {
@@ -1030,6 +1071,46 @@ module.exports = {
                 this.connect_db();
             });
         },
+        loadPreview: function loadPreview() {
+            var sf = document.querySelector("input[type='file']").files[0];
+            var self = this;
+            var reader = new FileReader();
+            reader.onload = function (re) {
+                self.srcc = re.target.result;
+            };
+            reader.readAsDataURL(sf);
+        },
+        edite_method: function edite_method(e) {
+            e.preventDefault();
+            var form = e.target;
+            console.log(form);
+            var formData = new FormData(form);
+            this.$http.put("/repertoireAPI/" + this.id_edite, formData).then(function (res) {
+                this.connect_db();
+                form.reset();
+                this.edite_mode = false;
+            });
+        },
+        edite_scroll: function edite_scroll(id) {
+            this.edite_mode = true;
+            this.comp_edite = this.repertoires.find(function (el) {
+                return el.id_repertoire == id;
+            });
+            this.id_edite = id;
+
+            this.srcc = '../upload/' + (this.comp_edite.image ? this.comp_edite.image : 'not_found.png');
+
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
+        },
+        nullebl: function nullebl() {
+            this.edite_mode = false;
+            this.comp_edite = {};
+        },
+
         connect_db: function connect_db() {
             this.$http.get("/repertoireAPI").then(function (res) {
                 this.repertoires = res.body;
@@ -1044,7 +1125,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"main"}},[_c('form',{attrs:{"id":"form"},on:{"submit":_vm.post_method}},[_c('div',{attrs:{"id":"draggble","draggable":"true"},on:{"@dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}},[_c('img',{attrs:{"src":_vm.srcc},on:{"dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}}),_vm._v(" "),_c('input',{attrs:{"type":"file","name":"file","id":"file","accept":"image/*"},on:{"change":_vm.loadPreview}})]),_vm._v(" "),_c('input',{attrs:{"type":"text","name":"title","placeholder":"Название"}}),_vm._v(" "),_c('input',{attrs:{"type":"text","name":"author","placeholder":"Автор"}}),_vm._v(" "),_c('textarea',{attrs:{"name":"description","cols":"30","rows":"10","placeholder":"Описание"}}),_vm._v(" "),_c('input',{attrs:{"type":"number","name":"duration","min":"0","max":"255","step":"1","placeholder":"Длительность до 255 мин"}}),_vm._v(" "),_c('input',{attrs:{"type":"datetime-local","name":"creation_time_repertoire"},domProps:{"value":_vm.date_get()}}),_vm._v(" "),_c('button',{attrs:{"type":"submit"}},[_vm._v("отправить")])]),_vm._v(" "),_c('div',[_c('div',{attrs:{"id":"mini_repertoire1"}},_vm._l((_vm.repertoires),function(repertoire){return _c('div',{staticClass:"block_mini_repertoire"},[_c('img',{attrs:{"src":'../upload/' + repertoire.image,"onerror":"this.src = '../upload/not_found.png'"}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"mini_repertoire_title"},[_vm._v(_vm._s(repertoire.title))]),_vm._v(" "),_c('p',{staticClass:"mini_repertoire_title mini_repertoire_author"},[_vm._v(_vm._s(repertoire.author))]),_vm._v(" "),_c('p',{staticClass:"mini_repertoire_text"},[_vm._v(_vm._s(repertoire.description))])]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.delete_method(repertoire.id_repertoire)}}},[_vm._v("удалить")])])}))])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"main"}},[(!_vm.edite_mode)?_c('form',{attrs:{"id":"form"},on:{"submit":_vm.post_method}},[_c('div',{attrs:{"id":"draggble","draggable":"true"},on:{"@dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}},[_c('img',{attrs:{"src":_vm.srcc},on:{"dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}}),_vm._v(" "),_c('input',{attrs:{"type":"file","name":"file","id":"file","accept":"image/*"},on:{"change":_vm.loadPreview}})]),_vm._v(" "),_c('input',{attrs:{"type":"text","name":"title","placeholder":"Название"}}),_vm._v(" "),_c('input',{attrs:{"type":"text","name":"author","placeholder":"Автор"}}),_vm._v(" "),_c('textarea',{attrs:{"name":"description","cols":"30","rows":"10","placeholder":"Описание"}}),_vm._v(" "),_c('input',{attrs:{"type":"number","name":"duration","min":"0","max":"255","step":"1","placeholder":"Длительность до 255 мин"}}),_vm._v(" "),_c('input',{attrs:{"type":"datetime-local","name":"creation_time_repertoire"},domProps:{"value":_vm.date_get()}}),_vm._v(" "),_c('button',{attrs:{"type":"submit"}},[_vm._v("отправить")])]):_c('form',{attrs:{"id":"form"},on:{"submit":_vm.edite_method}},[_c('div',{attrs:{"id":"draggble","draggable":"true"},on:{"@dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}},[_c('img',{attrs:{"src":_vm.srcc},on:{"dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}}),_vm._v(" "),_c('input',{attrs:{"type":"file","name":"file","id":"file","accept":"image/*"},on:{"change":_vm.loadPreview}})]),_vm._v(" "),_c('input',{attrs:{"type":"text","name":"title","placeholder":"Название"},domProps:{"value":_vm.comp_edite.title}}),_vm._v(" "),_c('input',{attrs:{"type":"text","name":"author","placeholder":"Автор"},domProps:{"value":_vm.comp_edite.author}}),_vm._v(" "),_c('textarea',{attrs:{"name":"description","cols":"30","rows":"10","placeholder":"Описание"},domProps:{"value":_vm.comp_edite.description}}),_vm._v(" "),_c('input',{attrs:{"type":"number","name":"duration","min":"0","max":"255","step":"1","placeholder":"Длительность до 255 мин"},domProps:{"value":_vm.comp_edite.duration}}),_vm._v(" "),_c('input',{attrs:{"type":"datetime-local","name":"creation_time_repertoire"},domProps:{"value":_vm.date_get_edite(_vm.comp_edite.creation_time_repertoire)}}),_vm._v(" "),_c('button',{attrs:{"type":"submit"}},[_vm._v("отправить")]),_vm._v(" "),_c('button',{attrs:{"type":"button"},on:{"click":_vm.nullebl}},[_vm._v("отмена")])]),_vm._v(" "),_c('div',[_c('div',{attrs:{"id":"mini_repertoire1"}},_vm._l((_vm.repertoires),function(repertoire){return _c('div',{staticClass:"block_mini_repertoire"},[_c('img',{attrs:{"src":'../upload/' + repertoire.image,"onerror":"this.src = '../upload/not_found.png'"}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"mini_repertoire_title"},[_vm._v(_vm._s(repertoire.title))]),_vm._v(" "),_c('p',{staticClass:"mini_repertoire_title mini_repertoire_author"},[_vm._v(_vm._s(repertoire.author))]),_vm._v(" "),_c('p',{staticClass:"mini_repertoire_text"},[_vm._v(_vm._s(repertoire.description))])]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.delete_method(repertoire.id_repertoire)}}},[_vm._v("удалить")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.edite_scroll(repertoire.id_repertoire)}}},[_vm._v("редактировать")])])}))])])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -1053,7 +1134,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-c13887ce", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-c13887ce", __vue__options__)
+    hotAPI.reload("data-v-c13887ce", __vue__options__)
   }
 })()}
 },{"vue":29,"vue-hot-reload-api":26}],20:[function(require,module,exports){
@@ -1083,7 +1164,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-265d1020", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-265d1020", __vue__options__)
+    hotAPI.reload("data-v-265d1020", __vue__options__)
   }
 })()}
 },{"vue":29,"vue-hot-reload-api":26}],22:[function(require,module,exports){
@@ -1098,7 +1179,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-89dde120", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-89dde120", __vue__options__)
+    hotAPI.reload("data-v-89dde120", __vue__options__)
   }
 })()}
 },{"vue":29,"vue-hot-reload-api":26}],23:[function(require,module,exports){
