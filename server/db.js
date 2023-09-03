@@ -109,7 +109,7 @@ export async function post_billboard(jb){
         `INSERT INTO billboard (id_repertoire, date_time, place, src_on_map)
         VALUES (?, ?, ?, ?)`,
         [
-            isundefind(jb.id_repertoire),
+            Number(isundefind(jb.id_repertoire)),
             isundefind(jb.date_time),
             isundefind(jb.place),
             isundefind(jb.src_on_map)
@@ -135,7 +135,7 @@ export async function update_billboard(id,jb){
         SET id_repertoire = ?, date_time = ?, place = ?, src_on_map = ?
         WHERE id_billboard = ?`,
         [
-            isundefind(jb.id_repertoire),
+            Number(isundefind(jb.id_repertoire)),
             isundefind(jb.date_time),
             isundefind(jb.place),
             isundefind(jb.src_on_map),
@@ -192,6 +192,35 @@ export async function delete_person(id){
 }
 
 //NOTE: cast
+export async function get_all_cast(){
+    const [row] = await pool.query(
+        `Select person.id_person, repertoire.id_repertoire, person.name, repertoire.title, repertoire.image, cast.role_person, cast.id_cast, cast.is_head from repertoire
+        inner join cast on cast.id_repertoire = repertoire.id_repertoire
+        inner join person on person.id_person = cast.id_person order by cast.id_repertoire, cast.is_head desc`
+    )
+    return row
+}
+
+export async function post_cast(jb){
+    await pool.query(
+        `INSERT INTO dram.cast (id_person, id_repertoire, role_person, is_head)
+        VALUES (?, ?, ?, ?)`,
+        [
+            Number(isundefind(jb.id_person)),
+            Number(isundefind(jb.id_repertoire)),
+            isundefind(jb.role_person),
+            ison(jb.is_head)
+        ]
+    )
+}
+
+export async function delete_cast(id){
+    await pool.query(
+        `delete from dram.cast where cast.id_cast = ?`,
+        [id]
+    )
+}
+
 export async function get_cast_for(id){
     const [row] = await pool.query(
         `Select person.name, cast.role_person, cast.id_cast from repertoire

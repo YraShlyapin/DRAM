@@ -6,7 +6,7 @@
                     <p id="repertoire_info_title">{{ billboard.title }}</p>
                     <p>{{ billboard.author }}</p>
                 </div>
-                <p v-for="head in cast_head">{{head.role_person}} - {{head.name}}</p>
+                <p v-for="head in cast_head">{{head.role_person}} - {{head.name}}<br></p>
                 <p>{{ billboard.description }}</p>
 
                 <p  v-if="billboard.duration">{{ time_format(billboard.duration) }}</p>

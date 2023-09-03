@@ -2,12 +2,12 @@
     <div id="main">
         <form v-on:submit="post_method" id="form">
             <div id="draggble" draggable="true" @@dragover.prevent @drop.stop.prevent="onDrop">
-                <img :src="srcc" alt="" @dragover.prevent @drop.stop.prevent="onDrop">
+                <img :src="srcc"  @dragover.prevent @drop.stop.prevent="onDrop">
                 <input type="file" name="file" id="file" accept="image/*" @change="loadPreview">
             </div>
             <input type="text" name="title" placeholder="Название">
             <input type="text" name="author" placeholder="Автор">
-            <textarea name="description" id="" cols="30" rows="10" placeholder="Описание"></textarea>
+            <textarea name="description"  cols="30" rows="10" placeholder="Описание"></textarea>
             <input type="number" name="duration" min="0" max="255" step="1" placeholder="Длительность до 255 мин">
             <input type="datetime-local" name="creation_time_repertoire" :value="date_get()">
             <button type="submit">отправить</button>

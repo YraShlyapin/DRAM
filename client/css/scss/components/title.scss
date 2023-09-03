@@ -1,5 +1,7 @@
 .section_name_wrapper{
-    @include display(flex,$al:center,$fd:column);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 
     .section_name{
         
@@ -17,9 +19,16 @@
         border: $primary-color solid 5px;
         border-radius: 10px;
     }
+}
 
-    .mini{
+.mini{
+    .section_name {
+        white-space: nowrap;
+    }
+
+    .applicant{
         width: 100%;
+        margin-bottom: 0;
     }
 }
 
@@ -40,6 +49,14 @@
             @media (max-width: 340px) {
                 width: 72%;
                 min-width: 0;
+            }
+        }
+    }
+
+    .mini {
+        .applicant{
+            @media (max-width:1100px) {
+                margin-bottom: 0;
             }
         }
     }

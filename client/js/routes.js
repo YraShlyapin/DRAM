@@ -12,6 +12,7 @@ let billboard_info = require("./components/billboard_info.vue")
 let a_repertoire = require("./page/components/admin/admin_repertoire.vue")
 let a_person = require("./page/components/admin/admin_person.vue")
 let a_billboard = require("./page/components/admin/admin_billboard.vue")
+let a_cast = require("./page/components/admin/admin_cast.vue")
 
 let err404 = require("./page/components/err/err404.vue")
 
@@ -38,6 +39,7 @@ module.exports = [
             {path: "", component: a_repertoire},
             {path: "person", component: a_person},
             {path: "billboard", component: a_billboard},
+            {path: "cast", component: a_cast},
 
         ],
         meta: { requiresAuth: true }

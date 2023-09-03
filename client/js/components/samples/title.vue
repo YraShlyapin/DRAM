@@ -1,7 +1,7 @@
 <template>
-    <div class="section_name_wrapper">
+    <div class="section_name_wrapper" :class="{ mini: is_mini }">
         <p class="section_name">{{ title }}</p>
-        <hr class="applicant" :class="{ mini: is_mini }">
+        <hr class="applicant">
     </div>
 </template>
 <script>

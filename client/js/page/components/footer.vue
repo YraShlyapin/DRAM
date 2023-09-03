@@ -1,7 +1,7 @@
 <template>
     <div id="footer">
         <div id="footer_first_segment" class="footer_segments">
-            <img src="../image/text_full.png" alt="" width="100%">
+            <img src="../image/text_full.png"  width="100%">
         </div>
         <div id="footer_second_segment" class="footer_segments">
             <div>

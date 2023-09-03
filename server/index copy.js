@@ -84,6 +84,21 @@ app.delete("/personAPI/:id", async (req,res) => {
 })
 
 //NOTE: cast API
+app.get("/castAPI", async (req,res) => {
+    const result = await db.get_all_cast()
+    res.send(result)
+})
+
+app.post("/castAPI", multer().array(), async (req,res) => {
+    await db.post_cast(req.body)
+    res.send('ok')
+})
+
+app.delete("/castAPI/:id", async (req,res) => {
+    await db.delete_cast(req.params.id)
+    res.send('ok')
+})
+
 app.get("/castAPI/:id", async (req,res) => {
     const result = await db.get_cast_for(req.params.id)
     res.send(result)

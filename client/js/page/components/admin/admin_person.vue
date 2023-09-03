@@ -2,7 +2,7 @@
     <div id="main">
         <form v-on:submit="post_method" id="form">
             <div id="draggble" draggable="true" @@dragover.prevent @drop.stop.prevent="onDrop">
-                <img :src="srcc" alt="" @dragover.prevent @drop.stop.prevent="onDrop">
+                <img :src="srcc"  @dragover.prevent @drop.stop.prevent="onDrop">
                 <input type="file" name="file" id="file" accept="image/*" @change="loadPreview">
             </div>
             <input type="text" name="name" placeholder="Имя и Фамилия">

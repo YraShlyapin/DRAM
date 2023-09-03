@@ -1,7 +1,7 @@
 <template>
     <div id="main">
         <form v-on:submit="post_method" id="form">
-            <select name="id_repertoire" id="">
+            <select name="id_repertoire" >
                 <option v-for="repertoire in repertoires"
                     :value="repertoire.id_repertoire"
                 >
