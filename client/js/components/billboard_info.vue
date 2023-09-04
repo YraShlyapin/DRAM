@@ -48,8 +48,8 @@
             }
         },
         methods: {
-            connect_db: function() {
-                this.$http.get(`/billboardAPI/${ this.$route.params['id'] }`)
+            connect_db: function(id) {
+                this.$http.get(`/billboardAPI/${ id }`)
                     .then(function(res) {
                         this.billboard = res.body
 
@@ -65,8 +65,12 @@
                     })
             }
         },
-        mounted: function() {
-            this.connect_db()
+        mounted() {
+            this.connect_db(this.$route.params['id'])
+        },
+        beforeRouteUpdate(to, from, next)  {
+            this.connect_db(to.params.id)
+            next()
         }
     }
 </script>

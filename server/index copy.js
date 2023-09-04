@@ -19,7 +19,7 @@ let urlencodedParser  = bodyParser.urlencoded({ extended: false })
 let jsonParser = bodyParser.json()
 
 app.get("/", function(req,res) {
-    res.redirect("index.html")
+    res.send("index.html")
 })
 
 //NOTE: repertoire API
@@ -57,7 +57,7 @@ app.put("/repertoireAPI/:id", my_multer.single('file'), async (req,res) => {
     if (req.file){
         obj.image = req.file.filename
     }
-    const result = await db.update_repertoire(req.params.id, obj)
+    const result = await db.edite_repertoire(req.params.id, obj)
     res.send(result)
 })
 
@@ -109,6 +109,11 @@ app.post("/castAPI", multer().array(), async (req,res) => {
 
 app.delete("/castAPI/:id", async (req,res) => {
     await db.delete_cast(req.params.id)
+    res.send('ok')
+})
+
+app.put("/castAPI/:id", multer().array(), async (req,res) => {
+    await db.edite_cast(req.params.id, req.body)
     res.send('ok')
 })
 

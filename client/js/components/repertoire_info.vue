@@ -47,26 +47,31 @@
             }
         },
         methods: {
-            connect_db: function() {
-                this.$http.get(`/repertoireAPI/${this.$route.params['id']}`)
+            connect_db: function(id) {
+                this.$http.get(`/repertoireAPI/${id}`)
                     .then(function(res) {
                         this.repertoire = res.body
 
-                        this.$http.get(`/castHeadAPI/${this.$route.params['id']}`)
+                        this.$http.get(`/castHeadAPI/${id}`)
                             .then(function(res) {
                                 this.cast_head = res.body
                             })
 
-                        this.$http.get(`/castAPI/${this.$route.params['id']}`)
+                        this.$http.get(`/castAPI/${id}`)
                             .then(function(res) {
                                 this.cast = res.body
                             })
                     })
             }
         },
-        mounted: function() {
-            this.connect_db()
+        mounted() {
+            this.connect_db(this.$route.params['id'])
         },
+        beforeRouteUpdate(to, from, next)  {
+            this.connect_db(to.params.id)
+            next()
+        }
+        
         //updated() {
         //    this.$nextTick(function () {
         //        this.connect_db()

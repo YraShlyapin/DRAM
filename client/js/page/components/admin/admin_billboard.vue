@@ -64,7 +64,9 @@
             post_method: function(e) {
                 e.preventDefault()
                 let form = e.target
-                console.log(form)
+                if (form.id_repertoire.value == ''){
+                    return
+                }
                 let formData = new FormData(form)
                 this.$http.post("/billboardAPI", formData)
                     .then(function(res) {

@@ -72,7 +72,7 @@ export async function delete_repertoire(id){
     return row
 }
 
-export async function update_repertoire(id,jb){
+export async function edite_repertoire(id,jb){
     if (jb.image){
         await pool.query(
             `UPDATE repertoire
@@ -257,6 +257,21 @@ export async function delete_cast(id){
     await pool.query(
         `delete from dram.cast where cast.id_cast = ?`,
         [id]
+    )
+}
+
+export async function edite_cast(id,jb){
+    await pool.query(
+        `UPDATE dram.cast
+        SET id_person = ?, id_repertoire = ?, role_person = ?, is_head = ?
+        WHERE id_cast = ?`,
+        [
+            isundefind(jb.id_person),
+            isundefind(jb.id_repertoire),
+            isundefind(jb.role_person),
+            ison(jb.is_head),
+            id
+        ]
     )
 }
 

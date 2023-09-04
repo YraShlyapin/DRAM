@@ -1,6 +1,6 @@
 <template>
     <div id="main">
-        <form v-on:submit="post_method" id="form">
+        <form v-on:submit="post_method" id="form" v-if="!edite_mode">
             <select name="id_repertoire">
                 <option value="" disabled selected hidden>выберить спектакль из репертуара</option>
                 <option v-for="repertoire in repertoires"
@@ -23,6 +23,31 @@
                 <input type="checkbox" name="is_head">
             </div>
             <button type="submit">отправить</button>
+        </form>
+        <form v-on:submit="edite_method" id="form" v-else>
+            <select name="id_repertoire">
+                <option v-for="repertoire in repertoires"
+                    :value="repertoire.id_repertoire"
+                    :selected="comp_edite.id_repertoire == repertoire.id_repertoire"
+                >
+                    {{ repertoire.title }}
+                </option>
+            </select>
+            <select name="id_person">
+                <option v-for="person in persons"
+                    :value="person.id_person"
+                    :selected="comp_edite.id_person == person.id_person"
+                >
+                    {{ person.name }}
+                </option>
+            </select>
+            <input type="text" name="role_person" placeholder="Роль" :value="comp_edite.role_person">
+            <div>
+                <label for="is_head">Руководитель </label>
+                <input type="checkbox" name="is_head" :checked="comp_edite.is_head">
+            </div>
+            <button type="submit">отправить</button>
+            <button @click="nullebl" type="button">отмена</button>
         </form>
         <select v-model="id_filter_repertoire">
             <option value="false">все</option>
@@ -53,6 +78,7 @@
                         <p class="mini_repertoire_text">{{ cast.is_head == 1 ? 'Руководящий' : 'Актер' }}</p>
                     </div>
                     <button @click="delete_method(cast.id_cast)">удалить</button>
+                    <button @click="edite_scroll(cast.id_cast)">редактировать</button>
                 </div>
             </div>
         </div>
@@ -66,14 +92,16 @@
                 persons: [],
                 casts: [],
                 id_filter_repertoire: false,
-                id_filter_person: false
+                id_filter_person: false,
+                edite_mode: false,
+                comp_edite: {},
+                id_edite: 0
             }
         },
         methods: {
             post_method: function(e) {
                 e.preventDefault()
                 let form = e.target
-                console.log(form)
                 if (form.id_repertoire.value == '' || form.id_person.value == ''){
                     return
                 }
@@ -88,6 +116,37 @@
                     .then(function(res) {
                         this.connect_db()
                     })
+            },
+            edite_method(e) {
+                e.preventDefault()
+                let form = e.target
+                console.log(form)
+                let formData = new FormData(form)
+                this.$http.put(`/castAPI/${this.id_edite}`, formData)
+                    .then(function(res) {
+                        this.connect_db()
+                        form.reset()
+                        this.edite_mode = false
+                    })
+            },
+            edite_scroll(id) {
+                this.edite_mode = true
+                this.comp_edite = this.casts.find(
+                    (el) => {
+                        return el.id_cast == id
+                    }
+                )
+                this.id_edite = id
+
+                window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: 'smooth'
+                })
+            },
+            nullebl(){
+                this.edite_mode = false
+                this.comp_edite = {}
             },
             filter_func_repertoire(arr) {
                 if (this.id_filter_repertoire) {

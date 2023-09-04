@@ -325,8 +325,8 @@ module.exports = {
         };
     },
     methods: {
-        connect_db: function connect_db() {
-            this.$http.get('/billboardAPI/' + this.$route.params['id']).then(function (res) {
+        connect_db: function connect_db(id) {
+            this.$http.get('/billboardAPI/' + id).then(function (res) {
                 this.billboard = res.body;
 
                 this.$http.get('/castHeadAPI/' + this.billboard.id_repertoire).then(function (res) {
@@ -340,7 +340,11 @@ module.exports = {
         }
     },
     mounted: function mounted() {
-        this.connect_db();
+        this.connect_db(this.$route.params['id']);
+    },
+    beforeRouteUpdate: function beforeRouteUpdate(to, from, next) {
+        this.connect_db(to.params.id);
+        next();
     }
 };
 })()
@@ -356,7 +360,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-46ecce50", __vue__options__)
   } else {
-    hotAPI.reload("data-v-46ecce50", __vue__options__)
+    hotAPI.rerender("data-v-46ecce50", __vue__options__)
   }
 })()}
 },{"./samples/title.vue":10,"vue":29,"vue-hot-reload-api":26}],6:[function(require,module,exports){
@@ -427,7 +431,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-6445f9e3", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-6445f9e3", __vue__options__)
+    hotAPI.reload("data-v-6445f9e3", __vue__options__)
   }
 })()}
 },{"./samples/title.vue":10,"vue":29,"vue-hot-reload-api":26}],7:[function(require,module,exports){
@@ -544,22 +548,26 @@ module.exports = {
         };
     },
     methods: {
-        connect_db: function connect_db() {
-            this.$http.get('/repertoireAPI/' + this.$route.params['id']).then(function (res) {
+        connect_db: function connect_db(id) {
+            this.$http.get('/repertoireAPI/' + id).then(function (res) {
                 this.repertoire = res.body;
 
-                this.$http.get('/castHeadAPI/' + this.$route.params['id']).then(function (res) {
+                this.$http.get('/castHeadAPI/' + id).then(function (res) {
                     this.cast_head = res.body;
                 });
 
-                this.$http.get('/castAPI/' + this.$route.params['id']).then(function (res) {
+                this.$http.get('/castAPI/' + id).then(function (res) {
                     this.cast = res.body;
                 });
             });
         }
     },
     mounted: function mounted() {
-        this.connect_db();
+        this.connect_db(this.$route.params['id']);
+    },
+    beforeRouteUpdate: function beforeRouteUpdate(to, from, next) {
+        this.connect_db(to.params.id);
+        next();
     }
 };
 })()
@@ -690,6 +698,7 @@ Vue.use(VueResource)
 Vue.use(VueRouter)
 
 let router = new VueRouter({
+    // mode: 'history',
     routes: routes,
     scrollBehavior (to, from, savedPosition) {
         return { x: 0, y:0 }
@@ -797,7 +806,9 @@ module.exports = {
         post_method: function post_method(e) {
             e.preventDefault();
             var form = e.target;
-            console.log(form);
+            if (form.id_repertoire.value == '') {
+                return;
+            }
             var formData = new FormData(form);
             this.$http.post("/billboardAPI", formData).then(function (res) {
                 this.connect_db();
@@ -865,7 +876,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-535bcc4d", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-535bcc4d", __vue__options__)
+    hotAPI.reload("data-v-535bcc4d", __vue__options__)
   }
 })()}
 },{"vue":29,"vue-hot-reload-api":26}],16:[function(require,module,exports){
@@ -879,14 +890,16 @@ module.exports = {
             persons: [],
             casts: [],
             id_filter_repertoire: false,
-            id_filter_person: false
+            id_filter_person: false,
+            edite_mode: false,
+            comp_edite: {},
+            id_edite: 0
         };
     },
     methods: {
         post_method: function post_method(e) {
             e.preventDefault();
             var form = e.target;
-            console.log(form);
             if (form.id_repertoire.value == '' || form.id_person.value == '') {
                 return;
             }
@@ -899,6 +912,34 @@ module.exports = {
             this.$http.delete('/castAPI/' + id).then(function (res) {
                 this.connect_db();
             });
+        },
+        edite_method: function edite_method(e) {
+            e.preventDefault();
+            var form = e.target;
+            console.log(form);
+            var formData = new FormData(form);
+            this.$http.put('/castAPI/' + this.id_edite, formData).then(function (res) {
+                this.connect_db();
+                form.reset();
+                this.edite_mode = false;
+            });
+        },
+        edite_scroll: function edite_scroll(id) {
+            this.edite_mode = true;
+            this.comp_edite = this.casts.find(function (el) {
+                return el.id_cast == id;
+            });
+            this.id_edite = id;
+
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
+        },
+        nullebl: function nullebl() {
+            this.edite_mode = false;
+            this.comp_edite = {};
         },
         filter_func_repertoire: function filter_func_repertoire(arr) {
             if (this.id_filter_repertoire) {
@@ -939,7 +980,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"main"}},[_c('form',{attrs:{"id":"form"},on:{"submit":_vm.post_method}},[_c('select',{attrs:{"name":"id_repertoire"}},[_c('option',{attrs:{"value":"","disabled":"","selected":"","hidden":""}},[_vm._v("выберить спектакль из репертуара")]),_vm._v(" "),_vm._l((_vm.repertoires),function(repertoire){return _c('option',{domProps:{"value":repertoire.id_repertoire}},[_vm._v("\n                "+_vm._s(repertoire.title)+"\n            ")])})],2),_vm._v(" "),_c('select',{attrs:{"name":"id_person"}},[_c('option',{attrs:{"value":"","disabled":"","selected":"","hidden":""}},[_vm._v("выберить человека")]),_vm._v(" "),_vm._l((_vm.persons),function(person){return _c('option',{domProps:{"value":person.id_person}},[_vm._v("\n                "+_vm._s(person.name)+"\n            ")])})],2),_vm._v(" "),_c('input',{attrs:{"type":"text","name":"role_person","placeholder":"Роль"}}),_vm._v(" "),_vm._m(0),_vm._v(" "),_c('button',{attrs:{"type":"submit"}},[_vm._v("отправить")])]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.id_filter_repertoire),expression:"id_filter_repertoire"}],on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.id_filter_repertoire=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":"false"}},[_vm._v("все")]),_vm._v(" "),_vm._l((_vm.repertoires),function(repertoire){return _c('option',{domProps:{"value":repertoire.id_repertoire}},[_vm._v("\n            "+_vm._s(repertoire.title)+"\n        ")])})],2),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.id_filter_person),expression:"id_filter_person"}],on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.id_filter_person=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":"false"}},[_vm._v("все")]),_vm._v(" "),_vm._l((_vm.persons),function(person){return _c('option',{domProps:{"value":person.id_person}},[_vm._v("\n            "+_vm._s(person.name)+"\n        ")])})],2),_vm._v(" "),_c('div',[_c('div',{attrs:{"id":"mini_repertoire1"}},_vm._l((_vm.filter_func_person(_vm.filter_func_repertoire(_vm.casts))),function(cast){return _c('div',{staticClass:"block_mini_repertoire"},[_c('img',{attrs:{"src":'../upload/' + cast.image,"onerror":"this.src = '../upload/not_found.png'"}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"mini_repertoire_title"},[_vm._v(_vm._s(cast.title))]),_vm._v(" "),_c('p',{staticClass:"mini_repertoire_title mini_repertoire_author"},[_vm._v(_vm._s(cast.name)+" - "+_vm._s(cast.role_person))]),_vm._v(" "),_c('p',{staticClass:"mini_repertoire_text"},[_vm._v(_vm._s(cast.is_head == 1 ? 'Руководящий' : 'Актер'))])]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.delete_method(cast.id_cast)}}},[_vm._v("удалить")])])}))])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"main"}},[(!_vm.edite_mode)?_c('form',{attrs:{"id":"form"},on:{"submit":_vm.post_method}},[_c('select',{attrs:{"name":"id_repertoire"}},[_c('option',{attrs:{"value":"","disabled":"","selected":"","hidden":""}},[_vm._v("выберить спектакль из репертуара")]),_vm._v(" "),_vm._l((_vm.repertoires),function(repertoire){return _c('option',{domProps:{"value":repertoire.id_repertoire}},[_vm._v("\n                "+_vm._s(repertoire.title)+"\n            ")])})],2),_vm._v(" "),_c('select',{attrs:{"name":"id_person"}},[_c('option',{attrs:{"value":"","disabled":"","selected":"","hidden":""}},[_vm._v("выберить человека")]),_vm._v(" "),_vm._l((_vm.persons),function(person){return _c('option',{domProps:{"value":person.id_person}},[_vm._v("\n                "+_vm._s(person.name)+"\n            ")])})],2),_vm._v(" "),_c('input',{attrs:{"type":"text","name":"role_person","placeholder":"Роль"}}),_vm._v(" "),_vm._m(0),_vm._v(" "),_c('button',{attrs:{"type":"submit"}},[_vm._v("отправить")])]):_c('form',{attrs:{"id":"form"},on:{"submit":_vm.edite_method}},[_c('select',{attrs:{"name":"id_repertoire"}},_vm._l((_vm.repertoires),function(repertoire){return _c('option',{domProps:{"value":repertoire.id_repertoire,"selected":_vm.comp_edite.id_repertoire == repertoire.id_repertoire}},[_vm._v("\n                "+_vm._s(repertoire.title)+"\n            ")])})),_vm._v(" "),_c('select',{attrs:{"name":"id_person"}},_vm._l((_vm.persons),function(person){return _c('option',{domProps:{"value":person.id_person,"selected":_vm.comp_edite.id_person == person.id_person}},[_vm._v("\n                "+_vm._s(person.name)+"\n            ")])})),_vm._v(" "),_c('input',{attrs:{"type":"text","name":"role_person","placeholder":"Роль"},domProps:{"value":_vm.comp_edite.role_person}}),_vm._v(" "),_c('div',[_c('label',{attrs:{"for":"is_head"}},[_vm._v("Руководитель ")]),_vm._v(" "),_c('input',{attrs:{"type":"checkbox","name":"is_head"},domProps:{"checked":_vm.comp_edite.is_head}})]),_vm._v(" "),_c('button',{attrs:{"type":"submit"}},[_vm._v("отправить")]),_vm._v(" "),_c('button',{attrs:{"type":"button"},on:{"click":_vm.nullebl}},[_vm._v("отмена")])]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.id_filter_repertoire),expression:"id_filter_repertoire"}],on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.id_filter_repertoire=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":"false"}},[_vm._v("все")]),_vm._v(" "),_vm._l((_vm.repertoires),function(repertoire){return _c('option',{domProps:{"value":repertoire.id_repertoire}},[_vm._v("\n            "+_vm._s(repertoire.title)+"\n        ")])})],2),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.id_filter_person),expression:"id_filter_person"}],on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.id_filter_person=$event.target.multiple ? $$selectedVal : $$selectedVal[0]}}},[_c('option',{attrs:{"value":"false"}},[_vm._v("все")]),_vm._v(" "),_vm._l((_vm.persons),function(person){return _c('option',{domProps:{"value":person.id_person}},[_vm._v("\n            "+_vm._s(person.name)+"\n        ")])})],2),_vm._v(" "),_c('div',[_c('div',{attrs:{"id":"mini_repertoire1"}},_vm._l((_vm.filter_func_person(_vm.filter_func_repertoire(_vm.casts))),function(cast){return _c('div',{staticClass:"block_mini_repertoire"},[_c('img',{attrs:{"src":'../upload/' + cast.image,"onerror":"this.src = '../upload/not_found.png'"}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"mini_repertoire_title"},[_vm._v(_vm._s(cast.title))]),_vm._v(" "),_c('p',{staticClass:"mini_repertoire_title mini_repertoire_author"},[_vm._v(_vm._s(cast.name)+" - "+_vm._s(cast.role_person))]),_vm._v(" "),_c('p',{staticClass:"mini_repertoire_text"},[_vm._v(_vm._s(cast.is_head == 1 ? 'Руководящий' : 'Актер'))])]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.delete_method(cast.id_cast)}}},[_vm._v("удалить")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.edite_scroll(cast.id_cast)}}},[_vm._v("редактировать")])])}))])])}
 __vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('label',{attrs:{"for":"is_head"}},[_vm._v("Руководитель ")]),_vm._v(" "),_c('input',{attrs:{"type":"checkbox","name":"is_head"}})])}]
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -1174,7 +1215,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-c13887ce", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-c13887ce", __vue__options__)
+    hotAPI.reload("data-v-c13887ce", __vue__options__)
   }
 })()}
 },{"vue":29,"vue-hot-reload-api":26}],20:[function(require,module,exports){
