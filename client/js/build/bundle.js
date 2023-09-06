@@ -302,9 +302,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-050d30f6", __vue__options__)
+    hotAPI.createRecord("data-v-3c05347c", __vue__options__)
   } else {
-    hotAPI.reload("data-v-050d30f6", __vue__options__)
+    hotAPI.reload("data-v-3c05347c", __vue__options__)
   }
 })()}
 },{"./samples/title.vue":10,"vue":29,"vue-hot-reload-api":26}],5:[function(require,module,exports){
@@ -358,9 +358,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-46ecce50", __vue__options__)
+    hotAPI.createRecord("data-v-28ebf8bb", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-46ecce50", __vue__options__)
+    hotAPI.reload("data-v-28ebf8bb", __vue__options__)
   }
 })()}
 },{"./samples/title.vue":10,"vue":29,"vue-hot-reload-api":26}],6:[function(require,module,exports){
@@ -429,9 +429,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6445f9e3", __vue__options__)
+    hotAPI.createRecord("data-v-05a14986", __vue__options__)
   } else {
-    hotAPI.reload("data-v-6445f9e3", __vue__options__)
+    hotAPI.reload("data-v-05a14986", __vue__options__)
   }
 })()}
 },{"./samples/title.vue":10,"vue":29,"vue-hot-reload-api":26}],7:[function(require,module,exports){
@@ -483,9 +483,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-933db602", __vue__options__)
+    hotAPI.createRecord("data-v-6e2717e2", __vue__options__)
   } else {
-    hotAPI.reload("data-v-933db602", __vue__options__)
+    hotAPI.reload("data-v-6e2717e2", __vue__options__)
   }
 })()}
 },{"./samples/title.vue":10,"vue":29,"vue-hot-reload-api":26}],8:[function(require,module,exports){
@@ -525,9 +525,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-38f987e1", __vue__options__)
+    hotAPI.createRecord("data-v-36155d78", __vue__options__)
   } else {
-    hotAPI.reload("data-v-38f987e1", __vue__options__)
+    hotAPI.reload("data-v-36155d78", __vue__options__)
   }
 })()}
 },{"./samples/title.vue":10,"vue":29,"vue-hot-reload-api":26}],9:[function(require,module,exports){
@@ -581,9 +581,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-091b51fc", __vue__options__)
+    hotAPI.createRecord("data-v-4904ee79", __vue__options__)
   } else {
-    hotAPI.reload("data-v-091b51fc", __vue__options__)
+    hotAPI.reload("data-v-4904ee79", __vue__options__)
   }
 })()}
 },{"./samples/title.vue":10,"vue":29,"vue-hot-reload-api":26}],10:[function(require,module,exports){
@@ -614,9 +614,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-944df1ea", __vue__options__)
+    hotAPI.createRecord("data-v-c0ecc270", __vue__options__)
   } else {
-    hotAPI.reload("data-v-944df1ea", __vue__options__)
+    hotAPI.reload("data-v-c0ecc270", __vue__options__)
   }
 })()}
 },{"vue":29,"vue-hot-reload-api":26}],11:[function(require,module,exports){
@@ -744,9 +744,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-aec154a4", __vue__options__)
+    hotAPI.createRecord("data-v-78c38c2b", __vue__options__)
   } else {
-    hotAPI.reload("data-v-aec154a4", __vue__options__)
+    hotAPI.reload("data-v-78c38c2b", __vue__options__)
   }
 })()}
 },{"./components/admin/admin_menu.vue":17,"vue":29,"vue-hot-reload-api":26}],14:[function(require,module,exports){
@@ -782,9 +782,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0bec3940", __vue__options__)
+    hotAPI.createRecord("data-v-b0942a06", __vue__options__)
   } else {
-    hotAPI.reload("data-v-0bec3940", __vue__options__)
+    hotAPI.reload("data-v-b0942a06", __vue__options__)
   }
 })()}
 },{"../components/person.vue":7,"./components/footer.vue":21,"./components/logo.vue":22,"./components/menu.vue":23,"vue":29,"vue-hot-reload-api":26}],15:[function(require,module,exports){
@@ -874,9 +874,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-535bcc4d", __vue__options__)
+    hotAPI.createRecord("data-v-3a566fb0", __vue__options__)
   } else {
-    hotAPI.reload("data-v-535bcc4d", __vue__options__)
+    hotAPI.reload("data-v-3a566fb0", __vue__options__)
   }
 })()}
 },{"vue":29,"vue-hot-reload-api":26}],16:[function(require,module,exports){
@@ -987,9 +987,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-b59a0abe", __vue__options__)
+    hotAPI.createRecord("data-v-9a3af544", __vue__options__)
   } else {
-    hotAPI.reload("data-v-b59a0abe", __vue__options__)
+    hotAPI.reload("data-v-9a3af544", __vue__options__)
   }
 })()}
 },{"vue":29,"vue-hot-reload-api":26}],17:[function(require,module,exports){
@@ -1017,9 +1017,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7f1d84c1", __vue__options__)
+    hotAPI.createRecord("data-v-e665e104", __vue__options__)
   } else {
-    hotAPI.reload("data-v-7f1d84c1", __vue__options__)
+    hotAPI.reload("data-v-e665e104", __vue__options__)
   }
 })()}
 },{"vue":29,"vue-hot-reload-api":26}],18:[function(require,module,exports){
@@ -1117,9 +1117,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-a2839592", __vue__options__)
+    hotAPI.createRecord("data-v-0eb604b4", __vue__options__)
   } else {
-    hotAPI.reload("data-v-a2839592", __vue__options__)
+    hotAPI.reload("data-v-0eb604b4", __vue__options__)
   }
 })()}
 },{"vue":29,"vue-hot-reload-api":26}],19:[function(require,module,exports){
@@ -1213,9 +1213,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-c13887ce", __vue__options__)
+    hotAPI.createRecord("data-v-d084f5d4", __vue__options__)
   } else {
-    hotAPI.reload("data-v-c13887ce", __vue__options__)
+    hotAPI.reload("data-v-d084f5d4", __vue__options__)
   }
 })()}
 },{"vue":29,"vue-hot-reload-api":26}],20:[function(require,module,exports){
@@ -1228,9 +1228,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1a81ec8f", __vue__options__)
+    hotAPI.createRecord("data-v-5a6b890c", __vue__options__)
   } else {
-    hotAPI.reload("data-v-1a81ec8f", __vue__options__)
+    hotAPI.reload("data-v-5a6b890c", __vue__options__)
   }
 })()}
 },{"vue":29,"vue-hot-reload-api":26}],21:[function(require,module,exports){
@@ -1243,9 +1243,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-265d1020", __vue__options__)
+    hotAPI.createRecord("data-v-0c4b19c6", __vue__options__)
   } else {
-    hotAPI.reload("data-v-265d1020", __vue__options__)
+    hotAPI.reload("data-v-0c4b19c6", __vue__options__)
   }
 })()}
 },{"vue":29,"vue-hot-reload-api":26}],22:[function(require,module,exports){
@@ -1258,9 +1258,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-89dde120", __vue__options__)
+    hotAPI.createRecord("data-v-c0d5e4a6", __vue__options__)
   } else {
-    hotAPI.reload("data-v-89dde120", __vue__options__)
+    hotAPI.reload("data-v-c0d5e4a6", __vue__options__)
   }
 })()}
 },{"vue":29,"vue-hot-reload-api":26}],23:[function(require,module,exports){
@@ -1288,9 +1288,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1e3a6524", __vue__options__)
+    hotAPI.createRecord("data-v-02be6361", __vue__options__)
   } else {
-    hotAPI.reload("data-v-1e3a6524", __vue__options__)
+    hotAPI.reload("data-v-02be6361", __vue__options__)
   }
 })()}
 },{"vue":29,"vue-hot-reload-api":26}],24:[function(require,module,exports){
@@ -1303,9 +1303,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4986ee68", __vue__options__)
+    hotAPI.createRecord("data-v-a93e816e", __vue__options__)
   } else {
-    hotAPI.reload("data-v-4986ee68", __vue__options__)
+    hotAPI.reload("data-v-a93e816e", __vue__options__)
   }
 })()}
 },{"vue":29,"vue-hot-reload-api":26}],25:[function(require,module,exports){

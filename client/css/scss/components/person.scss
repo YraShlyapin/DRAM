@@ -51,7 +51,7 @@
 
                     .name{
                         font-size: $font-size-averange_plus;
-                        margin-bottom: $margin-mini/2;
+                        margin-bottom: calc($margin-mini / 2);
                     }
 
                     .text{

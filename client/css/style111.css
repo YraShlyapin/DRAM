@@ -96,7 +96,7 @@
     top: 9px;
   }
   #menu .hamburger::before,
-#menu .hamburger::after {
+  #menu .hamburger::after {
     content: "";
     background-color: #fff;
     position: absolute;
@@ -170,7 +170,6 @@
     padding-top: 25px;
     padding-bottom: 25px;
   }
-
   #footer_first_segment {
     min-width: none;
     margin: 0;
@@ -246,7 +245,7 @@
 #main .viewer .slider_wrapper .slider {
   display: flex;
   width: 100vw;
-  background-color: #ffe0e0;
+  background-color: rgb(255, 224, 224);
   font-family: "Merriweather", serif;
   color: black;
 }
@@ -317,7 +316,7 @@
 #main .slider {
   display: flex;
   width: 100vw;
-  background-color: #ffe0e0;
+  background-color: rgb(255, 224, 224);
   font-family: "Merriweather", serif;
   color: black;
   margin-bottom: 50px;
@@ -351,7 +350,7 @@
   margin-bottom: 50px;
 }
 #main #mini_repertoire #mini_repertoire_wrapper .block_mini_repertoire {
-  background-color: #ffe0e0;
+  background-color: rgb(255, 224, 224);
   width: 400px;
   padding-bottom: 30px;
   border-radius: 16px;
@@ -566,7 +565,7 @@
 @media screen {
   #repertoire #repertoire_wrapper .revers {
     flex-direction: row-reverse;
-    background-color: #ffe0e0;
+    background-color: rgb(255, 224, 224);
   }
   #repertoire #repertoire_wrapper .revers img {
     border-radius: 25px 0 0 25px;
@@ -590,7 +589,7 @@
   #repertoire_info #repertoire_info_wrapper #repertoire_info_allotted {
     padding: 50px 140px 50px 100px;
     margin-top: 50px;
-    background-color: #ffe0e0;
+    background-color: rgb(255, 224, 224);
     color: #890001;
     font-size: 2.5rem;
     border-radius: 0 50px 50px 0;
@@ -615,7 +614,7 @@
 @media screen and (max-width: 1299px) {
   #repertoire_info #repertoire_info_wrapper #repertoire_info_allotted {
     padding: 25px 70px 25px 50px;
-    margin-top: 25px;
+    margin-top: calc(margin-averange / 2);
     font-size: 1.5rem;
     border-radius: 0 25px 25px 0;
   }
@@ -695,7 +694,7 @@
     flex-direction: column;
     flex-wrap: nowrap;
     font-family: "Merriweather", serif;
-    background-color: #ffe0e0;
+    background-color: rgb(255, 224, 224);
   }
   #cast .cast_wrapper > img {
     width: 150px;
@@ -709,8 +708,6 @@
     font-size: 1.875rem;
     margin-bottom: 16px;
   }
-}
-@media screen {
   #time_place {
     display: flex;
     justify-content: space-evenly;
@@ -758,7 +755,7 @@
     transition-property: width, height, max-width, min-width;
     display: flex;
     border-radius: 25px;
-    background-color: #ffe0e0;
+    background-color: rgb(255, 224, 224);
     overflow: hidden;
     cursor: pointer;
   }
@@ -836,8 +833,6 @@
   #person .block_person_view .block_person_view_wrapper .about_person p {
     margin-top: 20px;
   }
-}
-@media screen {
   #person .block_person_view.active_block_person {
     z-index: 999;
     opacity: 1;
@@ -853,7 +848,7 @@
 }
 
 #mini_repertoire1 .block_mini_repertoire {
-  background-color: #ffe0e0;
+  background-color: rgb(255, 224, 224);
   width: 400px;
   padding-bottom: 30px;
   border-radius: 16px;

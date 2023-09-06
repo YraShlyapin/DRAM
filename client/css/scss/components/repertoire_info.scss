@@ -44,8 +44,8 @@
         @media (max-width: 1299px) {
             #repertoire_info_wrapper{
                 #repertoire_info_allotted{
-                    padding: 25px 70px 25px $margin-colossal / 2;
-                    margin-top: $margin-averange / 2;
+                    padding: 25px 70px 25px calc($margin-colossal / 2);
+                    margin-top: calc(margin-averange / 2);
     
                     font-size: $font-size-averange_plus;
                     border-radius: 0 25px 25px 0;
@@ -57,8 +57,8 @@
 
                 & > p{
                     padding-right: 25px;
-                    margin-top: $margin-averange / 2;
-                    margin-left: $margin-colossal / 2;
+                    margin-top: calc($margin-averange / 2);
+                    margin-left: calc($margin-colossal / 2);
     
                     font-size: $font-size-normal;
                 }
@@ -67,7 +67,7 @@
             img{
                 width: 40%;
                 border-bottom-left-radius: 25px;
-                margin-left: $margin-averange / 2;
+                margin-left: calc($margin-averange / 2);
             }
         }
 
