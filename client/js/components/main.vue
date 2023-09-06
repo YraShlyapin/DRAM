@@ -1,5 +1,8 @@
 <template>
-    <div id="main">
+    <div v-if="loading">
+        Загрузка...
+    </div>
+    <div id="main" v-else>
         <div class="viewer" v-if="billboards.length > 0">
             <div class="slider_wrapper" :style="{width: + billboards.length * 100 + 'vw'}">
                 <router-link v-for="billboard in billboards"
@@ -34,7 +37,7 @@
                 </svg>
             </div>
         </div>
-        <div v-else class="slider">
+        <div v-else class="slidera">
             <div class="center_of_center">
                 <p>В ближайшее время спектаклей нет</p>
             </div>
@@ -68,7 +71,8 @@
             return {
                 offset: 0,
                 repertoires: [],
-                billboards: ''
+                billboards: '',
+                loading: true
             }
         },
         components: {
@@ -108,6 +112,7 @@
                     .then(function(res) {
                         this.billboards = res.body.slice(0,4)
                     })
+                this.loading = false
             }
         },
         mounted: function() {
