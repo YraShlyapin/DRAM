@@ -50,6 +50,10 @@ function birthday(date){
     return `${birthday}, (${years(date)})`
 }
 
+async function set_title(title){
+    document.title = title
+}
+
 module.exports = {
     install(Vue, options) {
         Vue.prototype.date_format = date_format
@@ -59,5 +63,6 @@ module.exports = {
         Vue.prototype.years = years
         Vue.prototype.birthday = birthday
         Vue.prototype.date_get_edite = date_get_edite
+        Vue.prototype.set_title = set_title
     }
 }

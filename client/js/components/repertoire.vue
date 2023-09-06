@@ -33,6 +33,7 @@
         },
         methods: {
             connect_db: function() {
+                this.set_title("Репертуар")
                 this.$http.get("/repertoireAPI")
                     .then(function(res) {
                         this.repertoires = res.body

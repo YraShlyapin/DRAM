@@ -44,6 +44,7 @@
         },
         methods: {
             connect_db: function() {
+                this.set_title("Труппа")
                 this.$http.get("/personAPI")
                     .then(function(res) {
                         this.persons = res.body

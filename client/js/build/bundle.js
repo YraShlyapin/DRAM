@@ -282,6 +282,7 @@ module.exports = {
     },
     methods: {
         connect_db: function connect_db() {
+            this.set_title("Афиша");
             this.$http.get("/billboardAPI").then(function (res) {
                 this.billboards = res.body;
             });
@@ -328,6 +329,8 @@ module.exports = {
         connect_db: function connect_db(id) {
             this.$http.get('/billboardAPI/' + id).then(function (res) {
                 this.billboard = res.body;
+
+                this.set_title(this.billboard.title);
 
                 this.$http.get('/castHeadAPI/' + this.billboard.id_repertoire).then(function (res) {
                     this.cast_head = res.body;
@@ -407,6 +410,7 @@ module.exports = {
             this.render_view();
         },
         connect_db: async function connect_db() {
+            this.set_title("Главная");
             this.$http.get("/repertoireAPI").then(function (res) {
                 this.repertoires = res.body.slice(0, 4);
             });
@@ -457,6 +461,7 @@ module.exports = {
     },
     methods: {
         connect_db: function connect_db() {
+            this.set_title("Труппа");
             this.$http.get("/personAPI").then(function (res) {
                 this.persons = res.body;
             });
@@ -507,6 +512,7 @@ module.exports = {
     },
     methods: {
         connect_db: function connect_db() {
+            this.set_title("Репертуар");
             this.$http.get("/repertoireAPI").then(function (res) {
                 this.repertoires = res.body;
             });
@@ -553,6 +559,8 @@ module.exports = {
         connect_db: function connect_db(id) {
             this.$http.get('/repertoireAPI/' + id).then(function (res) {
                 this.repertoire = res.body;
+
+                this.set_title(this.billboard.title);
 
                 this.$http.get('/castHeadAPI/' + id).then(function (res) {
                     this.cast_head = res.body;
@@ -674,6 +682,10 @@ function birthday(date){
     return `${birthday}, (${years(date)})`
 }
 
+async function set_title(title){
+    document.title = title
+}
+
 module.exports = {
     install(Vue, options) {
         Vue.prototype.date_format = date_format
@@ -683,6 +695,7 @@ module.exports = {
         Vue.prototype.years = years
         Vue.prototype.birthday = birthday
         Vue.prototype.date_get_edite = date_get_edite
+        Vue.prototype.set_title = set_title
     }
 }
 },{}],12:[function(require,module,exports){

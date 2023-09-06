@@ -52,6 +52,8 @@
                     .then(function(res) {
                         this.repertoire = res.body
 
+                        this.set_title(this.billboard.title)
+
                         this.$http.get(`/castHeadAPI/${id}`)
                             .then(function(res) {
                                 this.cast_head = res.body

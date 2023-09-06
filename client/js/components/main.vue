@@ -104,6 +104,7 @@
                 this.render_view()
             },
             async connect_db() {
+                this.set_title("Главная")
                 this.$http.get(`/repertoireAPI`)
                     .then(function(res) {
                         this.repertoires = res.body.slice(0,4)

@@ -35,6 +35,7 @@
         },
         methods: {
             connect_db: function() {
+                this.set_title("Афиша")
                 this.$http.get("/billboardAPI")
                     .then(function(res) {
                         this.billboards = res.body
