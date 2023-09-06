@@ -14,6 +14,8 @@ let a_person = require("./page/components/admin/admin_person.vue")
 let a_billboard = require("./page/components/admin/admin_billboard.vue")
 let a_cast = require("./page/components/admin/admin_cast.vue")
 
+let login = require("./page/components/login.vue")
+
 let err404 = require("./page/components/err/err404.vue")
 
 module.exports = [
@@ -29,27 +31,26 @@ module.exports = [
             {path: "repertoire/:id", component: repertoire_info},
             {path: "billboard/:id", component: billboard_info},
 
+            {path: 'login', name: 'login', component: login}
+
         ],
-        meta: { requiresAuth: false }
     },
     {
         path: "/ADMIN",
         component: Admin,
         children: [
-            {path: "", component: a_repertoire},
-            {path: "person", component: a_person},
-            {path: "billboard", component: a_billboard},
-            {path: "cast", component: a_cast},
-
+            {path: "", component: a_repertoire, meta: { requiresAuth: true }},
+            {path: "person", component: a_person, meta: { requiresAuth: true }},
+            {path: "billboard", component: a_billboard, meta: { requiresAuth: true }},
+            {path: "cast", component: a_cast, meta: { requiresAuth: true }},
         ],
-        meta: { requiresAuth: true }
     },
     {
         path: '',
         component: App,
         children: [
             {path: "/:pathMatch(.*)*", component: err404}
-        ]
+        ],
     }
 ]
 
