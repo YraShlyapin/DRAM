@@ -337,6 +337,7 @@
 
     @media (max-width:400px) {
         .block_mini_repertoire{
+            width: 100vw !important;
             img{
                 width: 100%;
             }
