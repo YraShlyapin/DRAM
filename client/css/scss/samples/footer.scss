@@ -14,6 +14,10 @@
 
 .footer_segments{
     height: 100%;
+    :first-child {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 #footer_first_segment {
@@ -45,7 +49,8 @@
     margin-right: 5%;
     a {
         font-size: 20px;
-        margin-top: 5px;
+        margin-top: 10px;
+        position: relative;
     }
 }
 

@@ -135,7 +135,11 @@ app.get("/billboardAPI", async (req,res) => {
 
 app.get("/billboardAPI/:id", async (req,res) => {
     const result = await db.get_one_billboard(req.params.id)
-    res.send(result)
+    if (result) {
+        res.send(result)
+    }else{
+        res.sendStatus(404)
+    }
 })
 
 app.post("/billboardAPI", multer().array(), async (req,res) => {

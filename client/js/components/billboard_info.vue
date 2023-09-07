@@ -19,7 +19,7 @@
                 :key="person.id_cast"
                 class="cast_wrapper"
             >
-            <img :src="'../upload/' + person.image" onerror="this.src = '../upload/not_found.png'">
+                <img :src="'../upload/' + person.image" onerror="this.src = '../upload/not_found.png'">
                 <div>
                     <p class="name">{{person.name}}</p>
                     <p>{{person.role_person}}</p>
@@ -54,24 +54,19 @@
             connect_db: function(id) {
                 this.$http.get(`/billboardAPI/${ id }`)
                     .then(function(res) {
-                        if (res.body){
-                            this.billboard = res.body
+                        this.billboard = res.body
 
-                            this.set_title(this.billboard.title)
+                        this.set_title(this.billboard.title)
 
-                            this.$http.get(`/castHeadAPI/${this.billboard.id_repertoire}`)
-                                .then(function(res) {
-                                    this.cast_head = res.body
-                                })
+                        this.$http.get(`/castHeadAPI/${this.billboard.id_repertoire}`)
+                            .then(function(res) {
+                                this.cast_head = res.body
+                            })
 
-                            this.$http.get(`/castAPI/${ this.billboard.id_repertoire }`)
-                                .then(function(res) {
-                                    this.cast = res.body
-                                })
-                        }else {
-                            this.billboard = null
-                            this.set_title("Ошибка 404")
-                        }
+                        this.$http.get(`/castAPI/${ this.billboard.id_repertoire }`)
+                            .then(function(res) {
+                                this.cast = res.body
+                            })
                     })
                     .catch((res) => {
                         this.billboard = null

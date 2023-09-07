@@ -1,0 +1,27 @@
+#contact{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-family: $Merriweather;
+    min-height: calc(100dvh - 214px);
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+    *{
+        font-size: 2rem;
+    }
+
+    a{
+        color: $secondary-color;
+    }
+}
+
+@media screen {
+    @media (max-width: 500px) {
+        #contact{        
+            *{
+                font-size: 1rem;
+            }
+        }
+    }
+}
