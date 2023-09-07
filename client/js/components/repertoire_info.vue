@@ -14,7 +14,7 @@
             <img :src="'../upload/' + repertoire.image" onerror="this.src = '../upload/not_found.png'">
         </div>
         <titles title="Состав" v-if="cast!=''"/>
-        <div id="cast">
+        <div id="cast" v-if="cast != ''">
             <div v-for="person in cast"
                 :key="person.id_cast"
                 class="cast_wrapper"
@@ -27,17 +27,16 @@
             </div>
         </div>
     </div>
-    <div v-else class="err404">
-        Увы, но данной странички не существует<br>
-        Ошибка 404
-    </div>
+    <err404 v-else/>
 </template>
 <script>
+    let err404 = require("../page/components/err/err404.vue")
     let titles = require("./samples/title.vue")
 
     module.exports = {
         components: {
-            titles
+            titles,
+            err404
         },
         data: function() {
             return {
@@ -51,8 +50,7 @@
                 this.$http.get(`/repertoireAPI/${id}`)
                     .then(function(res) {
                         this.repertoire = res.body
-
-                        this.set_title(this.billboard.title)
+                        this.set_title(this.repertoire.title)
 
                         this.$http.get(`/castHeadAPI/${id}`)
                             .then(function(res) {
@@ -61,8 +59,13 @@
 
                         this.$http.get(`/castAPI/${id}`)
                             .then(function(res) {
+                                console.log(res)
                                 this.cast = res.body
                             })
+                    })
+                    .catch((res) => {
+                        this.repertoire = null
+                        this.set_title("Ошибка 404")
                     })
             }
         },
@@ -73,11 +76,5 @@
             this.connect_db(to.params.id)
             next()
         }
-        
-        //updated() {
-        //    this.$nextTick(function () {
-        //        this.connect_db()
-        //    })
-        //}
     }
 </script>

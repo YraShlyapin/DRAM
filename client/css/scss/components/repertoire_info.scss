@@ -44,8 +44,8 @@
         @media (max-width: 1299px) {
             #repertoire_info_wrapper{
                 #repertoire_info_allotted{
-                    padding: 25px 70px 25px calc($margin-colossal / 2);
-                    margin-top: calc(margin-averange / 2);
+                    padding: 25px 70px 25px calc( $margin-colossal / 2);
+                    margin-top: calc( $margin-averange / 2);
     
                     font-size: $font-size-averange_plus;
                     border-radius: 0 25px 25px 0;
@@ -73,6 +73,7 @@
 
         @media (max-width: 800px) {
             flex-direction: column-reverse;
+            margin-bottom: 25px;
 
             #repertoire_info_wrapper{
                 #repertoire_info_allotted{
@@ -174,6 +175,10 @@
         }
         
         margin-bottom: 50px;
+    }
+    #map{
+        width: 100vw;
+        height: 60dvh;
     }
 }
 

@@ -64,6 +64,7 @@
                     .then(function(res) {
                         this.connect_db()
                         form.reset()
+                        this.srcc = "../upload/not_found.png"
                     })
             },
             delete_method: function(id) {
@@ -91,6 +92,7 @@
                         this.connect_db()
                         form.reset()
                         this.edite_mode = false
+                        this.srcc = "../upload/not_found.png"
                     })
             },
             edite_scroll(id) {

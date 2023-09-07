@@ -9,12 +9,17 @@
             @include display(flex,space-between,$fw:wrap);
             
             position: relative;
-            width: 95%;
+            width: 95vw;
             column-gap: 20px;
             row-gap: $margin-averange;
             margin-bottom: $margin-averange;
 
+            @media (max-width:1000px) {
+                width: 100vw;
+            }
+
             .block_person{
+                max-width: 700px;
                 min-width: 500px;
                 width: 47%;
                 height: fit-content;
@@ -62,12 +67,10 @@
                         -webkit-box-orient: vertical;
                     }
                 }
-
-                @media (min-width: 1500px) {
-                    width: 700px;
-                }
                 
                 @media (max-width: 1074px) {
+                    min-width: auto;
+                    max-width: none;
                     width: 100%;
                 }
             }
@@ -83,6 +86,8 @@
             opacity: 0;
             z-index: -10;
 
+            overflow-y: scroll;
+
             display: flex;
             justify-content: center;
             align-items: center;
@@ -91,13 +96,16 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                overflow: hidden;
                 background-color: $secondary-color;
-                width: 60vw;
+                width: 100vw;
+                max-width: 1000px;
                 border-radius: 25px;
                 color: $light-color;
 
                 img{
-                    width: 200px;
+                    max-width: 400px;
+                    width: 100vw;
                     border-radius: 0 0 25px 25px;
                 }
 
@@ -116,6 +124,11 @@
                         margin-top: 20px;
                     }
                 }
+
+                @media (max-width:1000px) {
+                    position: relative;
+                    top: 150px;
+                }
             }
         }
         .block_person_view.active_block_person {
@@ -124,31 +137,3 @@
         }
     }
 }
-
-// #person{
-//     @include display(flex,$fd:column,$al:center);
-
-//     #person_wrapper{
-//         @include display(grid,space-evenly,$fw:wrap);
-//         width: 80%;
-//         grid-template-columns: repeat(2,1fr);
-//         gap: 50px;
-
-//         .block_person{
-//             height: 150px;
-//             // width: 700px;
-
-//             transition: 2s ease;
-//             transition-property: width, height;
-            
-
-//             border-radius: 25px;
-
-//             background-color: $gray;
-
-//             overflow: hidden;
-            
-//             // margin-bottom: 50px;
-//         }
-//     }
-// }

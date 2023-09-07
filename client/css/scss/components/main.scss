@@ -137,7 +137,7 @@
             
             .block_mini_repertoire{
                 background-color: $gray;
-                width: 400px;
+                max-width: 400px;
                 padding-bottom: 30px;
                 border-radius: 16px;
                 overflow: hidden;
@@ -337,7 +337,6 @@
 
     @media (max-width:400px) {
         .block_mini_repertoire{
-            width: 100vw !important;
             img{
                 width: 100%;
             }

@@ -310,13 +310,15 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
 })()}
 },{"./samples/title.vue":10,"vue":34,"vue-hot-reload-api":31}],5:[function(require,module,exports){
 ;(function(){
-'use strict';
+"use strict";
 
+var err404 = require("../page/components/err/err404.vue");
 var titles = require("./samples/title.vue");
 
 module.exports = {
     components: {
-        titles: titles
+        titles: titles,
+        err404: err404
     },
     data: function data() {
         return {
@@ -327,18 +329,28 @@ module.exports = {
     },
     methods: {
         connect_db: function connect_db(id) {
-            this.$http.get('/billboardAPI/' + id).then(function (res) {
-                this.billboard = res.body;
+            var _this = this;
 
-                this.set_title(this.billboard.title);
+            this.$http.get("/billboardAPI/" + id).then(function (res) {
+                if (res.body) {
+                    this.billboard = res.body;
 
-                this.$http.get('/castHeadAPI/' + this.billboard.id_repertoire).then(function (res) {
-                    this.cast_head = res.body;
-                });
+                    this.set_title(this.billboard.title);
 
-                this.$http.get('/castAPI/' + this.billboard.id_repertoire).then(function (res) {
-                    this.cast = res.body;
-                });
+                    this.$http.get("/castHeadAPI/" + this.billboard.id_repertoire).then(function (res) {
+                        this.cast_head = res.body;
+                    });
+
+                    this.$http.get("/castAPI/" + this.billboard.id_repertoire).then(function (res) {
+                        this.cast = res.body;
+                    });
+                } else {
+                    this.billboard = null;
+                    this.set_title("Ошибка 404");
+                }
+            }).catch(function (res) {
+                _this.billboard = null;
+                _this.set_title("Ошибка 404");
             });
         }
     },
@@ -354,7 +366,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{attrs:{"id":"repertoire_info"}},[_c('div',{attrs:{"id":"repertoire_info_wrapper"}},[_c('div',{attrs:{"id":"repertoire_info_allotted"}},[_c('p',{attrs:{"id":"repertoire_info_title"}},[_vm._v(_vm._s(_vm.billboard.title))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.billboard.author))])]),_vm._v(" "),_vm._l((_vm.cast_head),function(head){return _c('p',[_vm._v(_vm._s(head.role_person)+" - "+_vm._s(head.name)),_c('br')])}),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.billboard.description))]),_vm._v(" "),(_vm.billboard.duration)?_c('p',[_vm._v(_vm._s(_vm.time_format(_vm.billboard.duration)))]):_vm._e()],2),_vm._v(" "),_c('img',{attrs:{"src":'../upload/' + _vm.billboard.image,"onerror":"this.src = '../upload/not_found.png'"}})]),_vm._v(" "),(_vm.cast!='')?_c('titles',{attrs:{"title":"Состав"}}):_vm._e(),_vm._v(" "),_c('div',{attrs:{"id":"cast"}},_vm._l((_vm.cast),function(person){return _c('div',{key:person.id_cast,staticClass:"cast_wrapper"},[_c('img',{attrs:{"src":'../upload/' + person.image,"onerror":"this.src = '../upload/not_found.png'"}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"name"},[_vm._v(_vm._s(person.name))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(person.role_person))])])])})),_vm._v(" "),_c('div',{attrs:{"id":"time_place"}},[_c('titles',{attrs:{"title":_vm.date_format(_vm.billboard.date_time),"is_mini":"true"}}),_vm._v(" "),_c('titles',{attrs:{"title":_vm.billboard.place,"is_mini":"true"}})],1),_vm._v(" "),_c('iframe',{attrs:{"src":'https://yandex.ru/map-widget/v1/?um=constructor%' + _vm.billboard.src_on_map + '&source=constructor',"width":"1000","height":"500","frameborder":"0"}})],1)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.billboard)?_c('div',[_c('div',{attrs:{"id":"repertoire_info"}},[_c('div',{attrs:{"id":"repertoire_info_wrapper"}},[_c('div',{attrs:{"id":"repertoire_info_allotted"}},[_c('p',{attrs:{"id":"repertoire_info_title"}},[_vm._v(_vm._s(_vm.billboard.title))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.billboard.author))])]),_vm._v(" "),_vm._l((_vm.cast_head),function(head){return _c('p',[_vm._v(_vm._s(head.role_person)+" - "+_vm._s(head.name)),_c('br')])}),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.billboard.description))]),_vm._v(" "),(_vm.billboard.duration)?_c('p',[_vm._v(_vm._s(_vm.time_format(_vm.billboard.duration)))]):_vm._e()],2),_vm._v(" "),_c('img',{attrs:{"src":'../upload/' + _vm.billboard.image,"onerror":"this.src = '../upload/not_found.png'"}})]),_vm._v(" "),(_vm.cast!='')?_c('titles',{attrs:{"title":"Состав"}}):_vm._e(),_vm._v(" "),(_vm.cast!='')?_c('div',{attrs:{"id":"cast"}},_vm._l((_vm.cast),function(person){return _c('div',{key:person.id_cast,staticClass:"cast_wrapper"},[_c('img',{attrs:{"src":'../upload/' + person.image,"onerror":"this.src = '../upload/not_found.png'"}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"name"},[_vm._v(_vm._s(person.name))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(person.role_person))])])])})):_vm._e(),_vm._v(" "),_c('div',{attrs:{"id":"time_place"}},[_c('titles',{attrs:{"title":_vm.date_format(_vm.billboard.date_time),"is_mini":"true"}}),_vm._v(" "),_c('titles',{attrs:{"title":_vm.billboard.place,"is_mini":"true"}})],1),_vm._v(" "),(_vm.billboard.src_on_map)?_c('iframe',{attrs:{"id":"map","src":'https://yandex.ru/map-widget/v1/?um=constructor%' + _vm.billboard.src_on_map + '&source=constructor',"height":"500","frameborder":"0"}}):_vm._e()],1):_c('err404')}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -363,10 +375,10 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-46ecce50", __vue__options__)
   } else {
-    hotAPI.reload("data-v-46ecce50", __vue__options__)
+    hotAPI.rerender("data-v-46ecce50", __vue__options__)
   }
 })()}
-},{"./samples/title.vue":10,"vue":34,"vue-hot-reload-api":31}],6:[function(require,module,exports){
+},{"../page/components/err/err404.vue":20,"./samples/title.vue":10,"vue":34,"vue-hot-reload-api":31}],6:[function(require,module,exports){
 ;(function(){
 "use strict";
 
@@ -540,13 +552,15 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
 })()}
 },{"./samples/title.vue":10,"vue":34,"vue-hot-reload-api":31}],9:[function(require,module,exports){
 ;(function(){
-'use strict';
+"use strict";
 
+var err404 = require("../page/components/err/err404.vue");
 var titles = require("./samples/title.vue");
 
 module.exports = {
     components: {
-        titles: titles
+        titles: titles,
+        err404: err404
     },
     data: function data() {
         return {
@@ -557,18 +571,23 @@ module.exports = {
     },
     methods: {
         connect_db: function connect_db(id) {
-            this.$http.get('/repertoireAPI/' + id).then(function (res) {
+            var _this = this;
+
+            this.$http.get("/repertoireAPI/" + id).then(function (res) {
                 this.repertoire = res.body;
+                this.set_title(this.repertoire.title);
 
-                this.set_title(this.billboard.title);
-
-                this.$http.get('/castHeadAPI/' + id).then(function (res) {
+                this.$http.get("/castHeadAPI/" + id).then(function (res) {
                     this.cast_head = res.body;
                 });
 
-                this.$http.get('/castAPI/' + id).then(function (res) {
+                this.$http.get("/castAPI/" + id).then(function (res) {
+                    console.log(res);
                     this.cast = res.body;
                 });
+            }).catch(function (res) {
+                _this.repertoire = null;
+                _this.set_title("Ошибка 404");
             });
         }
     },
@@ -584,7 +603,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.repertoire)?_c('div',[_c('div',{attrs:{"id":"repertoire_info"}},[_c('div',{attrs:{"id":"repertoire_info_wrapper"}},[_c('div',{attrs:{"id":"repertoire_info_allotted"}},[_c('p',{attrs:{"id":"repertoire_info_title"}},[_vm._v(_vm._s(_vm.repertoire.title))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.repertoire.author))])]),_vm._v(" "),_vm._l((_vm.cast_head),function(head){return _c('p',[_vm._v(_vm._s(head.role_person)+" - "+_vm._s(head.name))])}),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.repertoire.description))]),_vm._v(" "),(_vm.repertoire.duration)?_c('p',[_vm._v(_vm._s(_vm.time_format(_vm.repertoire.duration)))]):_vm._e()],2),_vm._v(" "),_c('img',{attrs:{"src":'../upload/' + _vm.repertoire.image,"onerror":"this.src = '../upload/not_found.png'"}})]),_vm._v(" "),(_vm.cast!='')?_c('titles',{attrs:{"title":"Состав"}}):_vm._e(),_vm._v(" "),_c('div',{attrs:{"id":"cast"}},_vm._l((_vm.cast),function(person){return _c('div',{key:person.id_cast,staticClass:"cast_wrapper"},[_c('img',{attrs:{"src":'../upload/' + person.image,"onerror":"this.src = '../upload/not_found.png'"}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"name"},[_vm._v(_vm._s(person.name))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(person.role_person))])])])}))],1):_c('div',{staticClass:"err404"},[_vm._v("\n    Увы, но данной странички не существует"),_c('br'),_vm._v("\n    Ошибка 404\n")])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.repertoire)?_c('div',[_c('div',{attrs:{"id":"repertoire_info"}},[_c('div',{attrs:{"id":"repertoire_info_wrapper"}},[_c('div',{attrs:{"id":"repertoire_info_allotted"}},[_c('p',{attrs:{"id":"repertoire_info_title"}},[_vm._v(_vm._s(_vm.repertoire.title))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.repertoire.author))])]),_vm._v(" "),_vm._l((_vm.cast_head),function(head){return _c('p',[_vm._v(_vm._s(head.role_person)+" - "+_vm._s(head.name))])}),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.repertoire.description))]),_vm._v(" "),(_vm.repertoire.duration)?_c('p',[_vm._v(_vm._s(_vm.time_format(_vm.repertoire.duration)))]):_vm._e()],2),_vm._v(" "),_c('img',{attrs:{"src":'../upload/' + _vm.repertoire.image,"onerror":"this.src = '../upload/not_found.png'"}})]),_vm._v(" "),(_vm.cast!='')?_c('titles',{attrs:{"title":"Состав"}}):_vm._e(),_vm._v(" "),(_vm.cast != '')?_c('div',{attrs:{"id":"cast"}},_vm._l((_vm.cast),function(person){return _c('div',{key:person.id_cast,staticClass:"cast_wrapper"},[_c('img',{attrs:{"src":'../upload/' + person.image,"onerror":"this.src = '../upload/not_found.png'"}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"name"},[_vm._v(_vm._s(person.name))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(person.role_person))])])])})):_vm._e()],1):_c('err404')}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -593,10 +612,10 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-091b51fc", __vue__options__)
   } else {
-    hotAPI.reload("data-v-091b51fc", __vue__options__)
+    hotAPI.rerender("data-v-091b51fc", __vue__options__)
   }
 })()}
-},{"./samples/title.vue":10,"vue":34,"vue-hot-reload-api":31}],10:[function(require,module,exports){
+},{"../page/components/err/err404.vue":20,"./samples/title.vue":10,"vue":34,"vue-hot-reload-api":31}],10:[function(require,module,exports){
 ;(function(){
 "use strict";
 
@@ -1058,6 +1077,7 @@ module.exports = {
             this.$http.post("/personAPI", formData).then(function (res) {
                 this.connect_db();
                 form.reset();
+                this.srcc = "../upload/not_found.png";
             });
         },
         loadPreview: function loadPreview() {
@@ -1087,6 +1107,7 @@ module.exports = {
                 this.connect_db();
                 form.reset();
                 this.edite_mode = false;
+                this.srcc = "../upload/not_found.png";
             });
         },
         edite_scroll: function edite_scroll(id) {
@@ -1158,6 +1179,7 @@ module.exports = {
             this.$http.post("/repertoireAPI", formData).then(function (res) {
                 this.connect_db();
                 form.reset();
+                this.srcc = "../upload/not_found.png";
             });
         },
         delete_method: function delete_method(id) {
@@ -1183,6 +1205,7 @@ module.exports = {
                 this.connect_db();
                 form.reset();
                 this.edite_mode = false;
+                this.srcc = "../upload/not_found.png";
             });
         },
         edite_scroll: function edite_scroll(id) {
@@ -1232,6 +1255,16 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   }
 })()}
 },{"vue":34,"vue-hot-reload-api":31}],20:[function(require,module,exports){
+;(function(){
+"use strict";
+
+module.exports = {
+    mounted: function mounted() {
+        this.set_title("Ошибка 404");
+    }
+};
+})()
+if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"err404"},[_vm._v("\n    Увы, но странички по ссылке:"),_c('br'),_vm._v(_vm._s(this.$route.path)),_c('br'),_vm._v("не существует"),_c('br'),_vm._v("\n    Ошибка 404\n")])}

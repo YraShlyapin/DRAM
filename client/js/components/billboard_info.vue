@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="billboard">
         <div id="repertoire_info">
             <div id="repertoire_info_wrapper">
                 <div id="repertoire_info_allotted">
@@ -14,7 +14,7 @@
             <img :src="'../upload/' + billboard.image" onerror="this.src = '../upload/not_found.png'">
         </div>
         <titles title="Состав" v-if="cast!=''"/>
-        <div id="cast">
+        <div id="cast" v-if="cast!=''">
             <div v-for="person in cast"
                 :key="person.id_cast"
                 class="cast_wrapper"
@@ -30,15 +30,18 @@
             <titles :title="date_format(billboard.date_time)" is_mini="true"/>
             <titles :title="billboard.place" is_mini="true"/>
         </div>
-        <iframe :src="'https://yandex.ru/map-widget/v1/?um=constructor%' + billboard.src_on_map + '&amp;source=constructor'" width="1000" height="500" frameborder="0"></iframe>
+        <iframe v-if="billboard.src_on_map" id="map" :src="'https://yandex.ru/map-widget/v1/?um=constructor%' + billboard.src_on_map + '&amp;source=constructor'" height="500" frameborder="0"></iframe>
     </div>
+    <err404 v-else/>
 </template>
 <script>
+    let err404 = require("../page/components/err/err404.vue")
     let titles = require("./samples/title.vue")
 
     module.exports = {
         components: {
-            titles
+            titles,
+            err404
         },
         data: function() {
             return {
@@ -51,19 +54,28 @@
             connect_db: function(id) {
                 this.$http.get(`/billboardAPI/${ id }`)
                     .then(function(res) {
-                        this.billboard = res.body
+                        if (res.body){
+                            this.billboard = res.body
 
-                        this.set_title(this.billboard.title)
+                            this.set_title(this.billboard.title)
 
-                        this.$http.get(`/castHeadAPI/${this.billboard.id_repertoire}`)
-                            .then(function(res) {
-                                this.cast_head = res.body
-                            })
+                            this.$http.get(`/castHeadAPI/${this.billboard.id_repertoire}`)
+                                .then(function(res) {
+                                    this.cast_head = res.body
+                                })
 
-                        this.$http.get(`/castAPI/${ this.billboard.id_repertoire }`)
-                            .then(function(res) {
-                                this.cast = res.body
-                            })
+                            this.$http.get(`/castAPI/${ this.billboard.id_repertoire }`)
+                                .then(function(res) {
+                                    this.cast = res.body
+                                })
+                        }else {
+                            this.billboard = null
+                            this.set_title("Ошибка 404")
+                        }
+                    })
+                    .catch((res) => {
+                        this.billboard = null
+                        this.set_title("Ошибка 404")
                     })
             }
         },

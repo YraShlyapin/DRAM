@@ -109,7 +109,7 @@ export async function get_all_billboard(){
 
 export async function get_one_billboard(id){
     const [row] = await pool.query(
-        "SELECT repertoire.*, billboard.* FROM billboard inner join repertoire using(id_repertoire) where id_billboard = ?",
+        "SELECT repertoire.*, billboard.* FROM billboard inner join repertoire using(id_repertoire) where id_billboard = ? LIMIT 1",
         [id]
     )
     return row[0]

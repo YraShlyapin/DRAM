@@ -4,3 +4,10 @@
         Ошибка 404
     </div>
 </template>
+<script>
+    module.exports = {
+        mounted(){
+            this.set_title("Ошибка 404")
+        },
+    }
+</script>
