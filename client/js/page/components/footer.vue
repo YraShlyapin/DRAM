@@ -14,7 +14,7 @@
                 <p class="titl">О разработчиках</p>
                 <p>frontend и backend: Юрий Шляпин</p>
                 <p>UX/UI дизайнер сайта: Егор Юдин</p>
-                <p>QA тестировщик: Илья Канаев</p>
+                <!--<p>QA тестировщик: Илья Канаев</p>-->
             </div>
         </div>
         <div id="footer_third_segment" class="footer_segments">
