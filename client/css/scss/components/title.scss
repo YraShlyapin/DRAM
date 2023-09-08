@@ -54,6 +54,12 @@
     }
 
     .mini {
+        .section_name {
+            @media (max-width:600px) {
+                font-size: 1.25rem;
+            }
+        }
+
         .applicant{
             @media (max-width:1100px) {
                 margin-bottom: 0;

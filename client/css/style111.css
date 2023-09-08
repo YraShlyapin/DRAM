@@ -244,6 +244,11 @@ a.router-link-active::after {
     min-width: 0;
   }
 }
+@media screen and (max-width: 600px) {
+  .mini .section_name {
+    font-size: 1.25rem;
+  }
+}
 @media screen and (max-width: 1100px) {
   .mini .applicant {
     margin-bottom: 0;
@@ -764,6 +769,18 @@ a.router-link-active::after {
   #person .block_person_view.active_block_person {
     z-index: 999;
     opacity: 1;
+  }
+}
+@media screen and (max-width: 490px) {
+  #person #person_wrapper .block_person {
+    flex-direction: column;
+  }
+  #person #person_wrapper .block_person img {
+    width: 100%;
+  }
+  #person #person_wrapper .block_person .about_person {
+    margin-left: 16px;
+    margin-bottom: 32px;
   }
 }
 #contact {

@@ -137,3 +137,22 @@
         }
     }
 }
+
+@media screen {
+    @media (max-width:490px) {
+        #person{    
+            #person_wrapper{    
+                .block_person{
+                    flex-direction: column;
+                    img{
+                        width:100%;
+                    }
+                    .about_person{
+                        margin-left: 16px;
+                        margin-bottom: 32px;
+                    }
+                }
+            }
+        }
+    }
+}
