@@ -302,7 +302,6 @@ a.router-link-active::after {
 }
 #main .viewer .slider_wrapper .slider img {
   width: 50%;
-  height: fit-content;
 }
 #main .viewer .prev, #main .viewer .next {
   cursor: pointer;
@@ -758,6 +757,9 @@ a.router-link-active::after {
   #person .block_person_view .block_person_view_wrapper .about_person p {
     margin-top: 20px;
   }
+  #person .block_person_view .block_person_view_wrapper .about_person .role {
+    white-space: pre-wrap;
+  }
 }
 @media screen and (max-width: 1000px) {
   #person .block_person_view .block_person_view_wrapper {
@@ -783,6 +785,31 @@ a.router-link-active::after {
     margin-bottom: 32px;
   }
 }
+#award {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 20px;
+}
+#award .award_element {
+  color: black;
+  max-width: 500px;
+  background-color: rgb(255, 224, 224);
+  border-radius: 25px;
+  overflow: hidden;
+}
+#award .award_element img {
+  width: 100%;
+}
+#award .award_element p {
+  font-size: 1.5rem;
+  margin-top: 16px;
+  margin-left: 25px;
+  margin-bottom: 25px;
+}
+
 #contact {
   display: flex;
   flex-direction: column;

@@ -295,6 +295,13 @@ export async function get_cast_head_for(id){
     return row
 }
 
+export async function get_awards(){
+    const [row] = await pool.query(
+        `Select * FROM dram.awards ORDER BY awards.date_create desc`
+    )
+    return row
+}
+
 
 let jb = {
     title: 'asd',

@@ -1,0 +1,31 @@
+#award{
+    // display: grid;
+    // grid: auto-flow dense / 1fr 1fr 1fr;
+    // grid-auto-flow: dense;
+    // justify-items: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 20px;
+    .award_element{
+        color: black;
+        max-width: 500px;
+        background-color: $gray;
+        border-radius: 25px;
+        overflow: hidden;
+
+        img{
+            width: 100%
+        }
+
+        p{
+            font-size: 1.5rem;
+            margin-top: 16px;
+            margin-left: 25px;
+            margin-bottom: 25px;
+        }
+    }
+}

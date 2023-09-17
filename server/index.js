@@ -167,6 +167,16 @@ app.delete("/billboardAPI/:id", async (req,res) => {
     res.send(result)
 })
 
+//NOTE: awardsAPI
+app.get("/awardsAPI", async (req,res) => {
+    const result = await db.get_awards()
+    if (result){
+        res.send(result)
+    }else {
+        res.sendStatus(404)
+    }
+})
+
 /*app.post("/upload", multer.single('file'), async (req,res) => {
     let obj = req.body
     if (req.file){

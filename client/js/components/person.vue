@@ -25,6 +25,7 @@
                         <p class="name">{{ person.name }}</p>
                         <p>{{ birthday(person.birthday) }}</p>
                         <p class="text">{{ person.description }}</p>
+                        <p class="role">{{ get_info(person.id_person) }}</p>
                     </div>
                 </div>
             </div>
@@ -39,7 +40,8 @@
         },
         data: function() {
             return {
-                persons: []
+                persons: [],
+                casts: []
             }
         },
         methods: {
@@ -48,6 +50,13 @@
                 this.$http.get("/personAPI")
                     .then(function(res) {
                         this.persons = res.body
+
+                        
+                    })
+                this.$http.get("/castAPI")
+                    .then(function(res) {
+                        this.casts = res.body
+                        console.log(this.get_info(33))
                     })
             },
             style_set: function(id){
@@ -57,6 +66,21 @@
             null_style: function(){
                 document.querySelector(".active_block_person").classList.remove("active_block_person")
                 document.querySelector('html').classList.remove('lock_person')
+            },
+            get_info(id_person){
+                let arr = this.casts.filter((el) => {
+                    return el.id_person == id_person
+                })
+                let str = ``
+                if (arr[0]){
+                    str = `Задействован в спектаклях:\n`
+                    for (let obj of arr){
+                        str += `${obj.title} - ${obj.role_person ? obj.role_person : 'не задано'}\n`
+                    }
+                }else {
+                    str = `Не задействован в спектаклях`
+                }
+                return str
             }
         },
         mounted: function() {
