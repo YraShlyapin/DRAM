@@ -1520,7 +1520,7 @@ module.exports = [
             {path: "repertoire", component: repertoire},
             {path: "billboard", component: billboard},
             {path: "persons", component: person},
-            {path: "awards", component: awards},
+            // {path: "awards", component: awards},
             {path: "contact", component: contact},
 
             {path: "repertoire/:id", component: repertoire_info},

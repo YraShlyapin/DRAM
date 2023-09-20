@@ -27,6 +27,9 @@ router.beforeEach((to, from, next) => {
     }
 })
 
+Vue.config.devtools = false
+Vue.config.productionTip = false
+
 new Vue({
     el: "#app",
     router,
