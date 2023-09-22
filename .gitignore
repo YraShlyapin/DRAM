@@ -2,4 +2,7 @@ client/node_modules
 client/upload
 client/upload/!not_found.png
 client/image/!text_full.png
+client/package-lock.json
 server/node_modules
+server/.env
+server/package-lock.json

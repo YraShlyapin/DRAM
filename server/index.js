@@ -2,13 +2,14 @@ import express from "express"
 import cors from "cors"
 import bodyParser from "body-parser"
 import multer from "multer"
+import 'dotenv/config'
 
 import * as db from "./db.js"
 import my_multer from "./multer.js"
 
 
-const port = 8080 || 25565
-const host = '192.168.33.63' || 'localhost'
+const port = process.env.PORT || 25565
+const host = process.env.HOST || 'localhost'
 
 let app = express()
 
