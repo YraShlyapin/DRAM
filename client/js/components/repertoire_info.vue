@@ -13,6 +13,9 @@
             </div>
             <img :src="'../upload/' + repertoire.image" onerror="this.src = '../upload/not_found.png'">
         </div>
+        <div id="gallery">
+
+        </div>
         <titles title="Состав" v-if="cast!=''"/>
         <div id="cast" v-if="cast != ''">
             <div v-for="person in cast"

@@ -15,6 +15,7 @@
 }
 #mini_repertoire1 .block_mini_repertoire img {
     width: 100%;
+    margin-bottom: 16px;
 }
 #mini_repertoire1 .block_mini_repertoire div {
     margin-left: 16px;
@@ -23,6 +24,7 @@
 }
 #mini_repertoire1 .block_mini_repertoire div .mini_repertoire_title {
     font-size: 1.25rem;
+    margin-top: 0;
 }
 #mini_repertoire1 .block_mini_repertoire div .mini_repertoire_text {
     overflow: hidden;
@@ -76,11 +78,13 @@
     border: 0;
     border-bottom: 5px #5F0006 solid;
 }
-input::file-selector-button, button {
+input::file-selector-button, button, .download {
     background: #5F0006;
     color: #EFEBE9;
     border: 0;
     border-radius: 10px;
     padding: 10px 12px;
     cursor: pointer;
+    font-size: 12px;
+    font-family: $Merriweather;
 }

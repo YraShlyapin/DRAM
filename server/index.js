@@ -2,13 +2,14 @@ import express from "express"
 import cors from "cors"
 import bodyParser from "body-parser"
 import multer from "multer"
+import fs from 'fs'
 import 'dotenv/config'
 
 import * as db from "./db.js"
 import my_multer from "./multer.js"
 
 
-const port = process.env.PORT || 25565
+const port = process.env.PORT || 8080
 const host = process.env.HOST || 'localhost'
 
 let app = express()
@@ -21,6 +22,22 @@ let jsonParser = bodyParser.json()
 
 app.get("/", function(req,res) {
     res.send("index.html")
+})
+
+//NOTE: image API
+app.get("/imageAPI", async (req,res) => {
+    const result = fs.readdirSync("../client/upload/", { withFileTypes: true })
+    .filter(d => d.isFile() && d.name.indexOf('not_found') !== 0 )
+    .map(d => d.name)
+    res.send(result)
+})
+
+app.delete("/imageAPI/:name", async (req,res) => {
+    
+    fs.unlink(`../client/upload/${req.params.name}`, (err) => {
+        if (err) return err
+    })
+    res.sendStatus(200)
 })
 
 //NOTE: repertoire API

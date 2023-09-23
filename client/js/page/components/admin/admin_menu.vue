@@ -7,6 +7,7 @@
             <router-link to="/ADMIN/person" class="menu_link">Труппа</router-link>
             <router-link to="/ADMIN/cast" class="menu_link">Состав</router-link>
             <router-link to="/ADMIN/billboard" class="menu_link">Афиша</router-link>
+            <router-link to="/ADMIN/images" class="menu_link">Картинки</router-link>
         </div>
     </div>
 </template>
