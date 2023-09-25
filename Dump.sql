@@ -57,7 +57,7 @@ CREATE TABLE `billboard` (
   PRIMARY KEY (`id_billboard`),
   KEY `id_repertoire_idx` (`id_repertoire`),
   CONSTRAINT `id_repertoire` FOREIGN KEY (`id_repertoire`) REFERENCES `repertoire` (`id_repertoire`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +66,6 @@ CREATE TABLE `billboard` (
 
 LOCK TABLES `billboard` WRITE;
 /*!40000 ALTER TABLE `billboard` DISABLE KEYS */;
-INSERT INTO `billboard` VALUES (1,2,'2023-09-06 20:31:00','ул, Пушкина','3Ae9b9fb91d381c327105aefacfae0dd342eeb6ee2336488891e223bea1d2edec3'),(2,1,'2023-09-06 20:42:00','ss',NULL),(3,5,'2023-09-07 15:26:00','ss',NULL);
 /*!40000 ALTER TABLE `billboard` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,7 +87,7 @@ CREATE TABLE `cast` (
   KEY `id_repertoire_cast_idx` (`id_repertoire`),
   CONSTRAINT `id_person` FOREIGN KEY (`id_person`) REFERENCES `person` (`id_person`),
   CONSTRAINT `id_repertoire_cast` FOREIGN KEY (`id_repertoire`) REFERENCES `repertoire` (`id_repertoire`)
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,8 +96,34 @@ CREATE TABLE `cast` (
 
 LOCK TABLES `cast` WRITE;
 /*!40000 ALTER TABLE `cast` DISABLE KEYS */;
-INSERT INTO `cast` VALUES (52,5,33,NULL,0),(53,5,33,'jj',0),(54,5,33,'kkk',1),(55,5,33,'kkkk',0);
+INSERT INTO `cast` VALUES (1,2,1,'Постановка, сценография и музыкальное оформление',1),(2,2,2,'Ассистент режиссёра',1),(3,2,3,'Лука',0),(4,2,1,'Отец',0),(5,3,3,'Гусь',0),(6,3,4,'Черепашка',0),(7,3,12,'Голос',0);
 /*!40000 ALTER TABLE `cast` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `gallery`
+--
+
+DROP TABLE IF EXISTS `gallery`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `gallery` (
+  `gallery_id` int NOT NULL,
+  `repertoire_id` int DEFAULT NULL,
+  `image` text COLLATE utf8_bin,
+  PRIMARY KEY (`gallery_id`),
+  KEY `repertoire_id_idx` (`repertoire_id`),
+  CONSTRAINT `repertoire_id` FOREIGN KEY (`repertoire_id`) REFERENCES `repertoire` (`id_repertoire`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gallery`
+--
+
+LOCK TABLES `gallery` WRITE;
+/*!40000 ALTER TABLE `gallery` DISABLE KEYS */;
+/*!40000 ALTER TABLE `gallery` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -116,7 +141,7 @@ CREATE TABLE `person` (
   `real` tinyint DEFAULT NULL,
   `image` text COLLATE utf8_bin,
   PRIMARY KEY (`id_person`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,7 +150,7 @@ CREATE TABLE `person` (
 
 LOCK TABLES `person` WRITE;
 /*!40000 ALTER TABLE `person` DISABLE KEYS */;
-INSERT INTO `person` VALUES (33,'asd','vf','2021-08-31',1,'1693764081701-PO2zS6j6eUg.jpg'),(34,'Владимир Кротких','asdfaffffffffffffffffffffffffffff\r\nsssssssssssssss\r\n  asdas df asd aasf as asdas df asd aasf as asdas df asd aasf as asdas df asd aasf as asdas df asd aasf asasdas df asd aasf as asdas df asd aasf asasdas df asd aasf as  asdas df asd aasf asasdas df asd aasf as','2006-11-22',1,'1694174886009-spXN4qOWQ5I.jpg');
+INSERT INTO `person` VALUES (1,'Ярослав Щедров',NULL,'2023-09-24',1,'not_found.png'),(2,'Матвей Семагин',NULL,'2023-09-24',1,'not_found.png'),(3,'Станислав Данилов',NULL,'2023-09-24',1,'not_found.png'),(4,'Влад Гончаров',NULL,'2023-09-24',1,'not_found.png'),(5,'Анжела Янтушкина',NULL,'2023-09-24',1,'not_found.png'),(6,'София Кандрашина',NULL,'2023-09-24',1,'not_found.png'),(7,'Варвара Высоцкая',NULL,'2023-09-24',1,'not_found.png'),(8,'Диана Хакимова',NULL,'2023-09-24',1,'not_found.png'),(9,'Виктория Забавчук',NULL,'2023-09-24',1,'not_found.png'),(10,'Тимур Моисеев',NULL,'2023-09-24',1,'not_found.png'),(11,'Илья Бухалов',NULL,'2023-09-24',1,'not_found.png'),(12,'Олег Наливайко',NULL,'2023-09-24',0,'not_found.png');
 /*!40000 ALTER TABLE `person` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -145,7 +170,7 @@ CREATE TABLE `repertoire` (
   `duration` tinyint unsigned DEFAULT NULL,
   `creation_time_repertoire` datetime DEFAULT NULL,
   PRIMARY KEY (`id_repertoire`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -154,7 +179,7 @@ CREATE TABLE `repertoire` (
 
 LOCK TABLES `repertoire` WRITE;
 /*!40000 ALTER TABLE `repertoire` DISABLE KEYS */;
-INSERT INTO `repertoire` VALUES (1,'Как я познакомился с отцом','Джанибек Джанибекович','Пытаясь получше узнать долго отсутствующего в его жизни отца, Лука совершает длинный и непростой путь... к себе. Эта дорога без конца полна лёгких разочарований и трудных приобретений. Душевные искания и неожиданные откровения - главные спутники на этой дороге. И всё ради наполненного светлой грусти итога.','1693724803743-5EdhPC9TuuY.jpg',65,'1970-01-01 04:00:00'),(2,'ДАВАЙТЕ НЕ БУДЕМ БОЯТЬСЯ, или ПараФраз о величии','(по философско-политической пьесе Яны Богдановой)','Дети играют, ссорятся, мирятся - всё как у \"нормальных\" людей... Действие разворачивается на детской площадке в то время, пока нет взрослых. У главных героев есть \"кликухи\", \"погоняла\", но нет имён. А на дворе предчувствие, каждый сам решит чего. Да и такие ли уж они дети?','1693724818638-175OXtk37sA.jpg',35,'1970-01-01 04:00:00'),(3,'ИВАН КРЕСТЬЯНСКИЙ СЫН И ПРИНЦЕССА ВАСИЛИСА','Дмитрий Татаринов','asd','1694018507826-FFk-w7s6Zfc.jpg',25,'2023-08-27 14:29:00'),(4,'Поясница','по мотивам романа И.А. Гончарова обыкновенная история','История провинциала Саши Адуева, покоряющего столицу, актуальна и 200 лет спустя. Почти «обыкновенная история» в современном формате. Молодые артисты расскажут эту историю по-новому.','1693724777737-ZdW2KkzlPUs.jpg',100,'2023-08-28 14:29:00'),(5,'Молоток','по одноименной пьесе Павла Павлова','11-летний легкоатлет Женька готовится к важным в своей жизни соревнованиям. Но мечта превращается в сверхидею и, как это часто бывает в таких случаях, разрушает внутренний мир подростка. А вместе с ним и мир, который снаружи...','1693724792916-PO2zS6j6eUg.jpg',100,'2023-08-28 14:36:00');
+INSERT INTO `repertoire` VALUES (1,'ПОЯСНИЦА','по мотивам романа И.А. Гончарова \"Обыкновенная история\"','История провинциала Саши Адуева, покоряющего столицу, актуальна и 200 лет спустя. Почти «обыкновенная история» в современном формате. Молодые артисты расскажут эту историю по-новому.','1695554593457-poyasnica.jpg',95,'2022-10-01 00:00:00'),(2,'Как я познакомился с отцом','Дж. Баттиста','Пытаясь получше узнать долго отсутствующего в его жизни отца, Лука совершает длинный и непростой путь... к себе. Эта дорога без конца полна лёгких разочарований и трудных приобретений. Душевные искания и неожиданные откровения - главные спутники на этой дороге. И всё ради наполненного светлой грусти итога.','1695554507771-father.jpg',75,'2023-04-21 00:00:00'),(3,'ДАВАЙТЕ НЕ БУДЕМ БОЯТЬСЯ, или ПараФраз о величии','по философско-политической пьесе Яны Богдановой','Дети играют, ссорятся, мирятся - всё как у \"нормальных\" людей... Действие разворачивается на детской площадке в то время, пока нет взрослых. У главных героев есть \"кликухи\", \"погоняла\", но нет имён. А на дворе предчувствие, каждый сам решит чего. Да и такие ли уж они дети?','1695554564463-dont_afraid.jpg',40,'2023-02-24 00:00:00');
 /*!40000 ALTER TABLE `repertoire` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -167,4 +192,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-20 21:44:35
+-- Dump completed on 2023-09-25 18:13:03

@@ -23,6 +23,18 @@ function ison(obj) {
     return false
 }
 
+export function close(){
+    pool.end()
+}
+
+//NOTE: gallery
+export async function get_gallery(id){
+    const [row] = await pool.query(
+        "SELECT image FROM gallery where repertoire_id = ?",
+        [id]
+    )
+    return row
+}
 
 //NOTE: repertoire 
 export async function get_all_repertoire(){
@@ -65,10 +77,14 @@ export async function post_repertoire(jb){
 
 export async function delete_repertoire(id){
     const row = await get_one_repertoire(id)
-    await pool.query(
-        `DELETE FROM repertoire WHERE id_repertoire = ?`,
-        [id]
-    )
+    try{
+        await pool.query(
+            `DELETE FROM repertoire WHERE id_repertoire = ?`,
+            [id]
+        )
+    }catch (e){
+        console.log('нельзя удалить')
+    }
     return row
 }
 

@@ -13,8 +13,8 @@
             </div>
             <img :src="'../upload/' + repertoire.image" onerror="this.src = '../upload/not_found.png'">
         </div>
-        <div id="gallery">
-
+        <div id="gallery" v-if="gallery!=''">
+            <img v-for="image in gallery" :src="'../upload/' + image" alt="">
         </div>
         <titles title="Состав" v-if="cast!=''"/>
         <div id="cast" v-if="cast != ''">
@@ -44,6 +44,7 @@
         data: function() {
             return {
                 repertoire: '',
+                gallery: '',
                 cast: '',
                 cast_head: ''
             }
@@ -54,6 +55,11 @@
                     .then(function(res) {
                         this.repertoire = res.body
                         this.set_title(this.repertoire.title)
+
+                        this.$http.get(`/galleryAPI/${id}`)
+                            .then((res) => {
+                                this.gallery = res.body
+                            })
 
                         this.$http.get(`/castHeadAPI/${id}`)
                             .then(function(res) {

@@ -41,6 +41,12 @@ app.delete("/imageAPI/:name", async (req,res) => {
 })
 
 //NOTE: repertoire API
+app.get("/galleryAPI/:id", async (req,res) => {
+    const result = await db.get_gallery(req.params.id)
+    res.send(result)
+})
+
+//NOTE: repertoire API
 app.get("/repertoireAPI", async (req,res) => {
     const result = await db.get_all_repertoire_new()
     res.send(result)
@@ -212,4 +218,10 @@ app.post("/saveImage", my_multer.single('file'), async (req,res) => {
 
 app.listen(port, host, function(){
     console.log(`сервер запущен на http://${host}:${port}`)
+})
+
+process.on("SIGINT", () => {
+    db.close()
+    console.log('сервер выключен')
+    process.exit()
 })
