@@ -15,6 +15,7 @@
         </div>
         <div id="gallery" v-if="gallery!=''">
             <img v-for="image in gallery" :src="'../upload/' + image" alt="">
+            <p>asd</p>
         </div>
         <titles title="Состав" v-if="cast!=''"/>
         <div id="cast" v-if="cast != ''">
