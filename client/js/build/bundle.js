@@ -783,8 +783,8 @@ function date_get(){
 }
 
 function date_get_edite(d){
-    console.log(new Date(new Date(d) - (-4*60*60*1000)).toISOString().replace('T', ' ').split('.')[0].slice(0,-3))
-    let date = new Date(new Date(d) - (-4*60*60*1000)).toISOString().replace('T', ' ').split('.')[0].slice(0,-3)
+    console.log(new Date(new Date(d) - (-3*60*60*1000)).toISOString().replace('T', ' ').split('.')[0].slice(0,-3))
+    let date = new Date(new Date(d) - (-3*60*60*1000)).toISOString().replace('T', ' ').split('.')[0].slice(0,-3)
     return date
 }
 
