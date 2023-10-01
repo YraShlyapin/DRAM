@@ -63,7 +63,6 @@
             post_method: function(e) {
                 e.preventDefault()
                 let form = e.target
-                console.log(form)
                 let formData = new FormData(form)
                 this.$http.post("/personAPI", formData)
                     .then(function(res) {
@@ -93,7 +92,6 @@
             edite_method(e) {
                 e.preventDefault()
                 let form = e.target
-                console.log(form)
                 let formData = new FormData(form)
                 this.$http.put(`/personAPI/${this.id_edite}`, formData)
                     .then(function(res) {

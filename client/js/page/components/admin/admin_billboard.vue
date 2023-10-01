@@ -83,7 +83,6 @@
             edite_method(e) {
                 e.preventDefault()
                 let form = e.target
-                console.log(form)
                 let formData = new FormData(form)
                 this.$http.put(`/billboardAPI/${this.id_edite}`, formData)
                     .then(function(res) {

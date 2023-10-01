@@ -41,6 +41,11 @@ app.delete("/imageAPI/:name", async (req,res) => {
 })
 
 //NOTE: repertoire API
+app.get("/galleryAPI", async (req,res) => {
+    const result = await db.get_all_gallery()
+    res.send(result)
+})
+
 app.get("/galleryAPI/:id", async (req,res) => {
     const result = await db.get_gallery(req.params.id)
     res.send(result)

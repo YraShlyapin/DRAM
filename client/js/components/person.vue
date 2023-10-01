@@ -56,7 +56,6 @@
                 this.$http.get("/castAPI")
                     .then(function(res) {
                         this.casts = res.body
-                        console.log(this.get_info(33))
                     })
             },
             style_set: function(id){

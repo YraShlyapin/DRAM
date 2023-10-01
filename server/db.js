@@ -28,9 +28,16 @@ export function close(){
 }
 
 //NOTE: gallery
+export async function get_all_gallery(){
+    const [row] = await pool.query(
+        "SELECT * FROM gallery inner join repertoire using(id_repertoire)",
+    )
+    return row
+}
+
 export async function get_gallery(id){
     const [row] = await pool.query(
-        "SELECT image FROM gallery where repertoire_id = ?",
+        "SELECT image FROM gallery where id_repertoire = ?",
         [id]
     )
     return row

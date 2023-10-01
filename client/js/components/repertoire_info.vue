@@ -13,9 +13,10 @@
             </div>
             <img :src="'../upload/' + repertoire.image" onerror="this.src = '../upload/not_found.png'">
         </div>
-        <div id="gallery" v-if="gallery!=''">
-            <img v-for="image in gallery" :src="'../upload/' + image" alt="">
-            <p>asd</p>
+        <div id="gallery" ref="asd" v-show="show">
+            <img v-for="image in gallery" :src="'../upload/' + image.image" alt="">
+            <button class="more" v-show="mini" @click="show_more">Больше<br>↓</button>
+            <button class="more mini" v-show="maxi" @click="show_mini">↑<br>Сжать</button>
         </div>
         <titles title="Состав" v-if="cast!=''"/>
         <div id="cast" v-if="cast != ''">
@@ -47,10 +48,34 @@
                 repertoire: '',
                 gallery: '',
                 cast: '',
-                cast_head: ''
+                cast_head: '',
+                show: false,
+                mini: false,
+                maxi: false
             }
         },
         methods: {
+            show_mini(){
+                this.$refs.asd.classList.remove('activety')
+                this.$refs.asd.classList.add('disactivety')
+                this.$refs.asd.classList.add('mini')
+                this.maxi = false
+                this.mini = true
+            },
+            show_more(){
+                this.$refs.asd.classList.remove('disactivety')
+                this.$refs.asd.classList.remove('mini')
+                this.$refs.asd.classList.add('activety')
+                this.mini = false
+                this.maxi = true
+            },
+            ismini() {
+                if (this.$refs.asd.clientHeight - 100 > 510){
+                    this.$refs.asd.style.setProperty('--first-height', this.$refs.asd.clientHeight - 100 + 'px')
+                    this.$refs.asd.classList.add('mini')
+                    this.mini = true
+                }
+            },
             connect_db: function(id) {
                 this.$http.get(`/repertoireAPI/${id}`)
                     .then(function(res) {
@@ -60,6 +85,8 @@
                         this.$http.get(`/galleryAPI/${id}`)
                             .then((res) => {
                                 this.gallery = res.body
+                                this.show = true
+                                setTimeout(this.ismini, 100)
                             })
 
                         this.$http.get(`/castHeadAPI/${id}`)
@@ -69,7 +96,6 @@
 
                         this.$http.get(`/castAPI/${id}`)
                             .then(function(res) {
-                                console.log(res)
                                 this.cast = res.body
                             })
                     })

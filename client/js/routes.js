@@ -17,6 +17,7 @@ let a_repertoire = require("./page/components/admin/admin_repertoire.vue")
 let a_person = require("./page/components/admin/admin_person.vue")
 let a_billboard = require("./page/components/admin/admin_billboard.vue")
 let a_cast = require("./page/components/admin/admin_cast.vue")
+let a_gallery = require("./page/components/admin/admin_gallery.vue")
 let a_image = require("./page/components/admin/all_image.vue")
 
 let err404 = require("./page/components/err/err404.vue")
@@ -50,6 +51,7 @@ module.exports = [
             {path: "person", component: a_person, meta: { requiresAuth: true }},
             {path: "billboard", component: a_billboard, meta: { requiresAuth: true }},
             {path: "cast", component: a_cast, meta: { requiresAuth: true }},
+            {path: "gallery", component: a_gallery, meta: { requiresAuth: true }},
             {path: "images", component: a_image, meta: { requiresAuth: true }},
         ],
     },

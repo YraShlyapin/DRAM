@@ -810,6 +810,101 @@ a.router-link-active::after {
   margin-bottom: 25px;
 }
 
+#gallery {
+  padding: 50px 0 70px 0;
+  position: relative;
+  width: 100vw;
+  display: flex;
+  gap: 10px;
+  overflow: hidden;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background-color: #5F0006;
+  border-radius: 25px;
+}
+#gallery img {
+  max-width: 100%;
+  width: 500px;
+}
+#gallery.mini {
+  height: 500px;
+}
+#gallery.activety {
+  animation: activety1 0.7s ease;
+  animation-direction: normal;
+}
+#gallery.disactivety {
+  animation: activety2 0.7s ease;
+  animation-direction: reverse;
+}
+#gallery.mini::after {
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, black 0%, rgba(255, 255, 255, 0) 50%);
+  position: absolute;
+}
+#gallery button.more {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 10;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 18px;
+  font-family: "Merriweather", serif;
+  color: white;
+  background-color: rgba(255, 255, 255, 0);
+}
+#gallery button.more:hover {
+  animation: more_button 1s ease 1;
+}
+#gallery button.more:hover {
+  animation: mini_button 1s ease 1;
+}
+
+@keyframes activety1 {
+  0% {
+    height: 500px;
+  }
+  100% {
+    height: var(--first-height);
+  }
+}
+@keyframes activety2 {
+  0% {
+    height: 500px;
+  }
+  100% {
+    height: var(--first-height);
+  }
+}
+@keyframes more_button {
+  0% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 10px);
+  }
+  100% {
+    transform: translate(-50%, 0);
+  }
+}
+@keyframes mini_button {
+  0% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, -10px);
+  }
+  100% {
+    transform: translate(-50%, 0);
+  }
+}
 #contact {
   display: flex;
   flex-direction: column;
