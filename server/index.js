@@ -40,7 +40,7 @@ app.delete("/imageAPI/:name", async (req,res) => {
     res.sendStatus(200)
 })
 
-//NOTE: repertoire API
+//NOTE: gallery API
 app.get("/galleryAPI", async (req,res) => {
     const result = await db.get_all_gallery()
     res.send(result)

@@ -6,6 +6,10 @@ let routes = require("./routes.js")
 
 let MyPlugin = require("./global_func.js")
 
+window.addEventListener('popstate', () => {
+    document.querySelector('html').classList.remove('lock_person')
+}, false)
+
 Vue.use(MyPlugin)
 Vue.use(VueResource)
 Vue.use(VueRouter)

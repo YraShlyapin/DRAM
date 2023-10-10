@@ -43,6 +43,20 @@ export async function get_gallery(id){
     return row
 }
 
+//NOTE: awards
+export async function get_awards(){
+    const [row] = await pool.query(
+        `Select * FROM dram.awards ORDER BY awards.date_create desc`
+    )
+    return row
+}
+export async function post_awards(){
+    const [row] = await pool.query(
+        `Insert into awards (image)`
+    )
+    return row
+}
+
 //NOTE: repertoire 
 export async function get_all_repertoire(){
     const [row] = await pool.query("SELECT * FROM repertoire")
@@ -314,13 +328,6 @@ export async function get_cast_head_for(id){
         inner join cast on cast.id_repertoire = repertoire.id_repertoire
         inner join person on person.id_person = cast.id_person where repertoire.id_repertoire = ? and is_head = true`,
         [id]
-    )
-    return row
-}
-
-export async function get_awards(){
-    const [row] = await pool.query(
-        `Select * FROM dram.awards ORDER BY awards.date_create desc`
     )
     return row
 }

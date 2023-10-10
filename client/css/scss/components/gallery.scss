@@ -1,18 +1,20 @@
 #gallery{
     padding: 50px 0 70px 0;
     position: relative;
-    width: 100vw;
+    width: calc(100vw - 100px);
     display: flex;
-    gap: 10px;
+    gap: 20px;
     overflow: hidden;
     flex-wrap: wrap;
     justify-content: space-evenly;
     background-color: $primary-color;
     border-radius: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
 
     img{
         max-width: 100%;
-        width: 500px;
+        width: 400px;
     }
     &.mini{
         height: 500px;

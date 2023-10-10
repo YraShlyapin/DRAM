@@ -8,7 +8,7 @@
             class="award_element"
         >
             <img :src="'../upload/' + award.image" alt="">
-            <p>{{award.name}}</p>
+            <p>{{award.description}}</p>
         </a>        
     </div>
 </template>

@@ -21,7 +21,7 @@ a.router-link-active::after {
         #menu_wrapper{
             position: relative;
         
-            max-width: 540px;
+            max-width: 600px;
             width: 40vw;
         
             @include display(flex,space-between,center);
@@ -42,7 +42,7 @@ a.router-link-active::after {
             @include display(flex,space-between,center);
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 1290px) {
 
             #menu_wrapper{
                 position: fixed;
@@ -131,7 +131,7 @@ a.router-link-active::after {
     }
 
 
-    @media (max-width: 900px) {
+    @media (max-width: 1290px) {
         .change_color{
             fill: $secondary-color;
         }

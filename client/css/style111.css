@@ -61,7 +61,7 @@ a.router-link-active::after {
     flex-wrap: nowrap;
   }
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1290px) {
   #menu #menu_wrapper {
     position: fixed;
     background-color: #EFEBE9;
@@ -127,7 +127,7 @@ a.router-link-active::after {
     bottom: 0;
   }
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1290px) {
   .change_color {
     fill: #890001;
   }
@@ -813,18 +813,20 @@ a.router-link-active::after {
 #gallery {
   padding: 50px 0 70px 0;
   position: relative;
-  width: 100vw;
+  width: calc(100vw - 100px);
   display: flex;
-  gap: 10px;
+  gap: 20px;
   overflow: hidden;
   flex-wrap: wrap;
   justify-content: space-evenly;
   background-color: #5F0006;
   border-radius: 25px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 #gallery img {
   max-width: 100%;
-  width: 500px;
+  width: 400px;
 }
 #gallery.mini {
   height: 500px;
@@ -1189,7 +1191,7 @@ input::file-selector-button, button, .download {
   font-weight: 400;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1290px) {
   .lock {
     overflow-y: hidden;
   }

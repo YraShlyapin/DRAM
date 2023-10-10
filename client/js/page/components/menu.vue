@@ -6,6 +6,8 @@
             <router-link to="/billboard" class="menu_link">Афиша</router-link>
             <router-link to="/repertoire" class="menu_link">Репертуар</router-link>
             <router-link to="/persons" class="menu_link">Труппа</router-link>
+            <router-link to="/contact" class="menu_link">Новости</router-link>
+            <router-link to="/contact" class="menu_link">Награды</router-link>
             <router-link to="/contact" class="menu_link">Контакты</router-link>
             <div id="menu_social_wrapper">
                 <svg width="35" height="35" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,7 +24,7 @@
     module.exports = {
         methods: {
             activate: function(){
-                if (window.innerWidth <= 900){
+                if (window.innerWidth <= 1290){
                     document.querySelector("html").classList.toggle("lock")
                     document.querySelector("#menu_wrapper").classList.toggle("activate")
                 }

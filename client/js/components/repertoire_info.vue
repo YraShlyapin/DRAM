@@ -14,7 +14,7 @@
             <img :src="'../upload/' + repertoire.image" onerror="this.src = '../upload/not_found.png'">
         </div>
         <div id="gallery" ref="asd" v-show="show">
-            <img v-for="image in gallery" :src="'../upload/' + image.image" alt="">
+            <img v-for="image in gallery" :src="'../upload/' + image.image" alt="" class="targeter">
             <button class="more" v-show="mini" @click="show_more">Больше<br>↓</button>
             <button class="more mini" v-show="maxi" @click="show_mini">↑<br>Сжать</button>
         </div>
@@ -51,10 +51,14 @@
                 cast_head: '',
                 show: false,
                 mini: false,
-                maxi: false
+                maxi: false,
+                //target_now: 0
             }
         },
         methods: {
+            /*target_now_(e) {
+                this.target_now = Array.prototype.slice.call(document.querySelectorAll('.targeter')).indexOf(e.target)
+            },*/
             show_mini(){
                 this.$refs.asd.classList.remove('activety')
                 this.$refs.asd.classList.add('disactivety')
@@ -70,8 +74,8 @@
                 this.maxi = true
             },
             ismini() {
-                if (this.$refs.asd.clientHeight - 100 > 510){
-                    this.$refs.asd.style.setProperty('--first-height', this.$refs.asd.clientHeight - 100 + 'px')
+                if (this.$refs.asd.clientHeight - 120 > 510){
+                    this.$refs.asd.style.setProperty('--first-height', this.$refs.asd.clientHeight - 120 + 'px')
                     this.$refs.asd.classList.add('mini')
                     this.mini = true
                 }
