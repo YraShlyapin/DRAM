@@ -1,6 +1,6 @@
 <template>
     <div id="main">
-        <form v-if="!edite_mode" v-on:submit="post_method" id="form">
+        <form v-on:submit="post_method" id="form">
             <select name="id_repertoire">
                 <option value="" disabled selected hidden>выберить спектакль из репертуара</option>
                 <option v-for="repertoire in repertoires"
@@ -10,19 +10,39 @@
                 </option>
             </select>
             <div id="draggble" draggable="true" @@dragover.prevent @drop.stop.prevent="onDrop">
-                <img :src="srcc" @dragover.prevent @drop.stop.prevent="onDrop">
-                <input type="file" name="file" id="file" accept="image/*" @change="loadPreview">
+                <div v-for="(src_one, index) in srcc" class="many_img">
+                    <img :src="src_one" @dragover.prevent @drop.stop.prevent="onDrop">
+                    <button @click="file_edit(index)">x</button>
+                </div>
+                <input type="file" name="file" id="file" accept="image/*" @change="loadPreview" ref="image_input" multiple>
             </div>
+            <button type="submit">отправить</button>
         </form>
+        <div>
+            <div id="mini_repertoire1">
+                <div v-for="(item_gallery, key_gallery) in gallery"
+                    class="block_mini_repertoire"
+                >
+                    <div class="images_gallery">
+                        <img v-for="image in item_gallery" :src="'../upload/' + image.image" onerror="this.src = '../upload/not_found.png'">
+                    </div>
+                    <div>
+                        <p class="mini_repertoire_title">{{ key_gallery }}</p>
+                    </div>
+                    <button @click="delete_method()">удалить</button>
+                    <button @click="edite_scroll()">редактировать</button>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
     module.exports = {
         data: function() {
             return {
-                srcc: "../upload/not_found.png",
+                srcc: ["../upload/not_found.png"],
                 repertoires: [],
-                gallery: [],
+                gallery: {},
                 /*edite_mode: false,
                 comp_edite: {},
                 id_edite: 0*/
@@ -42,13 +62,27 @@
                     })
             },
             loadPreview(){
-                let sf = document.querySelector("input[type=file]").files[0]
+                let files = this.$refs.image_input.files
                 let self = this
-                let reader = new FileReader()
-                reader.onload = function(re){
-                    self.srcc = re.target.result
+                this.srcc = []
+                for (let file of files) {
+                    let reader = new FileReader()
+                    reader.onload = function(re){
+                        self.srcc.push(re.target.result)
+                    }
+                    reader.readAsDataURL(file)
                 }
-                reader.readAsDataURL(sf)
+            },
+            file_edit(index) {
+                let dataTransfer = new ClipboardEvent("").clipboardData || new DataTransfer()
+                let all_files = [...this.$refs.image_input.files]
+                all_files.splice(index, 1)
+                this.srcc.splice(index, 1)
+                console.log(all_files)
+                for (let file1 of all_files){
+                    dataTransfer.items.add(file1)
+                }
+                document.querySelector("#file").files = dataTransfer.files
             },
             async connect_db() {
                 this.$http.get("/repertoireAPI")

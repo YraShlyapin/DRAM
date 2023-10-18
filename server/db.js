@@ -30,16 +30,33 @@ export function close(){
 //NOTE: gallery
 export async function get_all_gallery(){
     const [row] = await pool.query(
-        "SELECT * FROM gallery inner join repertoire using(id_repertoire)",
+        "SELECT gallery.image_gallery, gallery.id_gallery, repertoire.title FROM gallery inner join repertoire using(id_repertoire)",
     )
     return row
 }
 
 export async function get_gallery(id){
     const [row] = await pool.query(
-        "SELECT image FROM gallery where id_repertoire = ?",
+        "SELECT image_gallery FROM gallery where id_repertoire = ?",
         [id]
     )
+    return row
+}
+
+export async function post_gallery(jb){
+    await pool.query(
+        `INSERT INTO gallery (id_repertoire, image_gallery)
+        VALUES (?, ?)`,
+        [
+            isundefind(jb.id_repertoire),
+            isundefind(jb.image)
+        ]
+    )
+}
+
+//NOTE: news
+export async function get_news(){
+    const [row] = await pool.query(`Select * from news`)
     return row
 }
 

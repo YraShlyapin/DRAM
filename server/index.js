@@ -43,12 +43,40 @@ app.delete("/imageAPI/:name", async (req,res) => {
 //NOTE: gallery API
 app.get("/galleryAPI", async (req,res) => {
     const result = await db.get_all_gallery()
-    res.send(result)
+    let obj = {}
+    for (let one_result of result){
+        if (one_result.title in obj){
+            obj[one_result.title].push({
+                image: one_result.image_gallery,
+                id_gallery: one_result.id_gallery
+            })
+        } else{
+            obj[one_result.title] = []
+            obj[one_result.title].push({
+                image: one_result.image_gallery,
+                id_gallery: one_result.id_gallery
+            })
+        }
+    }
+    res.send(obj)
 })
 
 app.get("/galleryAPI/:id", async (req,res) => {
     const result = await db.get_gallery(req.params.id)
-    res.send(result)
+    if (result != ''){
+        res.send(result)
+    } else{
+        res.sendStatus(404)
+    }
+    
+})
+
+app.post("/galleryAPI", my_multer.array('file'), async (req,res) => {
+    let obj = req.body
+    for (let file of req.files){
+        obj.image = file.filename
+        db.post_gallery(obj)
+    }
 })
 
 //NOTE: repertoire API
@@ -199,6 +227,16 @@ app.delete("/billboardAPI/:id", async (req,res) => {
 //NOTE: awardsAPI
 app.get("/awardsAPI", async (req,res) => {
     const result = await db.get_awards()
+    if (result){
+        res.send(result)
+    }else {
+        res.sendStatus(404)
+    }
+})
+
+//NOTE: newsAPI
+app.get("/newsAPI", async (req,res) => {
+    const result = await db.get_news()
     if (result){
         res.send(result)
     }else {

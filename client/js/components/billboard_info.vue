@@ -5,6 +5,7 @@
                 <div id="repertoire_info_allotted">
                     <p id="repertoire_info_title">{{ billboard.title }}</p>
                     <p>{{ billboard.author }}</p>
+                    <p>{{ billboard.marker }}</p>
                 </div>
                 <p v-for="head in cast_head">{{head.role_person}} - {{head.name}}<br></p>
                 <p>{{ billboard.description }}</p>
@@ -12,6 +13,11 @@
                 <p  v-if="billboard.duration">{{ time_format(billboard.duration) }}</p>
             </div>
             <img :src="'../upload/' + billboard.image" onerror="this.src = '../upload/not_found.png'">
+        </div>
+        <div id="gallery" ref="asd" v-show="show">
+            <img v-for="image in gallery" :src="'../upload/' + image.image_gallery" alt="" class="targeter" onerror="this.src = '../upload/not_found.png'">
+            <button class="more" v-show="mini" @click="show_more">Больше<br>↓</button>
+            <button class="more mini" v-show="maxi" @click="show_mini">↑<br>Сжать</button>
         </div>
         <titles title="Состав" v-if="cast!=''"/>
         <div id="cast" v-if="cast!=''">
@@ -47,16 +53,50 @@
             return {
                 billboard: '',
                 cast: '',
-                cast_head: ''
+                cast_head: '',
+                gallery: '',
+                show: false,
+                mini: false,
+                maxi: false,
             }
         },
         methods: {
+            show_mini(){
+                this.$refs.asd.classList.remove('activety')
+                this.$refs.asd.classList.add('disactivety')
+                this.$refs.asd.classList.add('mini')
+                this.maxi = false
+                this.mini = true
+            },
+            show_more(){
+                this.$refs.asd.classList.remove('disactivety')
+                this.$refs.asd.classList.remove('mini')
+                this.$refs.asd.classList.add('activety')
+                this.mini = false
+                this.maxi = true
+            },
+            ismini() {
+                if (this.$refs.asd.clientHeight - 120 > 510){
+                    this.$refs.asd.style.setProperty('--first-height', this.$refs.asd.clientHeight - 120 + 'px')
+                    this.$refs.asd.classList.add('mini')
+                    this.mini = true
+                }
+            },
             connect_db: function(id) {
                 this.$http.get(`/billboardAPI/${ id }`)
                     .then(function(res) {
                         this.billboard = res.body
 
                         this.set_title(this.billboard.title)
+
+                        this.$http.get(`/galleryAPI/${this.billboard.id_repertoire}`)
+                            .then((res) => {
+                                this.gallery = res.body
+                                this.show = true
+                                setTimeout(this.ismini, 100)
+                            })
+                            .catch((res) => {
+                            })
 
                         this.$http.get(`/castHeadAPI/${this.billboard.id_repertoire}`)
                             .then(function(res) {

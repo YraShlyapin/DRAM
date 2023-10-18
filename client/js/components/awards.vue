@@ -7,7 +7,7 @@
             title="Cкачать"
             class="award_element"
         >
-            <img :src="'../upload/' + award.image" alt="">
+            <img :src="'../upload/' + award.image" alt="" title="скачать">
             <p>{{award.description}}</p>
         </a>        
     </div>

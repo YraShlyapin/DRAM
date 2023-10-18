@@ -3,7 +3,7 @@
         <form v-if="!edite_mode" v-on:submit="post_method" id="form">
             <div id="draggble" draggable="true" @@dragover.prevent @drop.stop.prevent="onDrop">
                 <img :src="srcc"  @dragover.prevent @drop.stop.prevent="onDrop">
-                <input type="file" name="file" id="file" accept="image/*" @change="loadPreview">
+                <input type="file" name="file" id="file" accept="image/*" @change="loadPreview" ref="image">
             </div>
             <input type="text" name="title" placeholder="Название">
             <input type="text" name="author" placeholder="Автор">
@@ -12,10 +12,10 @@
             <input type="datetime-local" name="creation_time_repertoire" :value="date_get()">
             <button type="submit">отправить</button>
         </form>
-        <form v-else v-on:submit="edite_method" id="form">
+        <form v-else v-on:submit="edite_method" id="form" ref="form_edite">
             <div id="draggble" draggable="true" @@dragover.prevent @drop.stop.prevent="onDrop">
                 <img :src="srcc"  @dragover.prevent @drop.stop.prevent="onDrop">
-                <input type="file" name="file" id="file" accept="image/*" @change="loadPreview">
+                <input type="file" name="file" id="file" accept="image/*" @change="loadPreview" ref="image">
             </div>
             <input type="text" name="title" placeholder="Название" :value="comp_edite.title">
             <input type="text" name="author" placeholder="Автор" :value="comp_edite.author">
@@ -73,7 +73,15 @@
                     })
             },
             loadPreview(){
-                let sf = document.querySelector("input[type='file']").files[0]
+                if (this.edite_mode){
+                    let formData = new FormData(this.$refs.form_edite)
+                    let form_obj = {}
+                    formData.forEach((val, key) => {
+                        form_obj[key] = val
+                    })
+                    this.comp_edite = form_obj
+                }
+                let sf = this.$refs.image.files[0]
                 let self = this
                 let reader = new FileReader()
                 reader.onload = function(re){

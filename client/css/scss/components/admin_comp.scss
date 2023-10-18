@@ -5,22 +5,39 @@
     justify-content: space-evenly;
     row-gap: 30px;
     margin-top: 30px;
-}
-#mini_repertoire1 .block_mini_repertoire {
-    background-color: $gray;
-    width: 400px;
-    padding-bottom: 30px;
-    border-radius: 16px;
-    overflow: hidden;
-}
-#mini_repertoire1 .block_mini_repertoire img {
-    width: 100%;
-    margin-bottom: 16px;
-}
-#mini_repertoire1 .block_mini_repertoire div {
-    margin-left: 16px;
-    padding-right: 40px;
-    color: black;
+
+    .block_mini_repertoire{
+        background-color: $gray;
+        width: 400px;
+        padding-bottom: 30px;
+        border-radius: 16px;
+        overflow: hidden;
+
+        img{
+            width: 100%;
+            margin-bottom: 16px;
+        }
+
+        div{
+            margin-left: 16px;
+            padding-right: 40px;
+            color: black;
+        }
+
+        .images_gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-left: 0;
+            padding-right: 0;
+
+            img{
+                width: 50%;
+                height: 100%;
+                margin-bottom: 0;
+            }
+        }
+    }
 }
 #mini_repertoire1 .block_mini_repertoire div .mini_repertoire_title {
     font-size: 1.25rem;
@@ -87,4 +104,17 @@ input::file-selector-button, button, .download {
     cursor: pointer;
     font-size: 12px;
     font-family: $Merriweather;
+}
+
+.many_img {
+    position: relative;
+
+    img{
+        width: 100%;
+    }
+    button{
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
 }

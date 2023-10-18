@@ -5,6 +5,7 @@ let main = require("./components/main.vue")
 let repertoire = require("./components/repertoire.vue")
 let billboard = require("./components/billboard.vue")
 let person = require("./components/person.vue")
+let news = require("./components/news.vue")
 let awards = require("./components/awards.vue")
 let contact = require("./components/contact.vue")
 
@@ -33,6 +34,7 @@ module.exports = [
             {path: "repertoire", component: repertoire},
             {path: "billboard", component: billboard},
             {path: "persons", component: person},
+            {path: "news", component: news},
             {path: "awards", component: awards},
             {path: "contact", component: contact},
 

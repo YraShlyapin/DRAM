@@ -10,7 +10,10 @@
                     :to="'/billboard/' + billboard.id_billboard"
                 >
                     <div class="about_slider">
-                        <p class="about_slider_title">{{ billboard.title }}</p>
+                        <p class="about_slider_title">{{ billboard.title }}
+{{ billboard.author }}
+{{ billboard.marker }}
+                        </p>
                         <p class="about_slider_text">{{ billboard.description }}</p>
                         <p class="about_slider_text">
                             {{ date_format(billboard.date_time) }}

@@ -6,12 +6,14 @@
                 <option v-for="repertoire in repertoires"
                     :value="repertoire.id_repertoire"
                 >
+                    пометка
                     {{ repertoire.title }}
                 </option>
             </select>
             <input type="datetime-local" name="date_time" :value="date_get()">
             <input type="text" name="place" placeholder="Место">
             <input type="text" name="src_on_map" placeholder="ссылка на карту">
+            <input type="text" name="marker" placeholder="пометка">
             <button type="submit">отправить</button>
         </form>
         <form v-else v-on:submit="edite_method" id="form">
@@ -40,6 +42,7 @@
                         <p class="mini_repertoire_title mini_repertoire_author">{{ date_format(billboard.date_time) }}</p>
                         <p class="mini_repertoire_text">{{ billboard.place }}</p>
                         <p class="mini_repertoire_text">{{ billboard.src_on_map }}</p>
+                        <p class="mini_repertoire_text" v-show="billboard.marker">{{ billboard.marker }}</p>
                     </div>
                     <button @click="delete_method(billboard.id_billboard)">удалить</button>
                     <button @click="edite_scroll(billboard.id_billboard)">редактировать</button>

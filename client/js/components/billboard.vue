@@ -12,6 +12,7 @@
                 <div class="about_repertoire">
                     <p class="about_repertoire_title">{{ billboard.title }}</p>
                     <p class="about_repertoire_title about_repertoire_author">{{ billboard.author }}</p>
+                    <p class="about_repertoire_title about_repertoire_author" v-show="billboard.marker">{{ billboard.marker }}</p>
                     <p class="description">{{ billboard.description }}</p>
                     <p class="time">{{ time_format(billboard.duration) }}</p>
                     <p class="date">{{ date_format(billboard.date_time) }}</p>

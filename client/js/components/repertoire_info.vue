@@ -14,7 +14,7 @@
             <img :src="'../upload/' + repertoire.image" onerror="this.src = '../upload/not_found.png'">
         </div>
         <div id="gallery" ref="asd" v-show="show">
-            <img v-for="image in gallery" :src="'../upload/' + image.image" alt="" class="targeter">
+            <img v-for="image in gallery" :src="'../upload/' + image.image_gallery" alt="" class="targeter" onerror="this.src = '../upload/not_found.png'">
             <button class="more" v-show="mini" @click="show_more">Больше<br>↓</button>
             <button class="more mini" v-show="maxi" @click="show_mini">↑<br>Сжать</button>
         </div>
@@ -91,6 +91,8 @@
                                 this.gallery = res.body
                                 this.show = true
                                 setTimeout(this.ismini, 100)
+                            })
+                            .catch((res) => {
                             })
 
                         this.$http.get(`/castHeadAPI/${id}`)

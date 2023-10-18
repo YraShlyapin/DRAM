@@ -3,7 +3,7 @@
         <form v-on:submit="post_method" id="form" v-if="!edite_mode">
             <div id="draggble" draggable="true" @@dragover.prevent @drop.stop.prevent="onDrop">
                 <img :src="srcc"  @dragover.prevent @drop.stop.prevent="onDrop">
-                <input type="file" name="file" id="file" accept="image/*" @change="loadPreview">
+                <input type="file" name="file" id="file" accept="image/*" @change="loadPreview" ref="image">
             </div>
             <input type="text" name="name" placeholder="Имя и Фамилия">
             <textarea name="description" cols="30" rows="10" placeholder="Описание"></textarea>
@@ -14,13 +14,13 @@
             </div>
             <button type="submit">отправить</button>
         </form>
-        <form v-on:submit="edite_method" id="form" v-else>
+        <form v-on:submit="edite_method" id="form" ref="form_edite" v-else>
             <div id="draggble" draggable="true" @@dragover.prevent @drop.stop.prevent="onDrop">
                 <img :src="srcc"  @dragover.prevent @drop.stop.prevent="onDrop">
-                <input type="file" name="file" id="file" accept="image/*" @change="loadPreview">
+                <input type="file" name="file" id="file" accept="image/*" @change="loadPreview" ref="image">
             </div>
             <input type="text" name="name" placeholder="Имя и Фамилия" :value="comp_edite.name">
-            <textarea name="description" cols="30" rows="10" placeholder="Описание":value="comp_edite.description"></textarea>
+            <textarea name="description" cols="30" rows="10" placeholder="Описание" :value="comp_edite.description"></textarea>
             <input type="date" name="birthday" :value="date_get_edite(comp_edite.birthday).split(' ')[0]">
             <div>
                 <label for="real">Состоит ли в антрепризе </label>
@@ -72,7 +72,15 @@
                     })
             },
             loadPreview(){
-                let sf = document.querySelector("input[type='file']").files[0]
+                if (this.edite_mode){
+                    let formData = new FormData(this.$refs.form_edite)
+                    let form_obj = {}
+                    formData.forEach((val, key) => {
+                        form_obj[key] = val
+                    })
+                    this.comp_edite = form_obj
+                }
+                let sf = this.$refs.image.files[0]
                 let self = this
                 let reader = new FileReader()
                 reader.onload = function(re){
