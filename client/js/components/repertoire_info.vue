@@ -9,7 +9,9 @@
                 <p v-for="head in cast_head">{{head.role_person}} - {{head.name}}</p>
                 <p>{{ repertoire.description }}</p>
 
-                <p  v-if="repertoire.duration">{{ time_format(repertoire.duration) }}</p>
+                <p>Премьера - {{ date_format_first(repertoire.creation_time_repertoire) }}</p>
+
+                <p v-if="repertoire.duration">{{ time_format(repertoire.duration) }}</p>
             </div>
             <img :src="'../upload/' + repertoire.image" onerror="this.src = '../upload/not_found.png'">
         </div>

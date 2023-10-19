@@ -11,6 +11,16 @@ function date_format(date){
     return `${day} ${month} ${year}, в ${Hours}:${Number(minutes) >=10 ? minutes : '0' + minutes }`
 }
 
+function date_format_first(date){
+    let formatter_Date = new Date(date)
+
+    let day = formatter_Date.getDate()
+    let month = formatter_Date.toLocaleString('ru',{month: 'long'})
+    let year = formatter_Date.getFullYear()
+
+    return `${day} ${month} ${year}`
+}
+
 function time_format(time) {
     let str = `длительность `
     if (time > 70){
@@ -56,6 +66,7 @@ async function set_title(title){
 module.exports = {
     install(Vue, options) {
         Vue.prototype.date_format = date_format
+        Vue.prototype.date_format_first = date_format_first
         Vue.prototype.time_format = time_format
         Vue.prototype.date_get = date_get
         Vue.prototype.onDrop = onDrop
