@@ -125,8 +125,16 @@ input::file-selector-button, button, .download {
     right: 0;
 }
 
+.btn-right{
+    position: fixed;
+    right: .3vw;
+    top: 50vh;
+    z-index: 999;
+}
+
 .save_all{
-    position: absolute;
-    right: 0;
-    bottom: 0;
+    transform: translateY(60%);
+}
+.clear_delete{
+    transform: translateY(-60%);
 }

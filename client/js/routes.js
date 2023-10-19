@@ -18,6 +18,7 @@ let a_repertoire = require("./page/components/admin/admin_repertoire.vue")
 let a_person = require("./page/components/admin/admin_person.vue")
 let a_billboard = require("./page/components/admin/admin_billboard.vue")
 let a_cast = require("./page/components/admin/admin_cast.vue")
+let a_news = require("./page/components/admin/admin_news.vue")
 let a_awards = require("./page/components/admin/admin_awards.vue")
 let a_gallery = require("./page/components/admin/admin_gallery.vue")
 let a_image = require("./page/components/admin/all_image.vue")
@@ -55,6 +56,7 @@ module.exports = [
             {path: "billboard", component: a_billboard, meta: { requiresAuth: true }},
             {path: "cast", component: a_cast, meta: { requiresAuth: true }},
             {path: "awards", component: a_awards, meta: { requiresAuth: true }},
+            {path: "news", component: a_news, meta: { requiresAuth: true }},
             {path: "gallery", component: a_gallery, meta: { requiresAuth: true }},
             {path: "images", component: a_image, meta: { requiresAuth: true }},
         ],

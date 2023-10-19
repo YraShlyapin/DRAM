@@ -278,6 +278,21 @@ app.get("/newsAPI", async (req,res) => {
     }
 })
 
+app.post("/newsAPI", multer().array(), async (req,res) => {
+    await db.post_news(req.body)
+    res.sendStatus(200)
+})
+
+app.delete("/newsAPI/:id", async (req,res) => {
+    await db.delete_news(req.params.id)
+    res.sendStatus(200)
+})
+
+app.put("/newsAPI/:id", multer().array(), async (req,res) => {
+    await db.put_news(req.body, req.params.id)
+    res.sendStatus(200)
+})
+
 /*app.post("/upload", multer.single('file'), async (req,res) => {
     let obj = req.body
     if (req.file){

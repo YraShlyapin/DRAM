@@ -69,6 +69,30 @@ export async function get_news(){
     return row
 }
 
+export async function post_news(jb){
+    await pool.query(
+        `Insert into news (description, date)
+        Values (?, ?)`,
+        [jb.description, jb.date]
+    )
+}
+
+export async function delete_news(id){
+    await pool.query(
+        `Delete From news where id_news = ?`,
+        [id]
+    )
+}
+
+export async function put_news(jb,id){
+    await pool.query(
+        `Update news
+        set description = ?
+        where id_news = ?`,
+        [jb.description, id]
+    )
+}
+
 //NOTE: awards
 export async function get_awards(){
     const [row] = await pool.query(

@@ -1,5 +1,7 @@
 <template>
     <div id="main">
+        <button @click="clear_delete" class="clear_delete btn-right">отмена</button>
+        <button @click="save_all" class="save_all btn-right">сохранить</button>
         <form v-on:submit="post_method" id="form">
             <select name="id_repertoire">
                 <option value="" disabled selected hidden>выберить спектакль из репертуара</option>
@@ -25,7 +27,7 @@
                 >
                     <div class="images_gallery">
                         <div v-for="(image, index) in item_gallery" class="wrapper_image">
-                            <img :src="'../upload/' + image.image" onerror="this.src = '../upload/not_found.png'">
+                            <img style="cursor: pointer;" @click="file_delete(index, key_gallery)"  :src="'../upload/' + image.image" onerror="this.src = '../upload/not_found.png'">
                             <button @click="file_delete(index, key_gallery)" class="del_btn">x</button>
                         </div>
                     </div>
@@ -35,8 +37,6 @@
                 </div>
             </div>
         </div>
-        <button @click="clear_delete" class="save_all">отмена</button>
-        <button @click="save_all" class="save_all">сохранить</button>
     </div>
 </template>
 <script>
