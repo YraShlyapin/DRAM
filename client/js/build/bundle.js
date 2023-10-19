@@ -579,7 +579,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-902b3c06", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-902b3c06", __vue__options__)
+    hotAPI.reload("data-v-902b3c06", __vue__options__)
   }
 })()}
 },{"./samples/title.vue":13,"vue":101,"vue-hot-reload-api":98}],10:[function(require,module,exports){
@@ -885,7 +885,6 @@ function date_get(){
 }
 
 function date_get_edite(d){
-    console.log(new Date(new Date(d) - (-4*60*60*1000)).toISOString().replace('T', ' ').split('.')[0].slice(0,-3))
     let date = new Date(new Date(d) - (-4*60*60*1000)).toISOString().replace('T', ' ').split('.')[0].slice(0,-3)
     return date
 }
@@ -951,7 +950,6 @@ let router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     if (to.meta.requiresAuth && !localStorage.authtorize) {
-        // console.log(to.path)
         next({name: "login", query: {nextroute: to.path}})
     } else {
         next()
@@ -1041,20 +1039,58 @@ module.exports = {
     data: function data() {
         return {
             srcc: "../upload/not_found.png",
-            awards: []
+            awards: [],
+            edite_mode: false,
+            comp_edite: {},
+            id_edite: 0
         };
     },
     methods: {
+        delete_method: function delete_method(id) {
+            this.$http.delete("/awardsAPI/" + id).then(function (res) {
+                this.connect_db();
+            });
+        },
+
         post_method: function post_method(e) {
             e.preventDefault();
             var form = e.target;
-            if (form.id_repertoire.value == '') {
-                return;
-            }
             var formData = new FormData(form);
             this.$http.post("/awardsAPI", formData).then(function (res) {
+                form.reset();
                 this.connect_db();
+                this.srcc = "../upload/not_found.png";
             });
+        },
+        edite_method: function edite_method(e) {
+            e.preventDefault();
+            var form = e.target;
+            var formData = new FormData(form);
+            this.$http.put("/awardsAPI/" + this.id_edite, formData).then(function (res) {
+                this.connect_db();
+                form.reset();
+                this.edite_mode = false;
+                this.srcc = "../upload/not_found.png";
+            });
+        },
+        edite_scroll: function edite_scroll(id) {
+            this.edite_mode = true;
+            this.comp_edite = this.awards.find(function (el) {
+                return el.id_awards == id;
+            });
+            this.id_edite = id;
+
+            this.srcc = '../upload/' + (this.comp_edite.image ? this.comp_edite.image : 'not_found.png');
+
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
+        },
+        nullebl: function nullebl() {
+            this.edite_mode = false;
+            this.comp_edite = {};
         },
         loadPreview: function loadPreview() {
             var sf = this.$refs.image_input.files[0];
@@ -1079,7 +1115,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"main"}},[_c('form',{directives:[{name:"show",rawName:"v-show",value:(!_vm.edite_mode),expression:"!edite_mode"}],attrs:{"id":"form"},on:{"submit":_vm.post_method}},[_c('div',{attrs:{"id":"draggble","draggable":"true"},on:{"@dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}},[_c('img',{attrs:{"src":_vm.srcc},on:{"dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}}),_vm._v(" "),_c('input',{ref:"image_input",attrs:{"type":"file","name":"file","id":"file","accept":"image/*"},on:{"change":_vm.loadPreview}})]),_vm._v(" "),_c('textarea',{attrs:{"name":"description","cols":"30","rows":"10","placeholder":"Описание награды"}})])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"main"}},[(!_vm.edite_mode)?_c('form',{attrs:{"id":"form"},on:{"submit":_vm.post_method}},[_c('div',{attrs:{"id":"draggble","draggable":"true"},on:{"@dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}},[_c('img',{attrs:{"src":_vm.srcc},on:{"dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}}),_vm._v(" "),_c('input',{ref:"image_input",attrs:{"type":"file","name":"file","id":"file","accept":"image/*"},on:{"change":_vm.loadPreview}})]),_vm._v(" "),_c('textarea',{attrs:{"name":"description","cols":"30","rows":"10","placeholder":"Описание награды"}}),_vm._v(" "),_c('button',{attrs:{"type":"submit"}},[_vm._v("отправить")])]):_c('form',{attrs:{"id":"form"},on:{"submit":_vm.edite_method}},[_c('div',{attrs:{"id":"draggble","draggable":"true"},on:{"@dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}},[_c('img',{attrs:{"src":_vm.srcc},on:{"dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}}),_vm._v(" "),_c('input',{ref:"image_input",attrs:{"type":"file","name":"file","id":"file","accept":"image/*"},on:{"change":_vm.loadPreview}})]),_vm._v(" "),_c('textarea',{attrs:{"name":"description","cols":"30","rows":"10","placeholder":"Описание награды"},domProps:{"value":_vm.comp_edite.description}}),_vm._v(" "),_c('button',{attrs:{"type":"submit"}},[_vm._v("отправить")]),_vm._v(" "),_c('button',{attrs:{"type":"button"},on:{"click":_vm.nullebl}},[_vm._v("отмена")])]),_vm._v(" "),_c('div',[_c('div',{attrs:{"id":"mini_repertoire1"}},_vm._l((_vm.awards),function(award){return _c('div',{staticClass:"block_mini_repertoire"},[_c('img',{attrs:{"src":'../upload/' + award.image,"onerror":"this.src = '../upload/not_found.png'"}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"mini_repertoire_text"},[_vm._v(_vm._s(award.description))])]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.delete_method(award.id_awards)}}},[_vm._v("удалить")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.edite_scroll(award.id_awards)}}},[_vm._v("редактировать")])])}))])])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -1088,7 +1124,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-c43159d0", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-c43159d0", __vue__options__)
+    hotAPI.reload("data-v-c43159d0", __vue__options__)
   }
 })()}
 },{"vue":101,"vue-hot-reload-api":98}],19:[function(require,module,exports){
@@ -1256,7 +1292,6 @@ module.exports = {
             if (this.id_filter_person) {
                 var idi = this.id_filter_person;
                 return arr.filter(function (el) {
-                    console.log(el.id_person === idi);
                     return el.id_person === idi;
                 });
             }
@@ -1313,7 +1348,8 @@ module.exports = {
         return {
             srcc: ["../upload/not_found.png"],
             repertoires: [],
-            gallery: {}
+            gallery: {},
+            deleted: []
         };
     },
     methods: {
@@ -1325,7 +1361,9 @@ module.exports = {
             }
             var formData = new FormData(form);
             this.$http.post("/galleryAPI", formData).then(function (res) {
+                form.reset();
                 this.connect_db();
+                this.srcc = ["../upload/not_found.png"];
             });
         },
         loadPreview: function loadPreview() {
@@ -1366,7 +1404,6 @@ module.exports = {
             var all_files = [].concat((0, _toConsumableArray3.default)(this.$refs.image_input.files));
             all_files.splice(index, 1);
             this.srcc.splice(index, 1);
-            console.log(all_files);
             var _iteratorNormalCompletion2 = true;
             var _didIteratorError2 = false;
             var _iteratorError2 = undefined;
@@ -1392,7 +1429,30 @@ module.exports = {
                 }
             }
 
+            if (dataTransfer.files.length == 0) {
+                this.srcc = ["../upload/not_found.png"];
+            }
             document.querySelector("#file").files = dataTransfer.files;
+        },
+        file_delete: function file_delete(ind, key_gallery) {
+            this.deleted.push(this.gallery[key_gallery].splice(ind, 1));
+        },
+        save_all: function save_all() {
+            var form_data = new FormData();
+
+            form_data.append('delete', this.deleted);
+
+            var a = [].concat((0, _toConsumableArray3.default)(this.deleted.map(function (x) {
+                return x[0]['id_gallery'];
+            })));
+
+            this.$http.delete("/galleryAPI?d=" + a).then(function (res) {
+                this.connect_db();
+            });
+        },
+        clear_delete: function clear_delete() {
+            this.deleted = [];
+            this.connect_db();
         },
         connect_db: async function connect_db() {
             this.$http.get("/repertoireAPI").then(function (res) {
@@ -1411,7 +1471,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"main"}},[_c('form',{attrs:{"id":"form"},on:{"submit":_vm.post_method}},[_c('select',{attrs:{"name":"id_repertoire"}},[_c('option',{attrs:{"value":"","disabled":"","selected":"","hidden":""}},[_vm._v("выберить спектакль из репертуара")]),_vm._v(" "),_vm._l((_vm.repertoires),function(repertoire){return _c('option',{domProps:{"value":repertoire.id_repertoire}},[_vm._v("\n                "+_vm._s(repertoire.title)+"\n            ")])})],2),_vm._v(" "),_c('div',{attrs:{"id":"draggble","draggable":"true"},on:{"@dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}},[_vm._l((_vm.srcc),function(src_one,index){return _c('div',{staticClass:"many_img"},[_c('img',{attrs:{"src":src_one},on:{"dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}}),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.file_edit(index)}}},[_vm._v("x")])])}),_vm._v(" "),_c('input',{ref:"image_input",attrs:{"type":"file","name":"file","id":"file","accept":"image/*","multiple":""},on:{"change":_vm.loadPreview}})],2),_vm._v(" "),_c('button',{attrs:{"type":"submit"}},[_vm._v("отправить")])]),_vm._v(" "),_c('div',[_c('div',{attrs:{"id":"mini_repertoire1"}},_vm._l((_vm.gallery),function(item_gallery,key_gallery){return _c('div',{staticClass:"block_mini_repertoire"},[_c('div',{staticClass:"images_gallery"},_vm._l((item_gallery),function(image){return _c('img',{attrs:{"src":'../upload/' + image.image,"onerror":"this.src = '../upload/not_found.png'"}})})),_vm._v(" "),_c('div',[_c('p',{staticClass:"mini_repertoire_title"},[_vm._v(_vm._s(key_gallery))])]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.delete_method()}}},[_vm._v("удалить")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.edite_scroll()}}},[_vm._v("редактировать")])])}))])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"main"}},[_c('form',{attrs:{"id":"form"},on:{"submit":_vm.post_method}},[_c('select',{attrs:{"name":"id_repertoire"}},[_c('option',{attrs:{"value":"","disabled":"","selected":"","hidden":""}},[_vm._v("выберить спектакль из репертуара")]),_vm._v(" "),_vm._l((_vm.repertoires),function(repertoire){return _c('option',{domProps:{"value":repertoire.id_repertoire}},[_vm._v("\n                "+_vm._s(repertoire.title)+"\n            ")])})],2),_vm._v(" "),_c('div',{attrs:{"id":"draggble","draggable":"true"},on:{"@dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}},[_vm._l((_vm.srcc),function(src_one,index){return _c('div',{staticClass:"many_img"},[_c('img',{attrs:{"src":src_one},on:{"dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}}),_vm._v(" "),_c('button',{directives:[{name:"show",rawName:"v-show",value:(!(src_one == '../upload/not_found.png')),expression:"!(src_one == '../upload/not_found.png')"}],staticClass:"del_btn",on:{"click":function($event){_vm.file_edit(index)}}},[_vm._v("x")])])}),_vm._v(" "),_c('input',{ref:"image_input",attrs:{"type":"file","name":"file","id":"file","accept":"image/*","multiple":""},on:{"change":_vm.loadPreview}})],2),_vm._v(" "),_c('button',{attrs:{"type":"submit"}},[_vm._v("отправить")])]),_vm._v(" "),_c('div',[_c('div',{attrs:{"id":"mini_repertoire1"}},_vm._l((_vm.gallery),function(item_gallery,key_gallery){return _c('div',{staticClass:"block_mini_repertoire"},[_c('div',{staticClass:"images_gallery"},_vm._l((item_gallery),function(image,index){return _c('div',{staticClass:"wrapper_image"},[_c('img',{attrs:{"src":'../upload/' + image.image,"onerror":"this.src = '../upload/not_found.png'"}}),_vm._v(" "),_c('button',{staticClass:"del_btn",on:{"click":function($event){_vm.file_delete(index, key_gallery)}}},[_vm._v("x")])])})),_vm._v(" "),_c('div',[_c('p',{staticClass:"mini_repertoire_title"},[_vm._v(_vm._s(key_gallery))])])])}))]),_vm._v(" "),_c('button',{staticClass:"save_all",on:{"click":_vm.clear_delete}},[_vm._v("отмена")]),_vm._v(" "),_c('button',{staticClass:"save_all",on:{"click":_vm.save_all}},[_vm._v("сохранить")])])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)

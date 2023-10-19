@@ -77,6 +77,15 @@ app.post("/galleryAPI", my_multer.array('file'), async (req,res) => {
         obj.image = file.filename
         db.post_gallery(obj)
     }
+    res.sendStatus(200)
+})
+
+app.delete("/galleryAPI", my_multer.array(), async (req,res) => {
+    let gallery_ids = req.query.d.split(',')
+    for (let id of gallery_ids){
+        db.delete_gallery(id)
+    }
+    res.sendStatus(200)
 })
 
 //NOTE: repertoire API
@@ -232,6 +241,31 @@ app.get("/awardsAPI", async (req,res) => {
     }else {
         res.sendStatus(404)
     }
+})
+
+app.post("/awardsAPI", my_multer.single('file'), async (req,res) => {
+    let obj = req.body
+    obj.image = 'not_found.png'
+    if (req.file){
+        obj.image = req.file.filename
+    }
+    await db.post_awards(obj)
+    res.sendStatus(200)
+})
+
+app.delete("/awardsAPI/:id", async (req,res) => {
+    console.log(req.params.id)
+    await db.delete_awards(req.params.id)
+    res.sendStatus(200)
+})
+
+app.put("/awardsAPI/:id", my_multer.single('file'), async (req,res) => {
+    let obj = req.body
+    if (req.file){
+        obj.image = req.file.filename
+    }
+    await db.edite_awards(req.params.id,obj)
+    res.sendStatus(200)
 })
 
 //NOTE: newsAPI

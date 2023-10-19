@@ -24,7 +24,6 @@ let router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     if (to.meta.requiresAuth && !localStorage.authtorize) {
-        // console.log(to.path)
         next({name: "login", query: {nextroute: to.path}})
     } else {
         next()

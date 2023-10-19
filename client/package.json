@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "watchify js/main.js -o js/build/bundle.js --transform vueify",
-    "scss": "sass --watch css/scss/style.scss:css/style111.css"
+    "scss": "sass --watch css/scss/style.scss:css/style.css"
   },
   "author": "Shlyapin Yura <Shlyapin.y.a@gmail.com>",
   "license": "ISC",

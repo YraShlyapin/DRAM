@@ -255,6 +255,7 @@ a.router-link-active::after {
   }
 }
 #main {
+  position: relative;
   min-height: calc(100vh - 214px);
 }
 #main .viewer {
@@ -1128,9 +1129,13 @@ a.router-link-active::after {
   margin-left: 0;
   padding-right: 0;
 }
-#mini_repertoire1 .block_mini_repertoire .images_gallery img {
+#mini_repertoire1 .block_mini_repertoire .images_gallery .wrapper_image {
   width: 50%;
-  height: 100%;
+  position: relative;
+  margin-left: 0;
+  padding-right: 0;
+}
+#mini_repertoire1 .block_mini_repertoire .images_gallery .wrapper_image img {
   margin-bottom: 0;
 }
 
@@ -1219,10 +1224,17 @@ input::file-selector-button, button, .download {
 .many_img img {
   width: 100%;
 }
-.many_img button {
+
+.del_btn {
   position: absolute;
   top: 0;
   right: 0;
+}
+
+.save_all {
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
 * {
@@ -1260,4 +1272,4 @@ a {
   text-decoration: none;
 }
 
-/*# sourceMappingURL=style111.css.map */
+/*# sourceMappingURL=style.css.map */

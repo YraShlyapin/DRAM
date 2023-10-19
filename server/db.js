@@ -54,6 +54,15 @@ export async function post_gallery(jb){
     )
 }
 
+export async function delete_gallery(id){
+    await pool.query(
+        `Delete from gallery where id_gallery=?`,
+        [
+            id
+        ]
+    )
+}
+
 //NOTE: news
 export async function get_news(){
     const [row] = await pool.query(`Select * from news`)
@@ -63,15 +72,49 @@ export async function get_news(){
 //NOTE: awards
 export async function get_awards(){
     const [row] = await pool.query(
-        `Select * FROM dram.awards ORDER BY awards.date_create desc`
+        `Select * FROM dram.awards`
     )
     return row
 }
-export async function post_awards(){
+
+export async function post_awards(jb){
     const [row] = await pool.query(
-        `Insert into awards (image)`
+        `Insert into awards (image, description)
+        VALUES (?,?)`,
+        [jb.image, jb.description]
     )
     return row
+}
+
+export async function delete_awards(id){
+    const [row] = await pool.query(
+        `Delete from dram.awards where id_awards = ?`,
+        [id]
+    )
+    return row
+}
+
+export async function edite_awards(id, jb){
+    if (jb.image){
+        await pool.query(
+            `UPDATE awards
+            SET image = ?
+            WHERE id_awards = ?`,
+            [
+                isundefind(jb.image),
+                id
+            ]
+        )
+    }
+    await pool.query(
+        `UPDATE awards
+        SET description = ?
+        WHERE id_awards = ?`,
+        [
+            isundefind(jb.description),
+            id
+        ]
+    )
 }
 
 //NOTE: repertoire 

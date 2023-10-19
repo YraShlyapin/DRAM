@@ -31,10 +31,15 @@
             margin-left: 0;
             padding-right: 0;
 
-            img{
+            .wrapper_image{
                 width: 50%;
-                height: 100%;
-                margin-bottom: 0;
+                position: relative;
+                margin-left: 0;
+                padding-right: 0;
+
+                img{
+                    margin-bottom: 0;
+                }
             }
         }
     }
@@ -112,9 +117,16 @@ input::file-selector-button, button, .download {
     img{
         width: 100%;
     }
-    button{
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
+}
+
+.del_btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.save_all{
+    position: absolute;
+    right: 0;
+    bottom: 0;
 }

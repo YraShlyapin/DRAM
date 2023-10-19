@@ -163,7 +163,6 @@
                     let idi = this.id_filter_person
                     return arr.filter(
                         (el) => {
-                            console.log(el.id_person === idi)
                             return el.id_person === idi
                         }
                     )
