@@ -254,7 +254,6 @@ app.post("/awardsAPI", my_multer.single('file'), async (req,res) => {
 })
 
 app.delete("/awardsAPI/:id", async (req,res) => {
-    console.log(req.params.id)
     await db.delete_awards(req.params.id)
     res.sendStatus(200)
 })
