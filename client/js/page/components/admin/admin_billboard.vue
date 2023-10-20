@@ -6,7 +6,6 @@
                 <option v-for="repertoire in repertoires"
                     :value="repertoire.id_repertoire"
                 >
-                    пометка
                     {{ repertoire.title }}
                 </option>
             </select>
@@ -28,6 +27,7 @@
             <input type="datetime-local" name="date_time" :value="date_get_edite(comp_edite.date_time)">
             <input type="text" name="place" placeholder="Место" :value="comp_edite.place">
             <input type="text" name="src_on_map" placeholder="ссылка на карту" :value="comp_edite.src_on_map">
+            <input type="text" name="marker" placeholder="пометка" :value="comp_edite.marker">
             <button type="submit">отправить</button>
             <button @click="nullebl" type="button">отмена</button>
         </form>

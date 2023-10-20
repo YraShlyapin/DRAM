@@ -849,8 +849,7 @@ a.router-link-active::after {
   padding-right: 50px;
 }
 #gallery img {
-  max-width: 100%;
-  width: 400px;
+  height: 500px;
 }
 #gallery.mini {
   height: 500px;
@@ -1056,6 +1055,7 @@ a.router-link-active::after {
     flex-wrap: wrap;
     margin-bottom: 100px;
     row-gap: 25px;
+    column-gap: 20px;
   }
   #cast .cast_wrapper {
     width: 225px;

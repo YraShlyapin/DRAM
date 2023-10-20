@@ -76,7 +76,11 @@
                     let formData = new FormData(this.$refs.form_edite)
                     let form_obj = {}
                     formData.forEach((val, key) => {
-                        form_obj[key] = val
+                        if (key == "birthday"){
+                            form_obj[key] = date_get_edite(val).split(' ')[0]
+                        }else{
+                            form_obj[key] = val
+                        }
                     })
                     this.comp_edite = form_obj
                 }
