@@ -1,6 +1,8 @@
 <template>
     <div id="award">
-        <a v-for="award in awards"
+        <titles title="Награды"/>
+        <div id="award_wrapper">
+            <a v-for="award in awards"
             v-if="award.image"
             :href="'../upload/' + award.image"
             download
@@ -9,11 +11,17 @@
         >
             <img :src="'../upload/' + award.image" alt="" title="скачать">
             <p>{{award.description}}</p>
-        </a>        
+        </a>  
+        </div>  
     </div>
 </template>
 <script>
+    let titles = require("./samples/title.vue")
+
     module.exports = {
+        components: {
+            titles
+        },
         data(){
             return {
                 awards: []

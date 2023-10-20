@@ -637,6 +637,7 @@ a.router-link-active::after {
     align-items: center;
   }
   #repertoire #repertoire_wrapper .block_repertoire_news .description {
+    width: 80vw;
     max-width: 1000px;
     padding-top: 50px;
     padding-bottom: 50px;
@@ -804,24 +805,28 @@ a.router-link-active::after {
   }
 }
 #award {
+  min-height: calc(100vh - 214px);
   margin-top: 50px;
   margin-bottom: 50px;
+}
+#award #award_wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  align-content: flex-start;
   gap: 20px;
 }
-#award .award_element {
+#award #award_wrapper .award_element {
   color: black;
   max-width: 500px;
   background-color: rgb(255, 224, 224);
   border-radius: 25px;
   overflow: hidden;
 }
-#award .award_element img {
+#award #award_wrapper .award_element img {
   width: 100%;
 }
-#award .award_element p {
+#award #award_wrapper .award_element p {
   font-size: 1.5rem;
   margin-top: 16px;
   margin-left: 25px;
