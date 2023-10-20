@@ -354,7 +354,7 @@ export async function edite_person(id,jb){
 //NOTE: cast
 export async function get_all_cast(){
     const [row] = await pool.query(
-        `Select person.id_person, repertoire.id_repertoire, person.name, repertoire.title, repertoire.image, cast.role_person, cast.id_cast, cast.is_head from repertoire
+        `Select person.id_person, person.image, repertoire.id_repertoire, person.name, repertoire.title, repertoire.image, cast.role_person, cast.id_cast, cast.is_head from repertoire
         inner join cast on cast.id_repertoire = repertoire.id_repertoire
         inner join person on person.id_person = cast.id_person order by cast.id_repertoire, cast.is_head desc`
     )
