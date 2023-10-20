@@ -1071,7 +1071,7 @@ a.router-link-active::after {
     background-color: rgb(255, 224, 224);
   }
   #cast .cast_wrapper > img {
-    width: 150px;
+    width: 130px;
     border-radius: 0 0 25px 25px;
   }
   #cast .cast_wrapper > div {
