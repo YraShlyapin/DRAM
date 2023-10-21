@@ -284,7 +284,7 @@ a.router-link-active::after {
 }
 #main .viewer .slider_wrapper .slider .about_slider .about_slider_title {
   font-size: 2.5rem;
-  margin-bottom: 80px;
+  margin-bottom: 50px;
   white-space: pre-wrap;
 }
 #main .viewer .slider_wrapper .slider .about_slider .about_slider_text {

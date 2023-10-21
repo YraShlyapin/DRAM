@@ -29,8 +29,8 @@
             >
                 <img :src="'../upload/' + person.image" onerror="this.src = '../upload/not_found.png'">
                 <div>
-                    <p class="name">{{person.name}}</p>
                     <p>{{person.role_person}}</p>
+                    <p class="name">{{person.name}}</p>
                 </div>
             </div>
         </div>
