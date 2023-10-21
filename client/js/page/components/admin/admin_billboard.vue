@@ -74,7 +74,7 @@
                 this.$http.post("/billboardAPI", formData)
                     .then(function(res) {
                         this.connect_db()
-                        form.reset()
+                        //form.reset()
                     })
             },
             delete_method: function(id) {

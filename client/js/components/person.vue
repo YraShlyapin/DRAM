@@ -72,7 +72,7 @@
                 })
                 let str = ``
                 if (arr[0]){
-                    str = `Задействован в спектаклях:\n`
+                    str = `Задействован(-a) в спектаклях:\n`
                     for (let obj of arr){
                         str += `${obj.title} - ${obj.role_person ? obj.role_person : 'не задано'}\n`
                     }

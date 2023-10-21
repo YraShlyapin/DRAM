@@ -184,8 +184,23 @@ app.put("/castAPI/:id", multer().array(), async (req,res) => {
 })
 
 app.get("/castAPI/:id", async (req,res) => {
-    const result = await db.get_cast_for(req.params.id)
-    res.send(result)
+    // const db_result = await db.get_cast_for(req.params.id)
+    // if (db_result){
+    //     let unique = []
+    //     for (let role of db_result){
+    //         if ([...unique.filter(x => x.role_person == role.role_person)].length == 0){
+    //             unique.push(role)
+    //         } else{
+    //             let inx = unique.indexOf([...unique.filter(x => x.role_person == role.role_person)][0])
+    //             let el = unique.splice(inx,1)[0]
+    //             el.name = `${el.name} / ${role.name}`
+    //             unique.push(el)
+    //         }
+    //     }
+    //     res.send(unique)
+    // }
+    const db_result = await db.get_cast_for(req.params.id)
+    res.send(db_result)
 })
 
 app.get("/castHeadAPI/:id", async (req,res) => {

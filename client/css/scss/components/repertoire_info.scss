@@ -139,7 +139,7 @@
 
         .cast_wrapper{
             width: 225px;
-            height: 350px;
+            height: 320px;
 
             border-radius: 25px;
             overflow: hidden;
@@ -157,10 +157,12 @@
                 margin-top: $margin-mini;
                 text-align: center;
 
-                .name{
-                    font-size: $font-size-big;
+                font-size: 2rem;
 
-                    margin-bottom: $margin-mini;
+                .name{
+                    font-size: 1.2rem;
+
+                    margin-top: $margin-mini;
                 }
             }
         }

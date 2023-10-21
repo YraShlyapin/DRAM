@@ -766,9 +766,9 @@ a.router-link-active::after {
   #person .block_person_view .block_person_view_wrapper .about_person {
     display: flex;
     flex-direction: column;
-    text-align: center;
     margin: 30px 15% 8%;
     font-family: "Merriweather", serif;
+    white-space: pre-wrap;
   }
   #person .block_person_view .block_person_view_wrapper .about_person .name {
     font-size: 50px;
@@ -1059,7 +1059,7 @@ a.router-link-active::after {
   }
   #cast .cast_wrapper {
     width: 225px;
-    height: 350px;
+    height: 320px;
     border-radius: 25px;
     overflow: hidden;
     display: flex;
@@ -1077,10 +1077,11 @@ a.router-link-active::after {
   #cast .cast_wrapper > div {
     margin-top: 16px;
     text-align: center;
+    font-size: 2rem;
   }
   #cast .cast_wrapper > div .name {
-    font-size: 1.875rem;
-    margin-bottom: 16px;
+    font-size: 1.2rem;
+    margin-top: 16px;
   }
   #time_place {
     display: flex;

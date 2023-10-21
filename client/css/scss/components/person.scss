@@ -112,9 +112,10 @@
                 .about_person{
                     display: flex;
                     flex-direction: column;
-                    text-align: center;
                     margin: 30px 15% 8%;
                     font-family: $Merriweather;
+
+                    white-space: pre-wrap;
                     
                     .name{
                         font-size: 50px;
