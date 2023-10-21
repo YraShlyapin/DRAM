@@ -862,7 +862,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
 })()}
 },{"vue":102,"vue-hot-reload-api":99}],14:[function(require,module,exports){
 function date_format(date){
-    let formatter_Date = new Date(new Date(date) - (-3*60*60*1000))
+    let formatter_Date = new Date(new Date(date) - (1*60*60*1000))
 
     let day = formatter_Date.getDate()
     let month = formatter_Date.toLocaleString('ru',{month: 'long'})
@@ -875,7 +875,7 @@ function date_format(date){
 }
 
 function date_format_first(date){
-    let formatter_Date = new Date(new Date(date) - (-3*60*60*1000))
+    let formatter_Date = new Date(new Date(date) - (1*60*60*1000))
 
     let day = formatter_Date.getDate()
     let month = formatter_Date.toLocaleString('ru',{month: 'long'})
