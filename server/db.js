@@ -238,13 +238,14 @@ export async function get_one_billboard(id){
 
 export async function post_billboard(jb){
     await pool.query(
-        `INSERT INTO billboard (id_repertoire, date_time, place, src_on_map)
-        VALUES (?, ?, ?, ?)`,
+        `INSERT INTO billboard (id_repertoire, date_time, place, src_on_map, marker)
+        VALUES (?, ?, ?, ?, ?)`,
         [
             Number(isundefind(jb.id_repertoire)),
             isundefind(jb.date_time),
             isundefind(jb.place),
-            isundefind(jb.src_on_map)
+            isundefind(jb.src_on_map),
+            isundefind(jb.marker)
         ]
     )
     const [last_id] = await pool.query(`SELECT LAST_INSERT_ID()`)
@@ -264,13 +265,14 @@ export async function delete_billboard(id){
 export async function edite_billboard(id,jb){
     await pool.query(
         `UPDATE dram.billboard
-        SET id_repertoire = ?, date_time = ?, place = ?, src_on_map = ?
+        SET id_repertoire = ?, date_time = ?, place = ?, src_on_map = ?, marker = ?
         WHERE id_billboard = ?`,
         [
             Number(isundefind(jb.id_repertoire)),
             isundefind(jb.date_time),
             isundefind(jb.place),
             isundefind(jb.src_on_map),
+            isundefind(jb.marker),
             id
         ]
     )
