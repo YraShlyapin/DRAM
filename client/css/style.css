@@ -1060,7 +1060,7 @@ a.router-link-active::after {
   }
   #cast .cast_wrapper {
     width: 225px;
-    height: 320px;
+    height: 340px;
     border-radius: 25px;
     overflow: hidden;
     display: flex;
