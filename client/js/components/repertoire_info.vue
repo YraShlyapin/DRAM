@@ -26,7 +26,7 @@
                 :key="person.id_cast"
                 class="cast_wrapper"
             >
-            <img :src="'../upload/' + person.image_person" onerror="this.src = '../upload/not_found.png'">
+            <img :src="'../upload/' + person.image" onerror="this.src = '../upload/not_found.png'">
                 <div>
                     <p>{{person.role_person}}</p>
                     <p class="name">{{person.name}}</p>
