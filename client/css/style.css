@@ -807,7 +807,7 @@ a.router-link-active::after {
 }
 #award {
   min-height: calc(100vh - 214px);
-  margin-top: 50px;
+  margin-top: 24px;
   margin-bottom: 50px;
 }
 #award #award_wrapper {
