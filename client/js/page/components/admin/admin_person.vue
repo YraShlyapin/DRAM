@@ -7,7 +7,7 @@
             </div>
             <input type="text" name="name" placeholder="Имя и Фамилия">
             <textarea name="description" cols="30" rows="10" placeholder="Описание"></textarea>
-            <!--<input type="date" name="birthday" :value="date_get().split(' ')[0]">-->
+            <input type="date" name="birthday" :value="date_get().split(' ')[0]" disabled>
             <div>
                 <label for="real">Состоит ли в антрепризе </label>
                 <input type="checkbox" name="real" checked>
@@ -21,7 +21,7 @@
             </div>
             <input type="text" name="name" placeholder="Имя и Фамилия" :value="comp_edite.name">
             <textarea name="description" cols="30" rows="10" placeholder="Описание" :value="comp_edite.description"></textarea>
-            <!--<input type="date" name="birthday" :value="date_get_edite(comp_edite.birthday).split(' ')[0]">-->
+            <input type="date" name="birthday" :value="date_get_edite(comp_edite.birthday).split(' ')[0]" disabled>
             <div>
                 <label for="real">Состоит ли в антрепризе </label>
                 <input type="checkbox" name="real" :checked="comp_edite.real">
