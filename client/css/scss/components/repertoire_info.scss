@@ -145,11 +145,14 @@
             overflow: hidden;
 
             @include display(flex,$fd:column,$al:center);
+            justify-content: center;
 
             font-family: $Merriweather;
 
             background-color: $gray;
             & > img{
+                position: relative;
+                top: -40px;
                 width: 130px;
                 border-radius: 0 0 25px 25px;
             }
