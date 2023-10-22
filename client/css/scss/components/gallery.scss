@@ -14,7 +14,10 @@
     padding-right: 50px;
 
     img{
-        height: 500px;
+        position: relative;
+        top: -40px;
+        max-width: 100vw;
+        max-height: 500px;
     }
     &.mini{
         height: 500px;

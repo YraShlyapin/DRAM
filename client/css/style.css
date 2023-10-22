@@ -850,7 +850,10 @@ a.router-link-active::after {
   padding-right: 50px;
 }
 #gallery img {
-  height: 500px;
+  position: relative;
+  top: -40px;
+  max-width: 100vw;
+  max-height: 500px;
 }
 #gallery.mini {
   height: 500px;
