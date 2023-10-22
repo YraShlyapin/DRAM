@@ -23,7 +23,7 @@
                     <img :src="'../upload/' + person.image" onerror="this.src = '../upload/not_found.png'">
                     <div class="about_person">
                         <p class="name">{{ person.name }}</p>
-                        <p>{{ birthday(person.birthday) }}</p>
+                        <!--<p>{{ birthday(person.birthday) }}</p>-->
                         <p class="text">{{ person.description }}</p>
                         <p class="role">{{ get_info(person.id_person) }}</p>
                     </div>
@@ -77,7 +77,7 @@
                         str += `${obj.title} - ${obj.role_person ? obj.role_person : 'не задано'}\n`
                     }
                 }else {
-                    str = `Не задействован в спектаклях`
+                    str = `Не задействован(-a) в спектаклях`
                 }
                 return str
             }
