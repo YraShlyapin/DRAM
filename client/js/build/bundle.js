@@ -448,7 +448,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-46ecce50", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-46ecce50", __vue__options__)
+    hotAPI.reload("data-v-46ecce50", __vue__options__)
   }
 })()}
 },{"../page/components/err/err404.vue":27,"./samples/title.vue":13,"vue":102,"vue-hot-reload-api":99}],7:[function(require,module,exports){
@@ -541,7 +541,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-6445f9e3", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-6445f9e3", __vue__options__)
+    hotAPI.reload("data-v-6445f9e3", __vue__options__)
   }
 })()}
 },{"./samples/title.vue":13,"vue":102,"vue-hot-reload-api":99}],9:[function(require,module,exports){
@@ -674,7 +674,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"person"}},[_c('titles',{attrs:{"title":"Труппа"}}),_vm._v(" "),_c('div',{attrs:{"id":"person_wrapper"}},_vm._l((_vm.persons),function(person,ind){return _c('div',{key:person.id_person,staticClass:"block_person",on:{"click":function($event){_vm.style_set(ind)}}},[_c('img',{attrs:{"src":'../upload/' + person.image,"onerror":"this.src = '../upload/not_found.png'"}}),_vm._v(" "),_c('div',{staticClass:"about_person"},[_c('p',{staticClass:"name"},[_vm._v(_vm._s(person.name)+", "+_vm._s(_vm.years(person.birthday)))]),_vm._v(" "),_c('p',{staticClass:"text"},[_vm._v(_vm._s(person.description))])])])})),_vm._v(" "),_vm._l((_vm.persons),function(person){return _c('div',{key:person.id_person,staticClass:"block_person_view",on:{"click":_vm.null_style}},[_c('div',{staticClass:"block_person_view_wrapper"},[_c('img',{attrs:{"src":'../upload/' + person.image,"onerror":"this.src = '../upload/not_found.png'"}}),_vm._v(" "),_c('div',{staticClass:"about_person"},[_c('p',{staticClass:"name"},[_vm._v(_vm._s(person.name))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.birthday(person.birthday)))]),_vm._v(" "),_c('p',{staticClass:"text"},[_vm._v(_vm._s(person.description))]),_vm._v(" "),_c('p',{staticClass:"role"},[_vm._v(_vm._s(_vm.get_info(person.id_person)))])])])])})],2)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"person"}},[_c('titles',{attrs:{"title":"Труппа"}}),_vm._v(" "),_c('div',{attrs:{"id":"person_wrapper"}},_vm._l((_vm.persons),function(person,ind){return _c('div',{key:person.id_person,staticClass:"block_person",on:{"click":function($event){_vm.style_set(ind)}}},[_c('img',{attrs:{"src":'../upload/' + person.image,"onerror":"this.src = '../upload/not_found.png'"}}),_vm._v(" "),_c('div',{staticClass:"about_person"},[_c('p',{staticClass:"name"},[_vm._v(_vm._s(person.name))]),_vm._v(" "),_c('p',{staticClass:"text"},[_vm._v(_vm._s(person.description))])])])})),_vm._v(" "),_vm._l((_vm.persons),function(person){return _c('div',{key:person.id_person,staticClass:"block_person_view",on:{"click":_vm.null_style}},[_c('div',{staticClass:"block_person_view_wrapper"},[_c('img',{attrs:{"src":'../upload/' + person.image,"onerror":"this.src = '../upload/not_found.png'"}}),_vm._v(" "),_c('div',{staticClass:"about_person"},[_c('p',{staticClass:"name"},[_vm._v(_vm._s(person.name))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.birthday(person.birthday)))]),_vm._v(" "),_c('p',{staticClass:"text"},[_vm._v(_vm._s(person.description))]),_vm._v(" "),_c('p',{staticClass:"role"},[_vm._v(_vm._s(_vm.get_info(person.id_person)))])])])])})],2)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -683,7 +683,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-933db602", __vue__options__)
   } else {
-    hotAPI.reload("data-v-933db602", __vue__options__)
+    hotAPI.rerender("data-v-933db602", __vue__options__)
   }
 })()}
 },{"./samples/title.vue":13,"babel-runtime/core-js/get-iterator":35,"vue":102,"vue-hot-reload-api":99}],11:[function(require,module,exports){
@@ -824,7 +824,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-091b51fc", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-091b51fc", __vue__options__)
+    hotAPI.reload("data-v-091b51fc", __vue__options__)
   }
 })()}
 },{"../page/components/err/err404.vue":27,"./samples/title.vue":13,"vue":102,"vue-hot-reload-api":99}],13:[function(require,module,exports){
@@ -895,7 +895,7 @@ function time_format(time) {
 }
 
 function date_get(){
-    let date = new Date(new Date() - (-3*60*60*1000)).toISOString().replace('T', ' ').split('.')[0].slice(0,-3)
+    let date = new Date(new Date() - (-4*60*60*1000)).toISOString().replace('T', ' ').split('.')[0].slice(0,-3)
     return date
 }
 
@@ -1162,6 +1162,7 @@ module.exports = {
         post_method: function post_method(e) {
             e.preventDefault();
             var form = e.target;
+            console.log(form.date_time.value);
             if (form.id_repertoire.value == '') {
                 return;
             }
@@ -1495,7 +1496,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-762a5f40", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-762a5f40", __vue__options__)
+    hotAPI.reload("data-v-762a5f40", __vue__options__)
   }
 })()}
 },{"babel-runtime/core-js/get-iterator":35,"babel-runtime/helpers/toConsumableArray":36,"vue":102,"vue-hot-reload-api":99}],22:[function(require,module,exports){
@@ -1505,7 +1506,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
 module.exports = {
     methods: {
         activate: function activate() {
-            if (window.innerWidth <= 900) {
+            if (window.innerWidth <= 1290) {
                 document.querySelector("html").classList.toggle("lock");
                 document.querySelector("#menu_wrapper").classList.toggle("activate");
             }
@@ -1707,7 +1708,7 @@ module.exports = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"main"}},[(!_vm.edite_mode)?_c('form',{attrs:{"id":"form"},on:{"submit":_vm.post_method}},[_c('div',{attrs:{"id":"draggble","draggable":"true"},on:{"@dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}},[_c('img',{attrs:{"src":_vm.srcc},on:{"dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}}),_vm._v(" "),_c('input',{ref:"image",attrs:{"type":"file","name":"file","id":"file","accept":"image/*"},on:{"change":_vm.loadPreview}})]),_vm._v(" "),_c('input',{attrs:{"type":"text","name":"name","placeholder":"Имя и Фамилия"}}),_vm._v(" "),_c('textarea',{attrs:{"name":"description","cols":"30","rows":"10","placeholder":"Описание"}}),_vm._v(" "),_c('input',{attrs:{"type":"date","name":"birthday"},domProps:{"value":_vm.date_get().split(' ')[0]}}),_vm._v(" "),_vm._m(0),_vm._v(" "),_c('button',{attrs:{"type":"submit"}},[_vm._v("отправить")])]):_c('form',{ref:"form_edite",attrs:{"id":"form"},on:{"submit":_vm.edite_method}},[_c('div',{attrs:{"id":"draggble","draggable":"true"},on:{"@dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}},[_c('img',{attrs:{"src":_vm.srcc},on:{"dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}}),_vm._v(" "),_c('input',{ref:"image",attrs:{"type":"file","name":"file","id":"file","accept":"image/*"},on:{"change":_vm.loadPreview}})]),_vm._v(" "),_c('input',{attrs:{"type":"text","name":"name","placeholder":"Имя и Фамилия"},domProps:{"value":_vm.comp_edite.name}}),_vm._v(" "),_c('textarea',{attrs:{"name":"description","cols":"30","rows":"10","placeholder":"Описание"},domProps:{"value":_vm.comp_edite.description}}),_vm._v(" "),_c('input',{attrs:{"type":"date","name":"birthday"},domProps:{"value":_vm.date_get_edite(_vm.comp_edite.birthday).split(' ')[0]}}),_vm._v(" "),_c('div',[_c('label',{attrs:{"for":"real"}},[_vm._v("Состоит ли в антрепризе ")]),_vm._v(" "),_c('input',{attrs:{"type":"checkbox","name":"real"},domProps:{"checked":_vm.comp_edite.real}})]),_vm._v(" "),_c('button',{attrs:{"type":"submit"}},[_vm._v("отправить")]),_vm._v(" "),_c('button',{attrs:{"type":"button"},on:{"click":_vm.nullebl}},[_vm._v("отмена")])]),_vm._v(" "),_c('div',[_c('div',{attrs:{"id":"mini_repertoire1"}},_vm._l((_vm.persons),function(person){return _c('div',{staticClass:"block_mini_repertoire"},[_c('img',{attrs:{"src":'../upload/' + person.image,"onerror":"this.src = '../upload/not_found.png'"}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"mini_repertoire_title"},[_vm._v(_vm._s(person.name))]),_vm._v(" "),_c('p',{staticClass:"mini_repertoire_title mini_repertoire_author"},[_vm._v(_vm._s(_vm.birthday(person.birthday)))]),_vm._v(" "),_c('p',{staticClass:"mini_repertoire_text"},[_vm._v(_vm._s(person.description))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(person.real === 1 ? "участник антрепризы" : "не участник антрепризы"))])]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.delete_method(person.id_person)}}},[_vm._v("удалить")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.edite_scroll(person.id_person)}}},[_vm._v("редактировать")])])}))])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"main"}},[(!_vm.edite_mode)?_c('form',{attrs:{"id":"form"},on:{"submit":_vm.post_method}},[_c('div',{attrs:{"id":"draggble","draggable":"true"},on:{"@dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}},[_c('img',{attrs:{"src":_vm.srcc},on:{"dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}}),_vm._v(" "),_c('input',{ref:"image",attrs:{"type":"file","name":"file","id":"file","accept":"image/*"},on:{"change":_vm.loadPreview}})]),_vm._v(" "),_c('input',{attrs:{"type":"text","name":"name","placeholder":"Имя и Фамилия"}}),_vm._v(" "),_c('textarea',{attrs:{"name":"description","cols":"30","rows":"10","placeholder":"Описание"}}),_vm._v(" "),_c('input',{attrs:{"type":"date","name":"birthday"},domProps:{"value":_vm.date_get().split(' ')[0]}}),_vm._v(" "),_vm._m(0),_vm._v(" "),_c('button',{attrs:{"type":"submit"}},[_vm._v("отправить")])]):_c('form',{ref:"form_edite",attrs:{"id":"form"},on:{"submit":_vm.edite_method}},[_c('div',{attrs:{"id":"draggble","draggable":"true"},on:{"@dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}},[_c('img',{attrs:{"src":_vm.srcc},on:{"dragover":function($event){$event.preventDefault();},"drop":function($event){$event.stopPropagation();$event.preventDefault();return _vm.onDrop($event)}}}),_vm._v(" "),_c('input',{ref:"image",attrs:{"type":"file","name":"file","id":"file","accept":"image/*"},on:{"change":_vm.loadPreview}})]),_vm._v(" "),_c('input',{attrs:{"type":"text","name":"name","placeholder":"Имя и Фамилия"},domProps:{"value":_vm.comp_edite.name}}),_vm._v(" "),_c('textarea',{attrs:{"name":"description","cols":"30","rows":"10","placeholder":"Описание"},domProps:{"value":_vm.comp_edite.description}}),_vm._v(" "),_c('input',{attrs:{"type":"date","name":"birthday"},domProps:{"value":_vm.date_get_edite(_vm.comp_edite.birthday).split(' ')[0]}}),_vm._v(" "),_c('div',[_c('label',{attrs:{"for":"real"}},[_vm._v("Состоит ли в антрепризе ")]),_vm._v(" "),_c('input',{attrs:{"type":"checkbox","name":"real"},domProps:{"checked":_vm.comp_edite.real}})]),_vm._v(" "),_c('button',{attrs:{"type":"submit"}},[_vm._v("отправить")]),_vm._v(" "),_c('button',{attrs:{"type":"button"},on:{"click":_vm.nullebl}},[_vm._v("отмена")])]),_vm._v(" "),_c('div',[_c('div',{attrs:{"id":"mini_repertoire1"}},_vm._l((_vm.persons),function(person){return _c('div',{staticClass:"block_mini_repertoire"},[_c('img',{attrs:{"src":'../upload/' + person.image,"onerror":"this.src = '../upload/not_found.png'"}}),_vm._v(" "),_c('div',[_c('p',{staticClass:"mini_repertoire_title"},[_vm._v(_vm._s(person.name))]),_vm._v(" "),_c('p',{staticClass:"mini_repertoire_text"},[_vm._v(_vm._s(person.description))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(person.real === 1 ? "участник антрепризы" : "не участник антрепризы"))])]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.delete_method(person.id_person)}}},[_vm._v("удалить")]),_vm._v(" "),_c('button',{on:{"click":function($event){_vm.edite_scroll(person.id_person)}}},[_vm._v("редактировать")])])}))])])}
 __vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('label',{attrs:{"for":"real"}},[_vm._v("Состоит ли в антрепризе ")]),_vm._v(" "),_c('input',{attrs:{"type":"checkbox","name":"real","checked":""}})])}]
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -1716,7 +1717,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-a2839592", __vue__options__)
   } else {
-    hotAPI.reload("data-v-a2839592", __vue__options__)
+    hotAPI.rerender("data-v-a2839592", __vue__options__)
   }
 })()}
 },{"vue":102,"vue-hot-reload-api":99}],25:[function(require,module,exports){
@@ -1820,7 +1821,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-c13887ce", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-c13887ce", __vue__options__)
+    hotAPI.reload("data-v-c13887ce", __vue__options__)
   }
 })()}
 },{"vue":102,"vue-hot-reload-api":99}],26:[function(require,module,exports){
@@ -1892,7 +1893,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
 },{"vue":102,"vue-hot-reload-api":99}],28:[function(require,module,exports){
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"footer"}},[_vm._m(0),_vm._v(" "),_vm._m(1),_vm._v(" "),_c('div',{staticClass:"footer_segments",attrs:{"id":"footer_third_segment"}},[_c('p',{staticClass:"titl"},[_vm._v("Меню")]),_vm._v(" "),_c('router-link',{staticClass:"menu_link",attrs:{"to":"/main"}},[_vm._v("Главная")]),_vm._v(" "),_c('router-link',{staticClass:"menu_link",attrs:{"to":"/billboard"}},[_vm._v("Афиша")]),_vm._v(" "),_c('router-link',{staticClass:"menu_link",attrs:{"to":"/repertoire"}},[_vm._v("Репертуар")]),_vm._v(" "),_c('router-link',{staticClass:"menu_link",attrs:{"to":"/persons"}},[_vm._v("Труппа")]),_vm._v(" "),_c('router-link',{staticClass:"menu_link",attrs:{"to":"/contact"}},[_vm._v("Контакты")])],1)])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"footer"}},[_vm._m(0),_vm._v(" "),_vm._m(1),_vm._v(" "),_c('div',{staticClass:"footer_segments",attrs:{"id":"footer_third_segment"}},[_c('p',{staticClass:"titl"},[_vm._v("Меню")]),_vm._v(" "),_c('router-link',{staticClass:"menu_link",attrs:{"to":"/main"}},[_vm._v("Главная")]),_vm._v(" "),_c('router-link',{staticClass:"menu_link",attrs:{"to":"/billboard"}},[_vm._v("Афиша")]),_vm._v(" "),_c('router-link',{staticClass:"menu_link",attrs:{"to":"/repertoire"}},[_vm._v("Репертуар")]),_vm._v(" "),_c('router-link',{staticClass:"menu_link",attrs:{"to":"/persons"}},[_vm._v("Труппа")]),_vm._v(" "),_c('router-link',{staticClass:"menu_link",attrs:{"to":"/news"}},[_vm._v("Новости")]),_vm._v(" "),_c('router-link',{staticClass:"menu_link",attrs:{"to":"/awards"}},[_vm._v("Награды")]),_vm._v(" "),_c('router-link',{staticClass:"menu_link",attrs:{"to":"/contact"}},[_vm._v("Контакты")])],1)])}
 __vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"footer_segments",attrs:{"id":"footer_first_segment"}},[_c('img',{attrs:{"src":"../image/text_full.png","width":"100%"}})])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"footer_segments",attrs:{"id":"footer_second_segment"}},[_c('div',[_c('p',{staticClass:"titl"},[_vm._v("Щедров Ярослав Олегович")]),_vm._v(" "),_c('a',{attrs:{"href":"tel:+79510965250"}},[_vm._v("тел: +7 (951) 096-52-50")]),_vm._v(" "),_c('a',{attrs:{"href":"tel:+79176110867"}},[_vm._v("тел: +7 (917) 611-08-67")])]),_vm._v(" "),_c('div',{attrs:{"id":"dev"}},[_c('p',{staticClass:"titl"},[_vm._v("О разработчиках")]),_vm._v(" "),_c('p',[_vm._v("frontend и backend: Юрий Шляпин")]),_vm._v(" "),_c('p',[_vm._v("UX/UI дизайнер сайта: Егор Юдин")])])])}]
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -1901,7 +1902,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-265d1020", __vue__options__)
   } else {
-    hotAPI.reload("data-v-265d1020", __vue__options__)
+    hotAPI.rerender("data-v-265d1020", __vue__options__)
   }
 })()}
 },{"vue":102,"vue-hot-reload-api":99}],29:[function(require,module,exports){

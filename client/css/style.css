@@ -20,7 +20,7 @@ a.router-link-active::after {
   background: white;
   border-radius: 10px;
   position: absolute;
-  bottom: -5px;
+  bottom: -3px;
   left: 0;
 }
 
@@ -150,6 +150,7 @@ a.router-link-active::after {
 .footer_segments :first-child {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 #footer_first_segment {
@@ -170,7 +171,7 @@ a.router-link-active::after {
 
 .titl {
   font-size: 24px;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
 }
 
 #footer_third_segment {
@@ -180,8 +181,8 @@ a.router-link-active::after {
   margin-right: 5%;
 }
 #footer_third_segment a {
-  font-size: 20px;
-  margin-top: 10px;
+  font-size: 1rem;
+  margin-top: 6px;
   position: relative;
 }
 
@@ -650,10 +651,10 @@ a.router-link-active::after {
   }
 }
 @media screen and (max-width: 730px) {
-  #repertoire #repertoire_wrapper .block_repertoir.revers {
+  #repertoire #repertoire_wrapper .block_repertoire.revers {
     flex-direction: column;
   }
-  #repertoire #repertoire_wrapper .block_repertoir.revers img {
+  #repertoire #repertoire_wrapper .block_repertoire.revers img {
     border-radius: 0 0 25px 25px;
   }
 }

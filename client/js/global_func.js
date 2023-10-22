@@ -32,7 +32,7 @@ function time_format(time) {
 }
 
 function date_get(){
-    let date = new Date(new Date() - (-3*60*60*1000)).toISOString().replace('T', ' ').split('.')[0].slice(0,-3)
+    let date = new Date(new Date() - (-4*60*60*1000)).toISOString().replace('T', ' ').split('.')[0].slice(0,-3)
     return date
 }
 

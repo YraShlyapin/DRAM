@@ -37,7 +37,7 @@
                     <img :src="'../upload/' + person.image" onerror="this.src = '../upload/not_found.png'">
                     <div>
                         <p class="mini_repertoire_title">{{ person.name }}</p>
-                        <p class="mini_repertoire_title mini_repertoire_author">{{ birthday(person.birthday) }}</p>
+                        <!--<p class="mini_repertoire_title mini_repertoire_author">{{ birthday(person.birthday) }}</p>-->
                         <p class="mini_repertoire_text">{{ person.description }}</p>
                         <p>{{ person.real === 1 ? "участник антрепризы" : "не участник антрепризы" }}</p>
                     </div>

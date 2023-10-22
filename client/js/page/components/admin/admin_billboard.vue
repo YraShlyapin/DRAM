@@ -67,6 +67,7 @@
             post_method: function(e) {
                 e.preventDefault()
                 let form = e.target
+                console.log(form.date_time.value)
                 if (form.id_repertoire.value == ''){
                     return
                 }

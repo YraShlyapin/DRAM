@@ -17,6 +17,7 @@
     :first-child {
         display: flex;
         flex-direction: column;
+        align-items: center;
     }
 }
 
@@ -39,7 +40,7 @@
 
 .titl{
     font-size: 24px;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
 }
 
 #footer_third_segment{
@@ -48,8 +49,8 @@
     align-items: center;
     margin-right: 5%;
     a {
-        font-size: 20px;
-        margin-top: 10px;
+        font-size: 1rem;
+        margin-top: 6px;
         position: relative;
     }
 }

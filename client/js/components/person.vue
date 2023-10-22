@@ -9,7 +9,7 @@
             >
                 <img :src="'../upload/' + person.image" onerror="this.src = '../upload/not_found.png'">
                 <div class="about_person">
-                    <p class="name">{{ person.name }}, {{ years(person.birthday) }}</p>
+                    <p class="name">{{ person.name }}<!--, {{ years(person.birthday) }} --></p>
                     <p class="text">{{ person.description }}</p>
                 </div>
             </div>

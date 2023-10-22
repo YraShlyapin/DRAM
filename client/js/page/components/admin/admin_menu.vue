@@ -18,7 +18,7 @@
     module.exports = {
         methods: {
             activate: function(){
-                if (window.innerWidth <= 900){
+                if (window.innerWidth <= 1290){
                     document.querySelector("html").classList.toggle("lock")
                     document.querySelector("#menu_wrapper").classList.toggle("activate")
                 }
