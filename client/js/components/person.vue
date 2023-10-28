@@ -21,7 +21,7 @@
                         <p class="name">{{ current_person.name }}</p>
                         <!--<p>{{ birthday(person.birthday) }}</p>-->
                         <p class="text">{{ current_person.description }}</p>
-                        <p class="role">{{ current_cast.length > 0 ? "Задействован(-a) в спектаклях:\n" : "Скоро появятся в спектаклях"  }}<router-link v-if="current_cast" v-for="cast in current_cast":to="'/repertoire/' + cast.id_repertoire">{{cast.title}} - {{cast.role_person}}</router-link></p>
+                        <p class="role">{{ current_cast.length > 0 ? "Задействован(-a) в спектаклях:\n" : "Скоро появятся в спектаклях"  }}<router-link v-if="current_cast" v-for="cast in current_cast":to="'/repertoire/' + cast.id_repertoire">{{cast.title}} - {{cast.role_person}}<br></router-link></p>
                     </div>
                 </div>
             </div>
