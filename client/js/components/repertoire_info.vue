@@ -22,16 +22,17 @@
         </div>
         <titles title="Состав" v-if="cast!=''"/>
         <div id="cast" v-if="cast != ''">
-            <div v-for="person in cast"
+            <router-link v-for="person in cast"
                 :key="person.id_cast"
                 class="cast_wrapper"
+                :to="'/persons/' + person.id_person"
             >
             <img v-if="person.real" :src="'../upload/' + person.image" onerror="this.src = '../upload/not_found.png'">
                 <div>
                     <p>{{person.role_person}}</p>
                     <p class="name">{{person.name}}</p>
                 </div>
-            </div>
+            </router-link>
         </div>
     </div>
     <err404 v-else/>

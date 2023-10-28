@@ -55,13 +55,16 @@
 
     .mini {
         .section_name {
-            @media (max-width:600px) {
+            @media (max-width:900px) {
+                font-size: 1.7rem;
+            }
+            @media (max-width:400px) {
                 font-size: 1.25rem;
             }
         }
 
         .applicant{
-            @media (max-width:1100px) {
+            @media (max-width:900px) {
                 margin-bottom: 0;
             }
         }

@@ -19,7 +19,7 @@
         </div>
         <div id="footer_third_segment" class="footer_segments">
             <p class="titl">Меню</p>
-            <router-link to="/main" class="menu_link">Главная</router-link>
+            <router-link to="/" class="menu_link">Главная</router-link>
             <router-link to="/billboard" class="menu_link">Афиша</router-link>
             <router-link to="/repertoire" class="menu_link">Репертуар</router-link>
             <router-link to="/persons" class="menu_link">Труппа</router-link>

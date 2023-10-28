@@ -1,4 +1,4 @@
-a.router-link-active::after {
+a.router-link-exact-active::after {
     content: '';
     width: 100%;
     height: 3px;
@@ -73,7 +73,7 @@ a.router-link-active::after {
                     margin-bottom: 24px;
                 }
 
-                .router-link-active::after{
+                .router-link-exact-active::after{
                     background-color: $secondary-color;
                     height: 5px;
                 }

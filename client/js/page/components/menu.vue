@@ -2,7 +2,7 @@
     <div id="menu">
         <div class="hamburger" @click="activate"><span></span></div>
         <div id="menu_wrapper" @click="activate">
-            <router-link to="/main" class="menu_link">Главная</router-link>
+            <router-link to="/" class="menu_link">Главная</router-link>
             <router-link to="/billboard" class="menu_link">Афиша</router-link>
             <router-link to="/repertoire" class="menu_link">Репертуар</router-link>
             <router-link to="/persons" class="menu_link">Труппа</router-link>

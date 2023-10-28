@@ -30,11 +30,11 @@ module.exports = [
         path: "/",
         component: App,
         children: [
-            {path: "", redirect: {name: "MAIN"}},
-            {path: "main", name: "MAIN", component: main},
+            {path: "", component: main},
             {path: "repertoire", component: repertoire},
             {path: "billboard", component: billboard},
             {path: "persons", component: person},
+            {path: "persons/:id", component: person,},
             {path: "news", component: news},
             {path: "awards", component: awards},
             {path: "contact", component: contact},

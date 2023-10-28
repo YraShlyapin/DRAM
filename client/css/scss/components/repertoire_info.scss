@@ -38,6 +38,7 @@
             width: 50%;
             height: fit-content;
             border-bottom-left-radius: 50px;
+            border-top-left-radius: 50px;
             margin-left: $margin-averange;
         }
 
@@ -150,6 +151,7 @@
             font-family: $Merriweather;
 
             background-color: $gray;
+
             & > img{
                 position: relative;
                 top: -40px;
@@ -159,6 +161,7 @@
             & > div{
                 margin-top: $margin-mini;
                 text-align: center;
+                color: black;
 
                 font-size: 2rem;
 
@@ -175,9 +178,10 @@
         display: flex;
         justify-content: space-evenly;
         flex-wrap: wrap;
+        margin-top: 50px;
         gap: 30px;
 
-        @media (max-width: 800px) {
+        @media (max-width: 900px) {
         }
         
         margin-bottom: 50px;
