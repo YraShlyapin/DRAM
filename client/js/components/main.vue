@@ -13,12 +13,13 @@
                         <p class="about_slider_title">{{ billboard.title }}
 {{ billboard.author }}
 {{ billboard.marker }}</p>
-                        <p class="about_slider_text">{{ billboard.description }}</p>
                         <p class="about_slider_text">
                             {{ date_format(billboard.date_time) }}
                             <br>
                             {{ billboard.place }}
                         </p>
+                        <p class="about_slider_text">{{ billboard.description }}</p>
+
                         <p class="about_slider_more">Подробнее...</p>
                     </div>
                     <img :src="'../upload/' + billboard.image" onerror="this.src = '../upload/not_found.png'">

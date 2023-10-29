@@ -23,7 +23,7 @@
 
 .mini{
     .section_name {
-        white-space: nowrap;
+        text-align: center;
     }
 
     .applicant{
@@ -37,7 +37,6 @@
         .section_name{
             @media (max-width: 680px) {
                 font-size: $font-size-giant;
-                
             }
         }
 
@@ -55,6 +54,7 @@
 
     .mini {
         .section_name {
+            font-size: 3rem;
             @media (max-width:900px) {
                 font-size: 1.7rem;
             }

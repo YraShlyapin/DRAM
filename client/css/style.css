@@ -222,7 +222,7 @@ a.router-link-exact-active::after {
 }
 
 .mini .section_name {
-  white-space: nowrap;
+  text-align: center;
 }
 .mini .applicant {
   width: 100%;
@@ -243,6 +243,11 @@ a.router-link-exact-active::after {
   .section_name_wrapper .applicant {
     width: 72%;
     min-width: 0;
+  }
+}
+@media screen {
+  .mini .section_name {
+    font-size: 3rem;
   }
 }
 @media screen and (max-width: 900px) {
@@ -987,7 +992,6 @@ a.router-link-exact-active::after {
     width: 50%;
     height: fit-content;
     border-bottom-left-radius: 50px;
-    border-top-left-radius: 50px;
     margin-left: 50px;
   }
 }
@@ -1075,13 +1079,10 @@ a.router-link-exact-active::after {
     align-items: center;
     flex-direction: column;
     flex-wrap: nowrap;
-    justify-content: center;
     font-family: "Merriweather", serif;
     background-color: rgb(255, 224, 224);
   }
   #cast .cast_wrapper > img {
-    position: relative;
-    top: -40px;
     width: 130px;
     border-radius: 0 0 25px 25px;
   }
@@ -1089,7 +1090,7 @@ a.router-link-exact-active::after {
     margin-top: 16px;
     text-align: center;
     color: black;
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
   #cast .cast_wrapper > div .name {
     font-size: 1.2rem;

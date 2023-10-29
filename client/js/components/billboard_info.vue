@@ -1,9 +1,5 @@
 <template>
     <div v-if="billboard">
-        <div id="time_place">
-            <titles :title="date_format(billboard.date_time)" is_mini="true"/>
-            <titles :title="billboard.place" is_mini="true"/>
-        </div>
         <div id="repertoire_info">
             <div id="repertoire_info_wrapper">
                 <div id="repertoire_info_allotted">
@@ -38,6 +34,10 @@
                     <p class="name">{{person.name}}</p>
                 </div>
             </router-link>
+        </div>
+        <div id="time_place">
+            <titles :title="date_format(billboard.date_time)" is_mini="true"/>
+            <titles :title="billboard.place" is_mini="true"/>
         </div>
         <iframe v-if="billboard.src_on_map" id="map" :src="'https://yandex.ru/map-widget/v1/?um=constructor%' + billboard.src_on_map + '&amp;source=constructor'" height="500" frameborder="0"></iframe>
     </div>
