@@ -53,7 +53,6 @@
             <div id="mini_repertoire_wrapper">
                 <router-link v-for="repertoire in repertoires"
                     :key="repertoire.id_repertoire"
-                    v-if="repertoire.is_show"
                     class="block_mini_repertoire"
                     :to="'/repertoire/' + repertoire.id_repertoire"
                 >
@@ -116,7 +115,7 @@
                 this.set_title("Главная")
                 this.$http.get(`/repertoireAPI`)
                     .then(function(res) {
-                        this.repertoires = res.body.slice(0,4)
+                        this.repertoires = res.body.filter(e => e.is_show == true).slice(0,4)
                     })
                 this.$http.get(`/billboardAPI`)
                     .then(function(res) {
