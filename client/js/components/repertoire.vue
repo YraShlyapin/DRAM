@@ -7,6 +7,7 @@
                 class="block_repertoire"
                 :class="{revers: (index % 2 === 0)}"
                 :to="'/repertoire/' + repertoire.id_repertoire"
+                v-if="repertoire.is_show"
             >
                 <img :src="'../upload/' + repertoire.image" onerror="this.src = '../upload/not_found.png'">
                 <div class="about_repertoire">

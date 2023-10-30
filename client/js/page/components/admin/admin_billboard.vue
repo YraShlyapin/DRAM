@@ -5,6 +5,7 @@
                 <option value="" disabled selected hidden>выберить спектакль из репертуара</option>
                 <option v-for="repertoire in repertoires"
                     :value="repertoire.id_repertoire"
+                    v-if="repertoire.is_show"
                 >
                     {{ repertoire.title }}
                 </option>
@@ -19,6 +20,7 @@
             <select name="id_repertoire" >
                 <option v-for="repertoire in repertoires"
                     :value="repertoire.id_repertoire"
+                    v-if="repertoire.is_show"
                     :selected="repertoire.id_repertoire == comp_edite.id_repertoire"
                 >
                     {{ repertoire.title }}

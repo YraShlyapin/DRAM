@@ -825,6 +825,7 @@ a.router-link-exact-active::after {
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-content: flex-start;
+  align-items: flex-start;
   gap: 20px;
 }
 #award #award_wrapper .award_element {

@@ -96,7 +96,7 @@ app.get("/repertoireAPI", async (req,res) => {
 
 app.get("/repertoireAPI/:id", async (req,res) => {
     const result = await db.get_one_repertoire(req.params.id)
-    if (result) {
+    if (result || result.is_show) {
         res.send(result)
     }else{
         res.sendStatus(404)

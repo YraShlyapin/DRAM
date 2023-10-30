@@ -53,6 +53,7 @@
             <div id="mini_repertoire_wrapper">
                 <router-link v-for="repertoire in repertoires"
                     :key="repertoire.id_repertoire"
+                    v-if="repertoire.is_show"
                     class="block_mini_repertoire"
                     :to="'/repertoire/' + repertoire.id_repertoire"
                 >

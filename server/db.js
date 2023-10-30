@@ -164,15 +164,16 @@ export async function get_one_repertoire(id){
 export async function post_repertoire(jb){
     // let time_create = new Date().toISOString().replace('T',' ').split('.')[0]
     await pool.query(
-        `INSERT INTO repertoire (title, author, description, image, duration, creation_time_repertoire)
-        VALUES (?, ?, ?, ?, ?, ?)`,
+        `INSERT INTO repertoire (title, author, description, image, duration, creation_time_repertoire, is_show)
+        VALUES (?, ?, ?, ?, ?, ?, ?)`,
         [
             isundefind(jb.title),
             isundefind(jb.author),
             isundefind(jb.description),
             isundefind(jb.image),
             isundefind(jb.duration),
-            isundefind(jb.creation_time_repertoire)
+            isundefind(jb.creation_time_repertoire),
+            ison(jb.is_show)
         ]
     )
     const [last_id] = await pool.query(`SELECT LAST_INSERT_ID()`)
@@ -207,7 +208,7 @@ export async function edite_repertoire(id,jb){
     }
     await pool.query(
         `UPDATE repertoire
-        SET title = ?, author = ?, description = ?, duration = ?, creation_time_repertoire = ?
+        SET title = ?, author = ?, description = ?, duration = ?, creation_time_repertoire = ?, is_show = ?
         WHERE id_repertoire = ?`,
         [
             isundefind(jb.title),
@@ -215,6 +216,7 @@ export async function edite_repertoire(id,jb){
             isundefind(jb.description),
             isundefind(jb.duration),
             isundefind(jb.creation_time_repertoire),
+            ison(jb.is_show),
             id
         ]
     )

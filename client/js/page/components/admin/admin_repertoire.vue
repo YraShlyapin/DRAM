@@ -10,6 +10,10 @@
             <textarea name="description"  cols="30" rows="10" placeholder="Описание"></textarea>
             <input type="number" name="duration" min="0" max="255" step="1" placeholder="Длительность до 255 мин">
             <input type="datetime-local" name="creation_time_repertoire" :value="date_get()">
+            <div>
+                <label for="real">Виден</label>
+                <input type="checkbox" name="is_show" checked>
+            </div>
             <button type="submit">отправить</button>
         </form>
         <form v-else v-on:submit="edite_method" id="form" ref="form_edite">
@@ -22,6 +26,10 @@
             <textarea name="description"  cols="30" rows="10" placeholder="Описание" :value="comp_edite.description"></textarea>
             <input type="number" name="duration" min="0" max="255" step="1" placeholder="Длительность до 255 мин" :value="comp_edite.duration">
             <input type="datetime-local" name="creation_time_repertoire" :value="date_get_edite(comp_edite.creation_time_repertoire)">
+            <div>
+                <label for="real">Виден</label>
+                <input type="checkbox" name="is_show" :checked="comp_edite.is_show">
+            </div>
             <button type="submit">отправить</button>
             <button @click="nullebl" type="button">отмена</button>
         </form>
