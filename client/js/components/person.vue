@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-        <div class="block_person_view"@click="null_style">
+        <div class="block_person_view" @click.self="null_style">
                 <div class="block_person_view_wrapper">
                     <img :src="'../upload/' + current_person.image" onerror="this.src = '../upload/not_found.png'">
                     <div class="about_person">
