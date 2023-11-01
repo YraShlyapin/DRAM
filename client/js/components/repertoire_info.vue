@@ -55,6 +55,7 @@
                 show: false,
                 mini: false,
                 maxi: false,
+                countImage: 0
                 //target_now: 0
             }
         },
@@ -77,8 +78,12 @@
                 this.maxi = true
             },
             ismini() {
-                if (this.$refs.asd.clientHeight - 120 > 510){
-                    this.$refs.asd.style.setProperty('--first-height', this.$refs.asd.clientHeight - 120 + 'px')
+                this.show = true
+                this.$refs.asd.style.display = 'block'
+                let height = this.$refs.asd.scrollHeight - 140
+                console.log(height)
+                if (height > 510){
+                    this.$refs.asd.style.setProperty('--first-height', height + 'px')
                     this.$refs.asd.classList.add('mini')
                     this.mini = true
                 }
@@ -90,10 +95,23 @@
                         this.set_title(this.repertoire.title)
 
                         this.$http.get(`/galleryAPI/${id}`)
-                            .then((res) => {
-                                this.gallery = res.body
-                                this.show = true
-                                setTimeout(this.ismini, 100)
+                            .then(async (res) => {
+                                this.gallery = await res.body
+                                console.log(this.gallery)
+                            })
+                            .then(() => {
+                                let allImage = document.querySelectorAll(".targeter")
+                                this.countImage = allImage.length
+                                let self = this
+                                allImage.forEach(el => {
+                                    el.onload = () => {
+                                        self.countImage--
+                                        console.log(self.countImage)
+                                        if (self.countImage == 0) {
+                                            this.ismini()
+                                        }
+                                    }
+                                })
                             })
                             .catch((res) => {
                             })

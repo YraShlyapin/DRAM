@@ -11,9 +11,9 @@
                     {{ repertoire.title }}
                 </option>
             </select>
-            <div id="draggble" draggable="true" @@dragover.prevent @drop.stop.prevent="onDrop">
+            <div id="draggble" @dragover.prevent @drop.stop.prevent="onDrop">
                 <div v-for="(src_one, index) in srcc" class="many_img">
-                    <img :src="src_one" @dragover.prevent @drop.stop.prevent="onDrop">
+                    <img :src="src_one">
                     <button @click="file_edit(index)" class="del_btn" v-show="!(src_one == '../upload/not_found.png')" type="button">x</button>
                 </div>
                 <input type="file" name="file" id="file" accept="image/*" @change="loadPreview" ref="image_input" multiple>

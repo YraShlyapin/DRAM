@@ -1,16 +1,16 @@
 <template>
     <div id="main">
         <form v-if="!edite_mode" v-on:submit="post_method" id="form">
-            <div id="draggble" draggable="true" @@dragover.prevent @drop.stop.prevent="onDrop">
-                <img :src="srcc" @dragover.prevent @drop.stop.prevent="onDrop">
+            <div id="draggble" @dragover.prevent @drop.stop.prevent="onDrop">
+                <img :src="srcc">
                 <input type="file" ref="image_input" name="file" id="file" accept="image/*" @change="loadPreview">
             </div>
             <textarea name="description" cols="30" rows="10" placeholder="Описание награды"></textarea>
             <button type="submit">отправить</button>
         </form>
         <form v-else v-on:submit="edite_method" id="form">
-            <div id="draggble" draggable="true" @@dragover.prevent @drop.stop.prevent="onDrop">
-                <img :src="srcc" @dragover.prevent @drop.stop.prevent="onDrop">
+            <div id="draggble" @dragover.prevent @drop.stop.prevent="onDrop">
+                <img :src="srcc">
                 <input type="file" ref="image_input" name="file" id="file" accept="image/*" @change="loadPreview">
             </div>
             <textarea name="description" cols="30" rows="10" placeholder="Описание награды" :value="comp_edite.description"></textarea>

@@ -1,8 +1,8 @@
 <template>
     <div id="main">
         <form v-on:submit="post_method" id="form" v-if="!edite_mode">
-            <div id="draggble" draggable="true" @@dragover.prevent @drop.stop.prevent="onDrop">
-                <img :src="srcc"  @dragover.prevent @drop.stop.prevent="onDrop">
+            <div id="draggble" draggable="true" @dragover.prevent @drop.stop.prevent="onDrop">
+                <img :src="srcc">
                 <input type="file" name="file" id="file" accept="image/*" @change="loadPreview" ref="image">
             </div>
             <input type="text" name="name" placeholder="Имя и Фамилия">
@@ -15,8 +15,8 @@
             <button type="submit">отправить</button>
         </form>
         <form v-on:submit="edite_method" id="form" ref="form_edite" v-else>
-            <div id="draggble" draggable="true" @@dragover.prevent @drop.stop.prevent="onDrop">
-                <img :src="srcc"  @dragover.prevent @drop.stop.prevent="onDrop">
+            <div id="draggble" draggable="true" @dragover.prevent @drop.stop.prevent="onDrop">
+                <img :src="srcc">
                 <input type="file" name="file" id="file" accept="image/*" @change="loadPreview" ref="image">
             </div>
             <input type="text" name="name" placeholder="Имя и Фамилия" :value="comp_edite.name">
