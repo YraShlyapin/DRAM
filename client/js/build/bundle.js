@@ -961,7 +961,7 @@ Vue.use(VueResource)
 Vue.use(VueRouter)
 
 let router = new VueRouter({
-    // mode: 'history',
+    mode: 'history',
     routes: routes,
     scrollBehavior (to, from, savedPosition) {
         return { x: 0, y:0 }
