@@ -323,9 +323,9 @@ app.post("/saveImage", my_multer.single('file'), async (req,res) => {
     }
 })
 
-app.use(function(req,res) {
-    res.sendFile(path.join(path.resolve(), '../client/index.html'))
-})
+// app.use(function(req,res) {
+//     res.sendFile(path.join(path.resolve(), '../client/index.html'))
+// })
 
 app.listen(port, host, function(){
     console.log(`сервер запущен на http://${host}:${port}`)
