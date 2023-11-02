@@ -961,7 +961,7 @@ Vue.use(VueResource)
 Vue.use(VueRouter)
 
 let router = new VueRouter({
-    // mode: 'history',
+    mode: 'history',
     routes: routes,
     scrollBehavior (to, from, savedPosition) {
         return { x: 0, y:0 }
@@ -1144,7 +1144,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-c43159d0", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-c43159d0", __vue__options__)
+    hotAPI.reload("data-v-c43159d0", __vue__options__)
   }
 })()}
 },{"vue":102,"vue-hot-reload-api":99}],19:[function(require,module,exports){
@@ -1500,7 +1500,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-762a5f40", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-762a5f40", __vue__options__)
+    hotAPI.reload("data-v-762a5f40", __vue__options__)
   }
 })()}
 },{"babel-runtime/core-js/get-iterator":35,"babel-runtime/helpers/toConsumableArray":36,"vue":102,"vue-hot-reload-api":99}],22:[function(require,module,exports){
@@ -1825,7 +1825,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-c13887ce", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-c13887ce", __vue__options__)
+    hotAPI.reload("data-v-c13887ce", __vue__options__)
   }
 })()}
 },{"vue":102,"vue-hot-reload-api":99}],26:[function(require,module,exports){

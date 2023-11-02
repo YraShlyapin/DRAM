@@ -3,6 +3,7 @@ import cors from "cors"
 import bodyParser from "body-parser"
 import multer from "multer"
 import fs from 'fs'
+import path from 'path'
 import 'dotenv/config'
 
 import * as db from "./db.js"
@@ -320,6 +321,10 @@ app.post("/saveImage", my_multer.single('file'), async (req,res) => {
     if (req.file){
         console.log(req.file.filename)
     }
+})
+
+app.use(function(req,res) {
+    res.sendFile(path.join(path.resolve(), '../client/index.html'))
 })
 
 app.listen(port, host, function(){
