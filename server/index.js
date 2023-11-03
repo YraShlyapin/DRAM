@@ -25,6 +25,16 @@ app.get("/", function(req,res) {
     res.send("index.html")
 })
 
+async function deleteEveryDay(){
+    let allBillboardCheck = await db.get_all_billboard()
+    let deleteBillboard = allBillboardCheck.filter(e => (new Date(e.date_time) < new Date()))
+    deleteBillboard.forEach(e => db.delete_billboard(e.id_billboard))
+}
+
+let oneDay = 1000 * 60 * 60 * 24
+
+setInterval(deleteEveryDay, oneDay)
+
 //NOTE: image API
 app.get("/imageAPI", async (req,res) => {
     const result = fs.readdirSync("../client/upload/", { withFileTypes: true })
