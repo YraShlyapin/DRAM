@@ -14,6 +14,7 @@
 {{ billboard.author }}
 {{ billboard.marker }}</p>
                         <p class="about_slider_text">
+                            {{billboard.date_time}}
                             {{ date_format(billboard.date_time) }}
                             <br>
                             {{ billboard.place }}
