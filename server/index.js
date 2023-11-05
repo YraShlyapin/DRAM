@@ -222,7 +222,6 @@ app.get("/castHeadAPI/:id", async (req,res) => {
 //NOTE: billboard API
 app.get("/billboardAPI", async (req,res) => {
     const result = await db.get_all_billboard()
-    console.log(result.date_time)
     res.send(result)
 })
 
