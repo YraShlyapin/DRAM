@@ -1,24 +1,15 @@
 function date_format(date){
-    let formatter_Date = new Date(new Date(date) - (1*60*60*1000))
+    let dateFormat = new Date(date).toLocaleString('ru',{day: 'numeric',month: 'long', year: 'numeric', hour: "2-digit", minute: "2-digit"})
+    dateFormat.replace(' г., ', ', в ')
 
-    let day = formatter_Date.getDate()
-    let month = formatter_Date.toLocaleString('ru',{month: 'long'})
-    let year = formatter_Date.getFullYear()
-    let weekday = formatter_Date.toLocaleString('ru',{weekday: 'long'})
-    let Hours = formatter_Date.getHours()
-    let minutes = formatter_Date.getMinutes()
-
-    return `${day} ${month} ${year}, в ${Hours}:${Number(minutes) >=10 ? minutes : '0' + minutes }`
+    return dateFormat
 }
 
 function date_format_first(date){
-    let formatter_Date = new Date(new Date(date) - (1*60*60*1000))
+    let dateFormat = new Date(date).toLocaleString('ru',{day: 'numeric',month: 'long', year: 'numeric'})
+    dateFormat.replace(' г.', '')
 
-    let day = formatter_Date.getDate()
-    let month = formatter_Date.toLocaleString('ru',{month: 'long'})
-    let year = formatter_Date.getFullYear()
-
-    return `${day} ${month} ${year}`
+    return dateFormat
 }
 
 function time_format(time) {
