@@ -31,7 +31,7 @@ async function deleteEveryDay(){
     deleteBillboard.forEach(e => db.delete_billboard(e.id_billboard))
 }
 
-let oneDay = 1000 * 60 * 60 * 24
+let oneDay = 1000 * 60 * 60 * 1
 
 setInterval(deleteEveryDay, oneDay)
 
@@ -227,6 +227,8 @@ app.get("/billboardAPI", async (req,res) => {
 
 app.get("/billboardAPI/:id", async (req,res) => {
     const result = await db.get_one_billboard(req.params.id)
+    console.log(result.date_time)
+    console.log(typeof(result.date_time))
     if (result) {
         res.send(result)
     }else{
