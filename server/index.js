@@ -33,6 +33,7 @@ async function deleteEveryDay(){
 
 let oneDay = 1000 * 60 * 60 * 1
 
+deleteEveryDay()
 setInterval(deleteEveryDay, oneDay)
 
 //NOTE: image API
